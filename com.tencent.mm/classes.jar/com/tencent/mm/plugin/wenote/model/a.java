@@ -1,0 +1,29 @@
+package com.tencent.mm.plugin.wenote.model;
+
+import com.tencent.mm.kernel.a.b.a.a;
+import com.tencent.mm.kernel.a.b.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.p;
+import com.tencent.mm.plugin.fav.a.ae;
+
+public final class a
+  extends p
+  implements b
+{
+  public a()
+  {
+    super(com.tencent.mm.br.c.Xh("wenote"));
+  }
+  
+  public final void parallelsDependency()
+  {
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).ao(g.t(ae.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).ao(g.t(com.tencent.mm.plugin.record.a.a.class));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.wenote.model.a
+ * JD-Core Version:    0.7.0.1
+ */

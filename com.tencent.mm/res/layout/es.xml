@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/sz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/p1">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl">
+            <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/kn" android:layout_marginTop="@dimen/ke" android:src="@drawable/ap3" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/kl">
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:id="@id/y0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a06" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl">
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/zu" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/zv" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/zw" />
+        </LinearLayout>
+        <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</ScrollView>

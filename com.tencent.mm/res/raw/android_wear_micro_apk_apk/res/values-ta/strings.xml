@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">இயக்கு</string>
+    <string name="b">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="c">Google Play சேவைகளை இயக்கவும்</string>
+    <string name="d">நிறுவு</string>
+    <string name="e">Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s இயங்கும். அவை உங்கள் சாதனத்தில் இல்லை.</string>
+    <string name="f">Google Play சேவைகளைப் பெறவும்</string>
+    <string name="g">Google Play சேவைகள் பிழை</string>
+    <string name="h">Google Play சேவைகளில் சிக்கல் ஏற்பட்டதால், %1$s பயன்பாட்டை அணுக முடியவில்லை. மீண்டும் முயலவும்.</string>
+    <string name="i">Google Play சேவைகள் இருந்தால் மட்டுமே %1$s பயன்பாடு இயங்கும். ஆனால், உங்கள் சாதனத்தில் அவை ஆதரிக்கப்படவில்லை.</string>
+    <string name="j">புதுப்பி</string>
+    <string name="k">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="l">Google Play சேவைகளைப் புதுப்பிக்கவும்</string>
+    <string name="m">தற்போது புதுப்பிக்கப்படும், Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="n">Google Play சேவைகளின் புதிய பதிப்பு தேவை. அது விரைவில் தானாகவே புதுப்பிக்கப்படும்.</string>
+    <string name="o">மொபைலில் திற</string>
+    <string name="p">உள்நுழைக</string>
+    <string name="q">Google மூலம் உள்நுழைக</string>
+    <string name="r">999+</string>
+</resources>

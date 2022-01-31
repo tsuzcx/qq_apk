@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/kl" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.chatting.HardDeviceChattingItemView android:orientation="vertical" android:id="@id/aku" android:background="@drawable/h6" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/kl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="0.0dip">
+                <TextView android:textSize="42.0dip" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center" android:id="@id/anu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="50.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/a23" android:gravity="center" android:id="@id/anv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="50.0dip" android:singleLine="true" android:layout_below="@id/anu" android:layout_alignLeft="@id/anu" android:layout_alignRight="@id/anu" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip">
+                <TextView android:textSize="42.0dip" android:textColor="@color/a23" android:ellipsize="end" android:gravity="left" android:id="@id/anw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="220.0dip" android:singleLine="true" android:layout_alignParentRight="true" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/a23" android:gravity="left" android:id="@id/anx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/anw" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView android:id="@id/any" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/dp" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/dp" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/dp">
+            <ImageView android:id="@id/ans" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/li" android:src="@raw/chatting_item_harddevice_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_toLeftOf="@id/ans" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+                <ImageView android:id="@id/anz" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginRight="@dimen/dp" android:src="@drawable/a_2" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/fc" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/ao0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.tencent.mm.ui.chatting.HardDeviceChattingItemView>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Aktivizo</string>
+    <string name="b">%1$s nuk do të funksionojë nëse nuk aktivizon shërbimet e \"Luaj me Google\".</string>
+    <string name="c">Aktivizo shërbimet e \"Luaj me Google\"</string>
+    <string name="d">Instalo</string>
+    <string name="e">%1$s nuk do të funksionojë pa shërbimet e Google Play, të cilat mungojnë në pajisjen tënde.</string>
+    <string name="f">Merr shërbimet e \"Luaj me Google\"</string>
+    <string name="g">Gabim në shërbimet e \"Luaj me Google\"</string>
+    <string name="h">%1$s ka probleme me shërbimet e Google Play. Provo sërish.</string>
+    <string name="i">%1$s nuk do të funksionojë pa shërbimet e Google Play, të cilat nuk mbështeten nga pajisja jote.</string>
+    <string name="j">Përditëso</string>
+    <string name="k">%1$s nuk do të funksionojë nëse nuk përditëson shërbimet e \"Luaj me Google\".</string>
+    <string name="l">Përditëso shërbimet e \"Luaj me Google\"</string>
+    <string name="m">%1$s nuk do të funksionojë pa shërbimet e \"Luaj me Google\", të cilat po përditësohen aktualisht.</string>
+    <string name="n">Nevojitet një version i ri i shërbimeve të \"Luaj me Google\". Ai do të përditësohet automatikisht së shpejti.</string>
+    <string name="o">Hape në telefon</string>
+    <string name="p">Identifikohu</string>
+    <string name="q">Identifikohu me Google</string>
+    <string name="r">999+</string>
+</resources>

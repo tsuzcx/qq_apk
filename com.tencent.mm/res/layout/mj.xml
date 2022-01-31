@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/anh" style="@style/g5" />
+    <LinearLayout android:orientation="vertical" android:id="@id/aku" android:background="@drawable/hs" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/anu" style="@style/g_" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/j5" android:gravity="center" android:id="@id/anj" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/evl" />
+    </LinearLayout>
+    <include android:layout_marginTop="5.0dip" layout="@layout/kk" style="@style/fv" />
+</LinearLayout>

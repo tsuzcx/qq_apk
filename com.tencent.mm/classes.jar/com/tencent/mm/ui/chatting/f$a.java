@@ -1,0 +1,65 @@
+package com.tencent.mm.ui.chatting;
+
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mm.br.d;
+import com.tencent.mm.ui.x;
+
+final class f$a
+  implements f.c
+{
+  public final boolean a(String paramString1, Context paramContext, x paramx, String paramString2)
+  {
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendnormalhbrequest"))
+    {
+      paramString1 = new Intent();
+      paramString1.putExtra("key_type", 0);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+      return true;
+    }
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendrandomhbrequest"))
+    {
+      paramString1 = new Intent();
+      paramString1.putExtra("key_type", 1);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+      return true;
+    }
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendhblistrequest"))
+    {
+      paramString1 = new Intent();
+      paramString1.putExtra("key_type", 1);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+      return true;
+    }
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startreceivehblistrequest"))
+    {
+      paramString1 = new Intent();
+      paramString1.putExtra("key_type", 2);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+      return true;
+    }
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/openDetail"))
+    {
+      paramx = new Intent();
+      paramx.putExtra("key_native_url", paramString1);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyDetailUI", paramx);
+      return true;
+    }
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startreceivebizhbrequest"))
+    {
+      paramx = new Intent();
+      paramx.putExtra("key_way", 5);
+      paramx.putExtra("key_native_url", paramString1);
+      paramx.putExtra("key_static_from_scene", 1);
+      d.b(paramContext, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", paramx);
+      return true;
+    }
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.ui.chatting.f.a
+ * JD-Core Version:    0.7.0.1
+ */

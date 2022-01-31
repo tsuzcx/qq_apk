@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.gridviewheaders.GridHeadersGridView android:scrollbarStyle="outsideOverlay" android:id="@id/aqs" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="60.0dip" android:horizontalSpacing="1.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:columnWidth="100.0dip" android:numColumns="auto_fit" android:animateLayoutChanges="true" />
+    <RelativeLayout android:background="@color/ch" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <Button android:textSize="@dimen/k9" android:id="@id/aqt" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/b10" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/mx" />
+        <CheckBox android:id="@id/xo" android:background="@drawable/r5" android:layout_width="@dimen/er" android:layout_height="@dimen/er" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="#ffaaaaaa" android:id="@id/xp" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/eo" android:maxLines="1" android:layout_toRightOf="@id/xo" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="#ffaaaaaa" android:gravity="center" android:id="@id/aqu" android:layout_width="155.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_toRightOf="@id/xp" android:layout_centerVertical="true" />
+        <View android:id="@id/xq" android:layout_width="72.0dip" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</RelativeLayout>

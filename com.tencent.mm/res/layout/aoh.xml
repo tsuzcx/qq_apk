@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/ma"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/dub" android:background="@color/sz" android:choiceMode="singleChoice" style="@style/ls" />
+</LinearLayout>

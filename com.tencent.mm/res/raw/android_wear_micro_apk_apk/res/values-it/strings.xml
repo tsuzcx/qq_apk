@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Attiva</string>
+    <string name="b">%1$s non funzionerà se non attivi Google Play Services.</string>
+    <string name="c">Attiva Google Play Services</string>
+    <string name="d">Installa</string>
+    <string name="e">"L'app %1$s non funzionerà senza Google Play Services, non presente sul tuo dispositivo."</string>
+    <string name="f">Installa Google Play Services</string>
+    <string name="g">Errore Google Play Services</string>
+    <string name="h">%1$s sta riscontrando problemi con Google Play Services. Riprova.</string>
+    <string name="i">%1$s non funzionerà senza Google Play Services, non supportati dal tuo dispositivo.</string>
+    <string name="j">Aggiorna</string>
+    <string name="k">%1$s non funzionerà se non aggiorni Google Play Services.</string>
+    <string name="l">Aggiorna Google Play Services</string>
+    <string name="m">%1$s non funzionerà senza Google Play Services, attualmente in fase di aggiornamento.</string>
+    <string name="n">"È richiesta una nuova versione di Google Play Services. L'aggiornamento automatico verrà eseguito a breve."</string>
+    <string name="o">Apri sul telefono</string>
+    <string name="p">Accedi</string>
+    <string name="q">Accedi con Google</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">Esci</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Download sticker in corso...</string>
+    <string name="z">Invia battito cardiaco</string>
+    <string name="a0">"Ho misurato il battico cardiaco con l'orologio:%d battiti/min."</string>
+    <string name="a1">"Impossibile caricare l'immagine"</string>
+    <string name="a2">"Impossibile caricare l'origine. Riavvia WeChat sul cellulare. Tocca e riprova."</string>
+    <string name="a3">Assicurati di cellulare e orologio siano connessi. WeChat mobile è stato connesso. Tocca per riprovare.</string>
+    <string name="a4">Impossibile accedere. Riavvia WeChat sul cellulare. Tocca e riprova.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"La prossima volta
+sarai più fortunato"</string>
+    <string name="a8">Accetta</string>
+    <string name="a9">Ignora</string>
+    <string name="a_">Notifiche</string>
+    <string name="aa">Apri nel cellulare</string>
+    <string name="ab">Di testo</string>
+    <string name="ac">Rinvia</string>
+    <string name="ad">Paga</string>
+    <string name="ae">Forse</string>
+    <string name="af">No</string>
+    <string name="ag">Sì</string>
+    <string name="ah">Invia</string>
+    <string name="ai">Galleria adesivi</string>
+    <string name="aj">Di testo</string>
+    <string name="ak">Vocale</string>
+    <string name="al">Rispondi</string>
+    <string name="am">Conversazione...</string>
+    <string name="an">%d</string>
+    <string name="ao">"Errore di riconoscimento
+Tieni premuto per parlare di nuovo"</string>
+    <string name="ap">Conversione in testo</string>
+    <string name="aq">%d</string>
+    <string name="ar">Invio in corso</string>
+    <string name="as">"Messaggio troppo breve
+Tieni premuto per parlare di nuovo"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Caricamento immagine</string>
+    <string name="av">Caricamento...</string>
+    <string name="aw">Caricamento origine</string>
+    <string name="ax">Accesso in corso</string>
+    <string name="ay">Pagina pagamento aperta sul cellulare</string>
+    <string name="az">Il dispositivo non supporta la riproduzione audio.</string>
+    <string name="b0">Benvenuti in WeChat</string>
+</resources>

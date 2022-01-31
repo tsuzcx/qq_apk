@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bdi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/bd3" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bd4" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/ay5" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="21.0dip" android:textColor="@color/a23" android:id="@id/bd5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/bh5" android:layout_centerHorizontal="true" />
+        <Button android:textSize="18.0dip" android:textColor="@color/a23" android:id="@id/be3" android:background="@drawable/kt" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginTop="525.0dip" android:text="@string/p8" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bd8" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bd9" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/ayx" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/bd_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/ayw" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/a23" android:id="@id/bda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/bh6" android:layout_below="@id/bd9" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bdb" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bdc" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/ayu" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/bdd" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/az1" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="21.0dip" android:textColor="@color/a23" android:id="@id/bde" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/bh3" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bdf" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout android:id="@id/bdg" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.base.MMTextureView android:id="@id/bdh" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout>
+        <com.tencent.mm.plugin.facedetectlight.ui.FaceReflectMask android:id="@id/bdk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/be4" android:visibility="invisible" android:layout_width="320.0dip" android:layout_height="320.0dip" android:layout_marginTop="135.0dip" android:src="@drawable/ayt" android:layout_centerHorizontal="true" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/be5" android:visibility="invisible" android:layout_width="278.0dip" android:layout_height="278.0dip" android:layout_marginTop="145.0dip" android:src="@drawable/ay8" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/a23" android:id="@id/bdl" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/bgn" android:layout_below="@id/be4" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/be6" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center_horizontal" android:id="@id/be7" android:layout_width="173.0dip" android:layout_height="253.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/m1" android:layout_gravity="center_horizontal" android:id="@id/be8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/bgq" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/m4" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/be9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/bgr" />
+        <Button android:textSize="18.0dip" android:layout_gravity="center_horizontal" android:id="@id/be_" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="27.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="27.0dip" android:text="@string/bf5" android:layout_centerHorizontal="true" style="@style/mu" />
+    </LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/m1" android:id="@id/bdm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="13.0dip" android:text="@string/beq" />
+</FrameLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">I-enable</string>
+    <string name="b">Hindi gagana ang %1$s maliban kung ie-enable mo ang mga serbisyo ng Google Play.</string>
+    <string name="c">I-enable ang mga serbisyo ng Google Play</string>
+    <string name="d">I-install</string>
+    <string name="e">Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play na wala sa iyong device.</string>
+    <string name="f">Kunin ang mga serbisyo ng Google Play</string>
+    <string name="g">Error sa Mga Serbisyo ng Google Play</string>
+    <string name="h">Nagkakaproblema ang %1$s sa mga serbisyo ng Google Play. Pakisubukang muli.</string>
+    <string name="i">Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play, na hindi nasusuportahan ng iyong device.</string>
+    <string name="j">I-update</string>
+    <string name="k">Hindi gagana ang %1$s maliban kung i-a-update mo ang mga serbisyo ng Google Play.</string>
+    <string name="l">I-update ang mga serbisyo ng Google Play</string>
+    <string name="m">Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play na kasalukuyang ina-update.</string>
+    <string name="n">Kailangan ang bagong bersyon ng mga serbisyo ng Google Play. Mag-a-update itong mag-isa sa ilang sandali.</string>
+    <string name="o">Buksan sa telepono</string>
+    <string name="p">Mag-sign in</string>
+    <string name="q">Mag-sign in sa Google</string>
+    <string name="r">999+</string>
+</resources>

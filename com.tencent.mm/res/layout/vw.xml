@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/tm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ln" android:layout_marginRight="@dimen/ln" android:minWidth="@dimen/l6"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bg3" android:background="@drawable/l3" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="160.0dip" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.fingerprint.faceid.auth.FrameAnimatorImageView android:layout_gravity="center_horizontal" android:id="@id/bg4" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@drawable/az2" />
+        <TextView android:textSize="@dimen/fa" android:textColor="#ff111111" android:layout_gravity="center_horizontal" android:id="@id/bg5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/bhu" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/bg6" android:paddingLeft="@dimen/ku" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/kl" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:gravity="right" android:id="@id/bg7" android:background="@color/a23" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/n7" android:layout_weight="1.0" style="@style/n2" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/op" android:id="@id/bg8" android:background="@color/a23" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="queding" style="@style/n2" />
+    </LinearLayout>
+</LinearLayout>

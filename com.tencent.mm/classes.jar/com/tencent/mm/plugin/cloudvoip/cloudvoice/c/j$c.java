@@ -1,0 +1,12 @@
+package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
+
+ enum j$c
+{
+  private j$c() {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.c.j.c
+ * JD-Core Version:    0.7.0.1
+ */

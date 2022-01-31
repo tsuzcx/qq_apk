@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Etkinleştir</string>
+    <string name="b">Google Play hizmetlerini etkinleştirmezseniz %1$s çalışmaz.</string>
+    <string name="c">Google Play hizmetlerini etkinleştirin</string>
+    <string name="d">Yükle</string>
+    <string name="e">%1$s, şu anda cihazınızda bulunmayan Google Play hizmetleri olmadan çalışmaz.</string>
+    <string name="f">Google Play hizmetlerini edinin</string>
+    <string name="g">Google Play Hizmetleri hatası</string>
+    <string name="h">%1$s, Google Play hizmetleriyle ilgili sorun yaşıyor. Lütfen tekrar deneyin.</string>
+    <string name="i">%1$s, Google Play hizmetleri olmadan çalışmaz ve bu hizmetler cihazınız tarafından desteklenmiyor.</string>
+    <string name="j">Güncelle</string>
+    <string name="k">Google Play hizmetlerini güncellemezseniz %1$s çalışmayacak.</string>
+    <string name="l">Google Play hizmetlerini güncelleyin</string>
+    <string name="m">%1$s, şu anda güncellenmekte olan Google Play hizmetleri olmadan çalışmaz.</string>
+    <string name="n">Google Play hizmetlerinin yeni sürümü gerekiyor. Kendisini kısa süre içinde güncelleyecektir.</string>
+    <string name="o">Telefonda aç</string>
+    <string name="p">Oturum aç</string>
+    <string name="q">"Google'da oturum aç"</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">Çık</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Bu çıkartma indiriliyor...</string>
+    <string name="z">Kalp atış hızı gönder</string>
+    <string name="a0">Kalp atış hızını saatle ölçtüm: Dakikada %d kez.</string>
+    <string name="a1">Resim yüklenemiyor</string>
+    <string name="a2">Kaynak yüklenemiyor. Cep telefonunda WeChat tekrar başlatıldıktan sonra. Tekrar denemek için dokunun.</string>
+    <string name="a3">"Cep telefonu ile saatin bağlı olduğundan emin olun. Mobil WeChat'te oturum açıldı. Tekrar denemek için dokunun."</string>
+    <string name="a4">Oturum açılamıyor. Cep telefonunda WeChat tekrar başlatıldıktan sonra. Tekrar denemek için dokunun.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Bir dahaki sefere
+şansınız bol olsun"</string>
+    <string name="a8">Kabul et</string>
+    <string name="a9">Yoksay</string>
+    <string name="a_">Bildirimler</string>
+    <string name="aa">Cep telefonunda aç</string>
+    <string name="ab">Metin</string>
+    <string name="ac">Yeniden Gönder</string>
+    <string name="ad">Öde</string>
+    <string name="ae">Belki</string>
+    <string name="af">Hayır</string>
+    <string name="ag">Evet</string>
+    <string name="ah">Gönder</string>
+    <string name="ai">Çıkartma Galerisi</string>
+    <string name="aj">Metin</string>
+    <string name="ak">Ses</string>
+    <string name="al">Yanıtla</string>
+    <string name="am">Konuşun...</string>
+    <string name="an">%d</string>
+    <string name="ao">"Tanımlama hatası
+Tekrar konuşmak için basılı tutun"</string>
+    <string name="ap">Metne dönüştürülüyor</string>
+    <string name="aq">%d</string>
+    <string name="ar">Gönderiliyor</string>
+    <string name="as">"Mesaj çok kısa
+Tekrar konuşmak için basılı tutun"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Resim yükleniyor</string>
+    <string name="av">Yükleniyor...</string>
+    <string name="aw">Kaynak yükleniyor</string>
+    <string name="ax">Oturum açılıyor</string>
+    <string name="ay">Cep telefonunda ödeme sayfası açıldı</string>
+    <string name="az">Cihaz, ses oynatımını desteklemiyor.</string>
+    <string name="b0">"WeChat'e hoş geldiniz"</string>
+</resources>

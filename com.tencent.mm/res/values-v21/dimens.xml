@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ay">0.0dip</dimen>
+    <dimen name="az">0.0dip</dimen>
+    <dimen name="b0">12.0dip</dimen>
+</resources>

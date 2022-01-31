@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Ativar</string>
+    <string name="b">%1$s só funciona com o Google Play Services ativado.</string>
+    <string name="c">Ativar o Google Play Services</string>
+    <string name="d">Instalar</string>
+    <string name="e">O app %1$s não funciona sem o Google Play Services, o qual não está instalado no seu dispositivo.</string>
+    <string name="f">Instalar o Google Play Services</string>
+    <string name="g">Erro do Google Play Services</string>
+    <string name="h">O app %1$s está com problemas com o Google Play Services. Tente novamente.</string>
+    <string name="i">O app %1$s não funciona sem o Google Play Services, o qual não é compatível com seu dispositivo.</string>
+    <string name="j">Atualizar</string>
+    <string name="k">%1$s só funciona com uma versão atualizada do Google Play Services.</string>
+    <string name="l">Atualizar o Google Play Services</string>
+    <string name="m">%1$s não funciona sem o Google Play Services, o qual está sendo atualizado no momento.</string>
+    <string name="n">É necessária uma nova versão do Google Play Services. Ele será atualizado em breve.</string>
+    <string name="o">Abrir no smartphone</string>
+    <string name="p">Fazer login</string>
+    <string name="q">Fazer login com o Google</string>
+    <string name="r">999+</string>
+</resources>

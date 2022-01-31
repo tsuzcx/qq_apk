@@ -1,0 +1,19 @@
+package com.tencent.mm.plugin.freewifi.ui;
+
+public final class FreeWifiFrontPageUI$c
+{
+  Object data;
+  FreeWifiFrontPageUI.d krO;
+  
+  public FreeWifiFrontPageUI$c(FreeWifiFrontPageUI.d paramd, Object paramObject)
+  {
+    this.krO = paramd;
+    this.data = paramObject;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.c
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/pj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/pk" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ak9" />
+        <TextView android:id="@id/dhu" android:paddingRight="@dimen/hn" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/i4" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/pn" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.account.bind.ui;
+
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+
+final class BindMContactIntroUI$21
+  implements MenuItem.OnMenuItemClickListener
+{
+  BindMContactIntroUI$21(BindMContactIntroUI paramBindMContactIntroUI) {}
+  
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  {
+    BindMContactIntroUI.c(this.fbF);
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI.21
+ * JD-Core Version:    0.7.0.1
+ */

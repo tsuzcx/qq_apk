@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">முகப்பிற்கு வழிசெலுத்து</string>
+    <string name="b">மேலே வழிசெலுத்து</string>
+    <string name="abc_action_menu_overflow_description">மேலும் விருப்பங்கள்</string>
+    <string name="c">முடிந்தது</string>
+    <string name="d">எல்லாம் காட்டு</string>
+    <string name="e">பயன்பாட்டைத் தேர்வுசெய்க</string>
+    <string name="f">ஆஃப்</string>
+    <string name="g">ஆன்</string>
+    <string name="h">தேடு...</string>
+    <string name="i">வினவலை அழி</string>
+    <string name="j">தேடல் வினவல்</string>
+    <string name="k">தேடு</string>
+    <string name="l">வினவலைச் சமர்ப்பி</string>
+    <string name="m">குரல் தேடல்</string>
+    <string name="n">இதனுடன் பகிர்</string>
+    <string name="o">%s மூலம் பகிர்</string>
+    <string name="p">சுருக்கு</string>
+    <string name="common_google_play_services_enable_button">இயக்கு</string>
+    <string name="common_google_play_services_enable_text">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="common_google_play_services_enable_title">Google Play சேவைகளை இயக்கவும்</string>
+    <string name="common_google_play_services_install_button">நிறுவு</string>
+    <string name="common_google_play_services_install_text">Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s இயங்கும். அவை உங்கள் சாதனத்தில் இல்லை.</string>
+    <string name="common_google_play_services_install_title">Google Play சேவைகளைப் பெறவும்</string>
+    <string name="common_google_play_services_notification_ticker">Google Play சேவைகள் பிழை</string>
+    <string name="common_google_play_services_unknown_issue">Google Play சேவைகளில் சிக்கல் ஏற்பட்டதால், %1$s பயன்பாட்டை அணுக முடியவில்லை. மீண்டும் முயலவும்.</string>
+    <string name="common_google_play_services_unsupported_text">Google Play சேவைகள் இருந்தால் மட்டுமே %1$s பயன்பாடு இயங்கும். ஆனால், உங்கள் சாதனத்தில் அவை ஆதரிக்கப்படவில்லை.</string>
+    <string name="common_google_play_services_update_button">புதுப்பி</string>
+    <string name="common_google_play_services_update_text">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="common_google_play_services_update_title">Google Play சேவைகளைப் புதுப்பிக்கவும்</string>
+    <string name="common_google_play_services_updating_text">தற்போது புதுப்பிக்கப்படும், Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="common_google_play_services_wear_update_text">Google Play சேவைகளின் புதிய பதிப்பு தேவை. அது விரைவில் தானாகவே புதுப்பிக்கப்படும்.</string>
+    <string name="common_open_on_phone">மொபைலில் திற</string>
+    <string name="common_signin_button_text">உள்நுழைக</string>
+    <string name="common_signin_button_text_long">Google மூலம் உள்நுழைக</string>
+    <string name="q">தேடு</string>
+    <string name="r">999+</string>
+</resources>

@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.ipcall.ui;
+
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+
+final class IPCallRechargeUI$5
+  implements MenuItem.OnMenuItemClickListener
+{
+  IPCallRechargeUI$5(IPCallRechargeUI paramIPCallRechargeUI) {}
+  
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  {
+    this.lxJ.finish();
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallRechargeUI.5
+ * JD-Core Version:    0.7.0.1
+ */

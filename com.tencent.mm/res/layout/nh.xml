@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/as8" layout="@layout/nv" />
+    <TextView android:textSize="@dimen/k9" android:textColor="@color/fc" android:layout_gravity="center" android:id="@id/as9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="27.0dip" android:textColor="@color/fc" android:layout_gravity="top" android:id="@id/as_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="¥" android:includeFontPadding="false" />
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="36.0dip" android:textColor="@color/fc" android:id="@id/asa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/k9" android:textColor="@color/t7" android:layout_gravity="center" android:id="@id/asb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="40.0dip" android:text="" />
+</LinearLayout>

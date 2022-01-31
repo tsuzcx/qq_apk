@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/kn" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </ScrollView>
+    <ImageView android:id="@id/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitStart" />
+    <LinearLayout android:orientation="vertical" android:id="@id/kp" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v7.widget.RecyclerView android:id="@id/kq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/kr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/b88" android:scaleType="centerInside" />
+</FrameLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/dtt" android:divider="@drawable/nx" style="@style/ls" />
+    <TextView android:gravity="center_horizontal" android:id="@id/dtu" android:visibility="gone" android:layout_marginTop="@dimen/ln" android:text="@string/dya" style="@style/k6" />
+</FrameLayout>

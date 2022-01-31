@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">啟用</string>
+    <string name="b">您必須啟用 Google Play 服務，才能執行「%1$s」。</string>
+    <string name="c">啟用 Google Play 服務</string>
+    <string name="d">安裝</string>
+    <string name="e">您的裝置並未安裝 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string name="f">取得 Google Play 服務</string>
+    <string name="g">Google Play 服務發生錯誤</string>
+    <string name="h">「%1$s」無法存取 Google Play 服務，請再試一次。</string>
+    <string name="i">您的裝置不支援 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string name="j">更新</string>
+    <string name="k">您必須更新 Google Play 服務，才能執行「%1$s」。</string>
+    <string name="l">更新 Google Play 服務</string>
+    <string name="m">執行「%1$s」所需的 Google Play 服務正在更新。</string>
+    <string name="n">必須使用新版 Google Play 服務。該服務稍後就會自動更新。</string>
+    <string name="o">在手機上開啟</string>
+    <string name="p">登入</string>
+    <string name="q">使用 Google 帳戶登入</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">結束</string>
+    <string name="u">阿狸</string>
+    <string name="v">羅小黑戰記</string>
+    <string name="w">麼麼</string>
+    <string name="x">機器人小六</string>
+    <string name="y">此貼圖正在下載中…</string>
+    <string name="z">發心跳</string>
+    <string name="a0">我用手錶測了心跳：%d次/分</string>
+    <string name="a1">加載圖片失敗</string>
+    <string name="a2">加載資源失敗，請重啟手機端WeChat後，點擊重試</string>
+    <string name="a3">請確保手機與手錶已經連接，手機WeChat已經登入，點擊重試</string>
+    <string name="a4">登入失敗，請重啟手機端WeChat後，點擊重試</string>
+    <string name="a5">%s元</string>
+    <string name="a6">元</string>
+    <string name="a7">"手慢了
+紅包派完了"</string>
+    <string name="a8">接受</string>
+    <string name="a9">忽略</string>
+    <string name="a_">新訊息勿擾</string>
+    <string name="aa">在手機打開</string>
+    <string name="ab">文字</string>
+    <string name="ac">重發</string>
+    <string name="ad">付款</string>
+    <string name="ae">Maybe</string>
+    <string name="af">No</string>
+    <string name="ag">Yes</string>
+    <string name="ah">點擊傳送</string>
+    <string name="ai">貼圖市集</string>
+    <string name="aj">文字</string>
+    <string name="ak">語音</string>
+    <string name="al">回覆</string>
+    <string name="am">請說話…</string>
+    <string name="an">%d</string>
+    <string name="ao">"語音識別錯誤
+點擊重新說話"</string>
+    <string name="ap">正在轉文字</string>
+    <string name="aq">%d</string>
+    <string name="ar">正在傳送</string>
+    <string name="as">"語音太短
+點擊重新說話"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">正在加載圖片</string>
+    <string name="av">正在加載…</string>
+    <string name="aw">正在加載資源</string>
+    <string name="ax">正在登入</string>
+    <string name="ay">已在手機打開支付介面</string>
+    <string name="az">設備不支持語音播放</string>
+    <string name="b0">歡迎來到WeChat</string>
+</resources>

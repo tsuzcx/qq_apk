@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/h0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d9u" android:background="@color/tt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+    <ImageView android:id="@id/agt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/c_k" android:background="@drawable/b1v" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/d9p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:src="@raw/video_icon_in_gird" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a25" android:id="@id/d9q" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="--:--" android:maxLines="1" android:layout_toRightOf="@id/d9p" android:layout_alignBaseline="@id/d9p" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/d9r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1u" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/d9s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginBottom="@dimen/hs" android:src="@raw/photo_edit_mark" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/d9t" android:background="@color/pr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/bhl" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <CheckBox android:id="@id/bhk" android:background="@drawable/ow" android:focusable="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="20.0dip" android:layout_marginTop="@dimen/kv" android:layout_marginRight="@dimen/kv" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/a25" android:gravity="center" android:id="@id/dpn" android:visibility="gone" android:layout_width="@dimen/er" android:layout_height="20.0dip" android:layout_alignLeft="@id/bhk" android:layout_alignTop="@id/bhk" android:layout_alignStart="@id/bhk" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

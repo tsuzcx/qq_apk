@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a23" android:paddingLeft="@dimen/nw" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/nw" android:paddingRight="@dimen/nw" android:paddingBottom="@dimen/nw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0" android:minHeight="60.0dip">
+        <ImageView android:id="@id/bc2" android:layout_width="@dimen/nk" android:layout_height="@dimen/nk" android:scaleType="fitXY" />
+        <TextView android:textSize="@dimen/nm" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/w8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:maxLines="1" android:maxLength="15" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center|right" android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="right" android:id="@id/cey" android:background="@null" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="100.0dip" android:minHeight="0.0dip" android:hint="@string/cg6" wallet:layoutRes="@layout/a77" wallet:contentHint="@string/cg6" wallet:contentGravity="e2|e8" style="@style/v0" />
+            <TextView android:textSize="@dimen/nm" android:textColor="@color/fc" android:id="@id/cez" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cg5" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/nc" android:background="@drawable/h" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="APKTOOL_DUMMY_16c" />
+    <item type="drawable" name="APKTOOL_DUMMY_17e" />
+    <item type="drawable" name="APKTOOL_DUMMY_c00" />
+    <item type="drawable" name="APKTOOL_DUMMY_c01" />
+    <item type="drawable" name="APKTOOL_DUMMY_c02" />
+    <item type="drawable" name="APKTOOL_DUMMY_c03" />
+    <item type="drawable" name="APKTOOL_DUMMY_c04" />
+    <item type="drawable" name="APKTOOL_DUMMY_c05" />
+</resources>

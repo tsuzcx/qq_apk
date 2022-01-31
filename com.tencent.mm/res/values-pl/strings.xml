@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Przejdź do strony głównej</string>
+    <string name="b">Przejdź wyżej</string>
+    <string name="abc_action_menu_overflow_description">Więcej opcji</string>
+    <string name="c">Gotowe</string>
+    <string name="d">Zobacz wszystkie</string>
+    <string name="e">Wybierz aplikację</string>
+    <string name="f">WYŁ.</string>
+    <string name="g">WŁ.</string>
+    <string name="h">Szukaj…</string>
+    <string name="i">Wyczyść zapytanie</string>
+    <string name="j">Wyszukiwane hasło</string>
+    <string name="k">Szukaj</string>
+    <string name="l">Wyślij zapytanie</string>
+    <string name="m">Wyszukiwanie głosowe</string>
+    <string name="n">Udostępnij dla</string>
+    <string name="o">Udostępnij przez: %s</string>
+    <string name="p">Zwiń</string>
+    <string name="common_google_play_services_enable_button">Włącz</string>
+    <string name="common_google_play_services_enable_text">Aplikacja %1$s nie będzie działać, jeśli nie włączysz Usług Google Play.</string>
+    <string name="common_google_play_services_enable_title">Włącz Usługi Google Play</string>
+    <string name="common_google_play_services_install_button">Zainstaluj</string>
+    <string name="common_google_play_services_install_text">%1$s nie będzie działać, jeśli nie zainstalujesz na urządzeniu Usług Google Play.</string>
+    <string name="common_google_play_services_install_title">Pobierz Usługi Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Błąd Usług Google Play</string>
+    <string name="common_google_play_services_unknown_issue">%1$s ma problem z dostępem do Usług Google Play. Spróbuj jeszcze raz.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s nie będzie działać bez Usług Google Play, które nie są obecnie obsługiwane przez urządzenie.</string>
+    <string name="common_google_play_services_update_button">Aktualizuj</string>
+    <string name="common_google_play_services_update_text">Aplikacja %1$s nie będzie działać, jeśli nie zaktualizujesz Usług Google Play.</string>
+    <string name="common_google_play_services_update_title">Zaktualizuj Usługi Google Play</string>
+    <string name="common_google_play_services_updating_text">Aplikacja %1$s nie będzie działać bez Usług Google Play, które są obecnie aktualizowane.</string>
+    <string name="common_google_play_services_wear_update_text">Wymagana jest nowa wersja Usług Google Play. Wkrótce nastąpi automatyczna aktualizacja.</string>
+    <string name="common_open_on_phone">Otwórz na telefonie</string>
+    <string name="common_signin_button_text">Zaloguj się</string>
+    <string name="common_signin_button_text_long">Zaloguj się przez Google</string>
+    <string name="q">Szukaj</string>
+    <string name="r">999+</string>
+    <string name="ef">sound/after_upload_voice.mp3</string>
+    <string name="a1e">http://weixin.qq.com/cgi-bin/readtemplate?t=weixin_msgtrans_agreement&amp;lang=en</string>
+    <string name="a1f">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/record_sync__course&amp;lang=zh_CN</string>
+    <string name="a1g">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_chat_migration_faq&amp;lang=zh_CN</string>
+    <string name="agm">https://weixin.qq.com/cgi-bin/readtemplate?lang=%s&amp;t=weixin_howToAdjustGroupNum&amp;pf=android</string>
+    <string name="agr">https://weixin.qq.com/cgi-bin/readtemplate?lang=%s&amp;t=weixin_groupOwnerResponsibility</string>
+    <string name="b5_">https://weixin.qq.com/cgi-bin/readtemplate?t=emotion/wap/complain/msg_tmpl&amp;lang=</string>
+    <string name="b64">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_emoji_agreement&amp;lang=</string>
+    <string name="bno">file:///android_asset/doc/default/wx_feedback_index.html</string>
+    <string name="bur">file:///android_asset/doc/default/wx_wifi_faq.html</string>
+    <string name="bva">file:///android_asset/doc/default/wx_wifi_service_terms_chs.html</string>
+    <string name="bvy">https://search.weixin.qq.com/cgi-bin/h5/emoticon/tousu.html?lang=</string>
+    <string name="cio">https://support.weixin.qq.com/getpassword?lang=</string>
+    <string name="cip">https://support.weixin.qq.com/security/readtemplate?t=page/login_optimized__w_index&amp;lang=</string>
+    <string name="ck6">sound/cashrecivedrevised.mp3</string>
+    <string name="ct3">file:///android_asset/doc/default/mig_wifi_service_terms_chs.html</string>
+    <string name="cyt">file:///android_asset/doc/en/network_warning.htm</string>
+    <string name="d47">file:///android_asset/doc/default/oauth_network_error.html</string>
+    <string name="d6n">sound/play_completed.mp3</string>
+    <string name="d9e">http://weixin.qq.com/cgi-bin/readtemplate?t=weixin_contract_agreement&amp;lang=en</string>
+    <string name="d9f">file:///android_asset/doc/en/qqsync_intro.htm</string>
+    <string name="d9g">file:///android_asset/doc/en/qqsync_privacy.htm</string>
+    <string name="d9h">\?hl=en</string>
+    <string name="d_a">sound/qrcode_completed.mp3</string>
+    <string name="e8l">sound/shake_match.mp3</string>
+    <string name="e8t">sound/shake_nomatch.mp3</string>
+    <string name="e9f">sound/shake_sound_male.mp3</string>
+    <string name="e_2">sound/shakelucky_ad_logo_clicked.mp3</string>
+    <string name="e_3">sound/shakelucky_firework_sound.mp3</string>
+    <string name="el8">sound/talkroom_begin.mp3</string>
+    <string name="ela">sound/talkroom_othersbegin.mp3</string>
+    <string name="elb">sound/talkroom_press.mp3</string>
+    <string name="eld">sound/talkroom_sasasa.mp3</string>
+    <string name="ele">sound/talkroom_up.mp3</string>
+    <string name="em9">sound/time_limit.mp3</string>
+    <string name="ep8">http://weixin.qq.com/agreement?lang=en</string>
+    <string name="ep9">http://support.wechat.com/getpassword?lang=en</string>
+    <string name="ep_">https://account.qq.com/cgi-bin/en/index</string>
+    <string name="epa">http://open.weixin.qq.com/emoticon#wechat_redirect</string>
+    <string name="epb">https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=privacy</string>
+    <string name="epc">https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&amp;check=false&amp;t=weixin_agreement&amp;s=terms</string>
+    <string name="epd">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_small_pay</string>
+    <string name="epe">https://action.weixin.qq.com/payact/readtemplate?t=mobile/shuaka/help_tmpl</string>
+    <string name="epf">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/payment_security__intro_new_editon</string>
+    <string name="exo" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_business_bank&amp;lang=%s&amp;banktype=%s</string>
+    <string name="exp">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_business_agreement&amp;lang=%s</string>
+    <string name="exq">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_business_pay&amp;lang=%s</string>
+    <string name="exr" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_bank_wxcredit&amp;lang=%s&amp;banktype=%s</string>
+    <string name="exs" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_person_pay&amp;lang=%s&amp;banktype=%s</string>
+    <string name="ext">https://weixin.qq.com/cgi-bin/readtemplate?&amp;lang=en&amp;check=false&amp;t=weixin_agreement&amp;s=pay#point</string>
+    <string name="f59">https://kf.qq.com/touch/sappfaq/1603017bqMvA1603013eamiI.html</string>
+    <string name="fo2" formatted="false">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2Fkf.qq.com%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf338&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="fo3" formatted="false">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2Fkf.qq.com%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf348&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="fo4" formatted="false">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2Fkf.qq.com%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf136&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="fo5" formatted="false">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx10583a7e974992ec&amp;redirect_uri=https%3A%2F%2Fkf.qq.com%2Ftouch%2Fscene_product.html%3Fscene_id%3Dkf350&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect</string>
+    <string name="fo_">https://weixin110.qq.com/?lang=</string>
+</resources>

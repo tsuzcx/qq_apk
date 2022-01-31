@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/buk" android:layout_width="60.0dip" android:layout_height="30.0dip" android:text="@string/c0x" style="@style/jb" />
+    <com.tencent.mm.plugin.game.widget.TextProgressBar android:id="@id/bul" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:max="100" style="@style/ja" />
+</merge>

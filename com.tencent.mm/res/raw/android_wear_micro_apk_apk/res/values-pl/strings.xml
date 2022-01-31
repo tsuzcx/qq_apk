@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Włącz</string>
+    <string name="b">Aplikacja %1$s nie będzie działać, jeśli nie włączysz Usług Google Play.</string>
+    <string name="c">Włącz Usługi Google Play</string>
+    <string name="d">Zainstaluj</string>
+    <string name="e">%1$s nie będzie działać, jeśli nie zainstalujesz na urządzeniu Usług Google Play.</string>
+    <string name="f">Pobierz Usługi Google Play</string>
+    <string name="g">Błąd Usług Google Play</string>
+    <string name="h">%1$s ma problem z dostępem do Usług Google Play. Spróbuj jeszcze raz.</string>
+    <string name="i">%1$s nie będzie działać bez Usług Google Play, które nie są obecnie obsługiwane przez urządzenie.</string>
+    <string name="j">Aktualizuj</string>
+    <string name="k">Aplikacja %1$s nie będzie działać, jeśli nie zaktualizujesz Usług Google Play.</string>
+    <string name="l">Zaktualizuj Usługi Google Play</string>
+    <string name="m">Aplikacja %1$s nie będzie działać bez Usług Google Play, które są obecnie aktualizowane.</string>
+    <string name="n">Wymagana jest nowa wersja Usług Google Play. Wkrótce nastąpi automatyczna aktualizacja.</string>
+    <string name="o">Otwórz na telefonie</string>
+    <string name="p">Zaloguj się</string>
+    <string name="q">Zaloguj się przez Google</string>
+    <string name="r">999+</string>
+    <string name="t">Zakończ</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="26.0dip" android:layout_height="30.0dip" android:layout_marginTop="78.0dip" android:src="@raw/honey_pay_no_record_icon" android:scaleType="centerCrop" />
+    <TextView android:textSize="14.0dip" android:textColor="#ffb5b5b5" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="30.0dip" android:text="@string/c7h" />
+</LinearLayout>

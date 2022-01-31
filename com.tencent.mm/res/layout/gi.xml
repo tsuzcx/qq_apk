@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/a44" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/a45" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a3u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:id="@id/a46" android:paddingLeft="@dimen/sr" android:paddingTop="20.0dip" android:paddingRight="@dimen/sr" android:paddingBottom="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gg" />
+            <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/a8e" android:textColor="@color/a23" android:ellipsize="end" android:id="@id/om" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:text="@string/q9" android:maxLines="2" android:lineSpacingExtra="@dimen/sw" />
+        </LinearLayout>
+        <ImageView android:id="@id/a47" android:background="@drawable/dn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/a3u" android:layout_alignBottom="@id/a3u" />
+    </RelativeLayout>
+</LinearLayout>

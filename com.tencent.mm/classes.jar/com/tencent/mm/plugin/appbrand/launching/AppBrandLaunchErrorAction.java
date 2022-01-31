@@ -1,0 +1,45 @@
+package com.tencent.mm.plugin.appbrand.launching;
+
+import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public abstract class AppBrandLaunchErrorAction
+  implements Parcelable
+{
+  public static final AppBrandLaunchErrorAction.a CREATOR = new AppBrandLaunchErrorAction.a();
+  final String appId;
+  final int fJy;
+  
+  AppBrandLaunchErrorAction(Parcel paramParcel)
+  {
+    this.appId = paramParcel.readString();
+    this.fJy = paramParcel.readInt();
+  }
+  
+  AppBrandLaunchErrorAction(String paramString, int paramInt)
+  {
+    this.appId = paramString;
+    this.fJy = paramInt;
+  }
+  
+  public abstract void cr(Context paramContext);
+  
+  public final int describeContents()
+  {
+    return 0;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(getClass().getName());
+    paramParcel.writeString(this.appId);
+    paramParcel.writeInt(this.fJy);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorAction
+ * JD-Core Version:    0.7.0.1
+ */

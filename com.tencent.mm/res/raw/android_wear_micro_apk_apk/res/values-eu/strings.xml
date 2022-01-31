@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Gaitu</string>
+    <string name="b">%1$s aplikazioak ez du funtzionatuko Google Play zerbitzuak gaitzen ez badituzu.</string>
+    <string name="c">Gaitu Google Play zerbitzuak</string>
+    <string name="d">Instalatu</string>
+    <string name="e">%1$s ez da exekutatuko Google Play zerbitzurik gabe, baina ez dituzu gailuan.</string>
+    <string name="f">Lortu Google Play zerbitzuak</string>
+    <string name="g">Google Play zerbitzuen errorea</string>
+    <string name="h">%1$s aplikazioak arazoak ditu Google Play zerbitzuekin. Saiatu berriro.</string>
+    <string name="i">%1$s aplikazioa ezin da erabili Google Play zerbitzurik gabe, eta zure gailua ez da zerbitzuokin bateragarria.</string>
+    <string name="j">Eguneratu</string>
+    <string name="k">%1$s ez da exekutatuko Google Play zerbitzuak eguneratzen ez badituzu.</string>
+    <string name="l">Eguneratu Google Play zerbitzuak</string>
+    <string name="m">%1$s ez da exekutatuko Google Play zerbitzurik gabe; une honetan eguneratzen ari dira zerbitzuok.</string>
+    <string name="n">Google Play zerbitzuen bertsio berria behar da. Berehala eguneratuko da automatikoki.</string>
+    <string name="o">Ireki telefonoan</string>
+    <string name="p">Hasi saioa</string>
+    <string name="q">Hasi saioa Google-n</string>
+    <string name="r">999+</string>
+</resources>

@@ -1,0 +1,26 @@
+package com.tencent.mm.h.a;
+
+import com.tencent.mm.sdk.b.b;
+
+public final class kj
+  extends b
+{
+  public kj.a bTv = new kj.a();
+  
+  public kj()
+  {
+    this((byte)0);
+  }
+  
+  private kj(byte paramByte)
+  {
+    this.udV = false;
+    this.bFJ = null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.h.a.kj
+ * JD-Core Version:    0.7.0.1
+ */

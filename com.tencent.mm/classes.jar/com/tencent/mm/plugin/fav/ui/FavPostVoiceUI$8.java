@@ -1,0 +1,26 @@
+package com.tencent.mm.plugin.fav.ui;
+
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class FavPostVoiceUI$8
+  implements Animation.AnimationListener
+{
+  FavPostVoiceUI$8(FavPostVoiceUI paramFavPostVoiceUI) {}
+  
+  public final void onAnimationEnd(Animation paramAnimation)
+  {
+    FavPostVoiceUI.l(this.kcp).post(new FavPostVoiceUI.8.1(this));
+  }
+  
+  public final void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public final void onAnimationStart(Animation paramAnimation) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavPostVoiceUI.8
+ * JD-Core Version:    0.7.0.1
+ */

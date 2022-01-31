@@ -1,0 +1,31 @@
+package com.tencent.mm.plugin.setting.ui.setting;
+
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.Preference.a;
+
+final class SettingsPersonalMoreUI$1
+  implements Preference.a
+{
+  SettingsPersonalMoreUI$1(SettingsPersonalMoreUI paramSettingsPersonalMoreUI) {}
+  
+  public final boolean a(Preference paramPreference, Object paramObject)
+  {
+    paramPreference = (String)paramObject;
+    if ("male".equalsIgnoreCase(paramPreference)) {
+      SettingsPersonalMoreUI.a(this.nVm, 1);
+    }
+    for (;;)
+    {
+      return false;
+      if ("female".equalsIgnoreCase(paramPreference)) {
+        SettingsPersonalMoreUI.a(this.nVm, 2);
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalMoreUI.1
+ * JD-Core Version:    0.7.0.1
+ */

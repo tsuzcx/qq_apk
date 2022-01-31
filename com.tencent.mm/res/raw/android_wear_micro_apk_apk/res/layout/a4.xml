@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/n"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/ay" android:background="@drawable/b6" android:layout_marginLeft="30.0dip" android:text="{content}" style="@style/y" />
+</LinearLayout>

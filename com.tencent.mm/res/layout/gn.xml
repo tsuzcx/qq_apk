@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/a4p" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/a4q" android:background="@drawable/hb" android:paddingLeft="@dimen/sr" android:paddingTop="20.0dip" android:paddingRight="@dimen/sr" android:paddingBottom="@dimen/sr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="104.0dip">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingRight="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/a8e" android:textColor="@color/fc" android:ellipsize="end" android:layout_gravity="left" android:id="@id/om" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="title" android:maxLines="2" android:lineSpacingExtra="@dimen/sw" />
+            <TextView android:textSize="@dimen/my" android:textColor="@color/pf" android:layout_gravity="left" android:id="@id/a4o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" />
+            <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" layout="@layout/gg" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a4r" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/h4" android:scaleType="centerCrop" />
+    </LinearLayout>
+</LinearLayout>

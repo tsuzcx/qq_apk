@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff429056" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/c1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.wearable.view.GridViewPager android:id="@id/c2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <android.support.wearable.view.DotsPageIndicator android:layout_gravity="bottom|center" android:id="@id/c3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/by" android:background="@color/ai" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginTop="42.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/d" android:gravity="center" android:id="@id/bz" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/at" />
+        <ImageView android:id="@id/al" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/bn" android:scaleType="fitXY" />
+        <TextView android:textColor="@color/d" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c0" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginBottom="3.0dip" android:text="@string/av" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:id="@id/c4" android:background="#eeffffff" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_marginTop="42.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/c5" android:background="@color/ai" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginTop="42.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/c6" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/c_" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/d" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="{success_content_tv}" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/c8" android:background="@color/ai" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginTop="42.0dip">
+        <ImageButton android:layout_gravity="center_horizontal" android:id="@id/c9" android:background="@drawable/x" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="20.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/d" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="{fail_content_tv}" android:maxLines="2" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/ca" android:background="@color/ai" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginTop="42.0dip">
+        <TextView android:textSize="12.0dip" android:textColor="@color/d" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/a3" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/c7" android:layout_centerHorizontal="true" />
+</RelativeLayout>

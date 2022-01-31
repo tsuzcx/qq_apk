@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bl2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+        <ImageView android:id="@id/dlz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="70.0dip" android:src="@raw/wxpay_succes_page_logo" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/a1y" android:id="@id/dji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/f_v" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/dm0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="#ff353535" android:id="@id/dm1" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="d2" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="#ff353535" android:id="@id/dm2" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="d2" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dm3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="70.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="#ff353535" android:id="@id/dm4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="#ff353535" android:id="@id/dm5" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="d2" />
+                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="#ff353535" android:id="@id/dm6" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="d2" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/dm7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="32.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/djq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
+            <FrameLayout android:id="@id/dm8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="32.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <View android:id="@id/dk0" android:background="#ffc7c7c7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+                        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/dm9" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                        <TextView android:textSize="12.0dip" android:textColor="#ff949494" android:id="@id/dm_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:drawableLeft="@raw/wxpay_mini_program_icon" android:drawablePadding="4.0dip" android:layout_toRightOf="@id/dm9" />
+                        <TextView android:textSize="18.0dip" android:textColor="#ff353535" android:id="@id/dma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_toRightOf="@id/dm9" android:layout_below="@id/dm_" />
+                        <Button android:textSize="13.0dip" android:textColor="@color/a23" android:gravity="center" android:id="@id/dmb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="70.0dip" android:minHeight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/mu" />
+                    </RelativeLayout>
+                    <View android:id="@id/dk5" android:background="#ffc7c7c7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                </LinearLayout>
+                <View android:id="@id/dk6" android:background="@color/a23" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.5" />
+            </FrameLayout>
+        </LinearLayout>
+        <com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardWidget android:id="@id/dk7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="19.0dip" />
+        <LinearLayout android:gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginBottom="70.0dip" android:layout_weight="1.0">
+            <Button android:textSize="14.0dip" android:gravity="center" android:id="@id/dmc" android:layout_width="163.0dip" android:layout_height="32.0dip" android:text="@string/ez8" style="@style/oc" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

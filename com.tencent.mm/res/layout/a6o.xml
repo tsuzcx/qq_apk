@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cda" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:orientation="vertical" android:id="@id/cdb" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/cdc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/p9">
+            <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ko" android:paddingBottom="@dimen/ko" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/fj" android:id="@id/aup" android:layout_marginBottom="@dimen/ko" android:text="@string/cd6" style="@style/gl" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ko">
+                        <RelativeLayout android:id="@id/cdd" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/cde" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@id/cdf" android:paddingLeft="@dimen/ku" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/cdg" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@id/cdh" android:paddingLeft="@dimen/ku" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star" />
+                            <ImageView android:id="@id/cdi" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/ipcall_feedback_star_hl" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <FrameLayout android:id="@id/cdj" android:layout_width="fill_parent" android:layout_height="0.0dip">
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackScrollView android:id="@id/bk2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
+                            <com.tencent.mm.ui.base.FlowLayout android:id="@id/cdk" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="10.0dip" flowlayout:verticalSpacing="10.0dip" />
+                        </com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackScrollView>
+                        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/aui" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ko" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/ko" android:hint="@string/cd1" style="@style/gg" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/lj" android:textColor="@color/gp" android:id="@id/cdl" android:background="@drawable/b9" android:layout_width="wrap_content" android:minWidth="@dimen/eu" android:text="@string/cd0" style="@style/n2" />
+                <Button android:textSize="@dimen/lj" android:textColor="@color/a39" android:id="@id/cdm" android:background="@drawable/b9" android:layout_width="wrap_content" android:minWidth="@dimen/eu" android:text="@string/cd2" style="@style/n2" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="vertical" android:id="@id/cdn" android:paddingTop="@dimen/ku" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/p9">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/ku" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/kl" android:layout_marginBottom="@dimen/kl" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/dialogs_successful" />
+            <TextView android:textSize="@dimen/fj" android:textColor="@color/ta" android:gravity="center" android:id="@id/cdo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:text="@string/cd5" />
+            <TextView android:textSize="@dimen/fg" android:textColor="#ff999999" android:gravity="center" android:id="@id/cdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ku" android:layout_marginBottom="@dimen/kl" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:textSize="@dimen/lj" android:textColor="@color/gp" android:id="@id/cdq" android:background="@drawable/b9" android:layout_width="wrap_content" android:minWidth="@dimen/eu" android:text="@string/cd0" style="@style/n2" />
+            <Button android:textSize="@dimen/lj" android:textColor="@color/op" android:id="@id/cdr" android:background="@drawable/b9" android:layout_width="wrap_content" android:minWidth="@dimen/eu" android:text="@string/cd4" style="@style/n2" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

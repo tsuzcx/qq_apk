@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/a3d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/dvm" android:background="@drawable/baa" android:layout_width="294.0dip" android:layout_height="294.0dip">
+        <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/dvn" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/di" android:textColor="@color/ws" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/dvo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:singleLine="true" />
+                <TextView android:textSize="@dimen/mw" android:textColor="@color/wr" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ag_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mx" android:singleLine="true" />
+                <include android:id="@id/a95" layout="@layout/aor" />
+                <TextView android:textSize="@dimen/k9" android:textColor="@color/wn" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/dvp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:singleLine="true" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dvq" android:padding="@dimen/kl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_horizontal" android:id="@id/dvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="47.0dip" android:src="@raw/shake_success_icon" />
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/dvs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mg" android:text="@string/e78" android:maxLines="2" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="30.0dip" android:layout_alignParentBottom="true">
+            <Button android:textSize="@dimen/lj" android:textColor="@color/wm" android:id="@id/a77" android:background="@drawable/w_" android:layout_width="fill_parent" android:layout_height="41.299988dip" android:text="@string/aa1" />
+            <ProgressBar android:id="@id/dvt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminateDrawable="@drawable/w9" android:layout_centerInParent="true" style="@style/zh" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/dvu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="@dimen/mq" android:text="@string/e77" android:singleLine="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/dvv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/kl" android:src="@drawable/ba9" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>

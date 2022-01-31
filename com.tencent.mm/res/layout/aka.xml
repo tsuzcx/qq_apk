@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/pj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/pk" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ak9" />
+        <TextView android:textColor="@color/pf" android:gravity="center|left" android:id="@id/dhw" android:background="@drawable/lo" android:padding="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" android:text="@string/blw" android:drawablePadding="@dimen/mq" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/dhu" android:background="@drawable/lo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hn" android:minHeight="@dimen/hm" style="@style/i4">
+            <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.MMImageView android:id="@id/hu" android:src="@color/a23" android:contentDescription="@string/f5" style="@style/i5" />
+                <ImageView android:id="@id/dhx" android:visibility="gone" android:src="@drawable/aja" android:contentDescription="@string/f5" style="@style/i5" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/lj" android:id="@id/cj" android:layout_marginLeft="10.0dip" style="@style/i2" />
+                <TextView android:textSize="@dimen/my" android:textColor="@color/v1" android:id="@id/mi" android:layout_marginLeft="10.0dip" android:maxLines="4" android:singleLine="false" style="@style/i2" />
+                <TextView android:textSize="@dimen/my" android:id="@id/dhy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" style="@style/hw" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/pn" />
+    </LinearLayout>
+</LinearLayout>

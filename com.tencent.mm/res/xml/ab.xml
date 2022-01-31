@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/ah6" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/avd" android:key="contact_info_qqmailhelper_view" android:layout="@layout/ab8" />
+    <Preference android:title="@string/av7" android:key="contact_info_qqmailhelper_compose" android:layout="@layout/ab8" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/av_" android:key="contact_info_qqmailhelper_recv_remind" android:layout="@layout/ab8" />
+    <Preference android:title="@string/avb" android:key="contact_info_qqmailhelper_set_files_view" android:layout="@layout/ab8" />
+    <Preference android:title="@string/av8" android:key="contact_info_qqmailhelper_download_mgr_view" android:layout="@layout/ab8" />
+    <Preference android:title="@string/ars" android:key="contact_info_qqmailhelper_clear_data" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e2p" android:key="contact_info_qqmailhelper_install" android:layout="@layout/a5v" />
+    <Preference android:title="@string/e2v" android:key="contact_info_qqmailhelper_uninstall" android:layout="@layout/a84" />
+    <PreferenceCategory />
+</PreferenceScreen>

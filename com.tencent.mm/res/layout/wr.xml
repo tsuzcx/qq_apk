@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_horizontal" android:id="@id/uf" android:background="@color/mq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/fc" android:gravity="center" android:id="@id/ug" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ld" />
+        <RelativeLayout android:id="@id/bij" android:background="@color/mq" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true">
+            <View android:background="@color/cn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a1y" android:gravity="center" android:id="@id/bik" android:paddingLeft="10.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/enp" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a1y" android:gravity="center" android:id="@id/bil" android:paddingLeft="5.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/bik" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView android:id="@id/uh" android:background="@color/mq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bij" />
+        <TextView android:textSize="@dimen/k9" android:textColor="@color/a2r" android:gravity="center|left" android:id="@id/bim" android:background="@color/p7" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/mx" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/mx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

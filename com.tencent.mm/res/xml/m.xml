@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/x0" android:key="backup_move_to_device" android:layout="@layout/ab8" />
+    <Preference android:title="@string/zg" android:key="backup_to_pc" android:layout="@layout/ab8" />
+</PreferenceScreen>

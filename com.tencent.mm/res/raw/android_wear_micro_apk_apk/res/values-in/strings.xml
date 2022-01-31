@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Aktifkan</string>
+    <string name="b">%1$s tidak akan berfungsi jika layanan Google Play tidak diaktifkan.</string>
+    <string name="c">Aktifkan layanan Google Play</string>
+    <string name="d">Pasang</string>
+    <string name="e">%1$s tidak akan berjalan tanpa layanan Google Play, yang tidak ada di perangkat Anda.</string>
+    <string name="f">Dapatkan layanan Google Play</string>
+    <string name="g">Kesalahan layanan Google Play</string>
+    <string name="h">%1$s mengalami masalah dengan layanan Google Play. Coba lagi.</string>
+    <string name="i">%1$s tidak akan berjalan tanpa layanan Google Play, yang tidak didukung oleh perangkat Anda.</string>
+    <string name="j">Perbarui</string>
+    <string name="k">%1$s tidak akan berjalan jika layanan Google Play tidak diperbarui.</string>
+    <string name="l">Perbarui layanan Google Play</string>
+    <string name="m">%1$s tidak akan berjalan tanpa layanan Google Play, yang saat ini sedang diperbarui.</string>
+    <string name="n">Perlu versi baru layanan Google Play. Akan segera memperbarui sendiri.</string>
+    <string name="o">Buka di ponsel</string>
+    <string name="p">Masuk</string>
+    <string name="q">Masuk dengan Google</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">Keluar</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Sticker ini sedang diunduh...</string>
+    <string name="z">Kirim detak jantung</string>
+    <string name="a0">Saya mengukur detak jantung dengan jam tangan:%d kali/menit.</string>
+    <string name="a1">Tidak dapat memuat gambar</string>
+    <string name="a2">Tidak dapat memuat sumber. Setelah memulai ulang WeChat di perangkat seluler. Ketuk untuk mencoba lagi.</string>
+    <string name="a3">Pastikan perangkat seluler dan jam tangan sudah terhubung. Sudah login ke WeChat Seluler. Ketuk untuk mencoba lagi.</string>
+    <string name="a4">Tidak dapat login. Setelah memulai ulang WeChat di perangkat seluler. Ketuk untuk mencoba lagi.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Mungkin
+lain kali"</string>
+    <string name="a8">Terima</string>
+    <string name="a9">Abaikan</string>
+    <string name="a_">Pemberitahuan</string>
+    <string name="aa">Buka di perangkat seluler</string>
+    <string name="ab">Teks</string>
+    <string name="ac">Kirim Ulang</string>
+    <string name="ad">Bayar</string>
+    <string name="ae">Mungkin</string>
+    <string name="af">Tidak</string>
+    <string name="ag">Ya</string>
+    <string name="ah">Kirim</string>
+    <string name="ai">Sticker Gallery</string>
+    <string name="aj">Teks</string>
+    <string name="ak">Suara</string>
+    <string name="al">Balas</string>
+    <string name="am">Bicaralah...</string>
+    <string name="an">%d</string>
+    <string name="ao">"Kesalahan pengenalan
+Tekan terus untuk Bicara lagi"</string>
+    <string name="ap">Mengubah menjadi Tulisan</string>
+    <string name="aq">%d</string>
+    <string name="ar">Mengirim</string>
+    <string name="as">"Pesan terlalu singkat
+Tekan terus untuk bicara lagi"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Memuat gambar</string>
+    <string name="av">Memuat...</string>
+    <string name="aw">Memuat sumber</string>
+    <string name="ax">Sedang login</string>
+    <string name="ay">Membuka halaman pembayaran di seluler</string>
+    <string name="az">Perangkat tidak mendukung pemutaran audio.</string>
+    <string name="b0">Selamat datang di WeChat</string>
+</resources>

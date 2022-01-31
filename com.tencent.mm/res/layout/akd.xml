@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/pj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/pk" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ak9" /> //暂时注掉
+<include layout="@layout/ake" />
+        <TextView android:textColor="@color/pf" android:gravity="center|left" android:id="@id/dhz" android:text="@string/bm4" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/pr" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/pn" />
+    </LinearLayout>
+</LinearLayout>

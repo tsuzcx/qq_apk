@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/oj" style="@style/mp">
+        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginRight="10.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/mv" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/du1" style="@style/ks" />
+            <TextView android:textColor="#ff555555" android:id="@id/jv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/kr" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate android:orientation="vertical" android:id="@id/aop" android:background="@drawable/hg" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:layout_marginRight="5.0dip" android:minHeight="@dimen/ed"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:gravity="center" android:layout_gravity="center|left" android:id="@id/aoq" android:padding="@dimen/l3" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" style="@style/zh" />
+    <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:id="@id/aor" android:paddingLeft="@dimen/l3" android:paddingTop="8.0dip" android:paddingRight="@dimen/l3" android:paddingBottom="4.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:lineSpacingExtra="2.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/aos" android:paddingBottom="8.0dip" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/aor" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/aot" android:paddingLeft="@dimen/l3" android:paddingRight="@dimen/kv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a03" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/qg" android:gravity="center_vertical" android:id="@id/aou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/et4" android:includeFontPadding="false" />
+    </LinearLayout>
+</com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate>

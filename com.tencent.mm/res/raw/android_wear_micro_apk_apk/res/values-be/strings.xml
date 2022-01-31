@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Уключыць</string>
+    <string name="b">%1$s не будзе працаваць, пакуль вы не ўключыце службы Google Play.</string>
+    <string name="c">Уключыць службы Google Play</string>
+    <string name="d">Усталяваць</string>
+    <string name="e">%1$s не будзе працаваць без службаў Google Play, якія адсутнічаюць на вашай прыладзе.</string>
+    <string name="f">Атрымаць службы Google Play</string>
+    <string name="g">Памылка службаў Google Play</string>
+    <string name="h">У праграмы %1$s узніклі праблемы са службамі Google Play. Паўтарыце спробу.</string>
+    <string name="i">%1$s не будзе працаваць без службаў Google Play, якія не падтрымліваюцца вашай прыладай.</string>
+    <string name="j">Абнавіць</string>
+    <string name="k">%1$s не будзе працаваць, пакуль вы не абновіце службы Google Play.</string>
+    <string name="l">Абнаўленне службаў Google Play</string>
+    <string name="m">%1$s не будзе працаваць без службаў Google Play, якія ў цяперашні час абнаўляюцца.</string>
+    <string name="n">Патрабуецца новая версія служб Google Play. Яна абновіцца аўтаматычна ў бліжэйшы час.</string>
+    <string name="o">Адкрыць на тэлефоне</string>
+    <string name="p">Увайсцi</string>
+    <string name="q">Увайсці праз Google</string>
+    <string name="r">больш за 999</string>
+</resources>

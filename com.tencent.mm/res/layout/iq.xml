@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ae0" android:background="@drawable/fk" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ky">
+        <TextView android:textSize="@dimen/dq" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/ae1" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ko" android:layout_marginRight="@dimen/ko" android:minWidth="160.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/mw" android:textColor="@color/t7" android:ellipsize="end" android:gravity="center" android:id="@id/ae2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ko" android:layout_marginRight="@dimen/ko" android:singleLine="true" />
+    </LinearLayout>
+    <View android:id="@id/ae3" android:background="@color/wl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layerType="software" />
+</LinearLayout>

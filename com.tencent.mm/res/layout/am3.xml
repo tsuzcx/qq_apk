@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dov" android:text="@string/dqn" android:singleLine="false" android:layout_centerHorizontal="true" style="@style/qa" />
+    <TextView android:textColor="@drawable/vo" android:id="@id/dp1" android:visibility="gone" android:layout_marginTop="12.0dip" android:text="@string/e1l" android:layout_below="@id/dov" android:layout_centerHorizontal="true" style="@style/qb" />
+</RelativeLayout>

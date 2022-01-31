@@ -1,0 +1,28 @@
+package com.tencent.mm.plugin.appbrand.widget.desktop;
+
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+
+final class DragFeatureView$4
+  implements Animator.AnimatorListener
+{
+  DragFeatureView$4(DragFeatureView paramDragFeatureView) {}
+  
+  public final void onAnimationCancel(Animator paramAnimator) {}
+  
+  public final void onAnimationEnd(Animator paramAnimator)
+  {
+    DragFeatureView.e(this.hqW);
+    this.hqW.requestLayout();
+  }
+  
+  public final void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public final void onAnimationStart(Animator paramAnimator) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.DragFeatureView.4
+ * JD-Core Version:    0.7.0.1
+ */

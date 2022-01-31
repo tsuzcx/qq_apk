@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">"ਹੋਮ 'ਤੇ ਜਾਓ"</string>
+    <string name="b">ਉੱਪਰ ਜਾਓ</string>
+    <string name="abc_action_menu_overflow_description">ਹੋਰ ਚੋਣਾਂ</string>
+    <string name="c">ਹੋ ਗਿਆ</string>
+    <string name="d">ਸਭ ਦੇਖੋ</string>
+    <string name="e">ਇੱਕ ਐਪ ਚੁਣੋ</string>
+    <string name="f">ਬੰਦ</string>
+    <string name="g">ਤੇ</string>
+    <string name="h">ਖੋਜ…</string>
+    <string name="i">ਸਵਾਲ ਹਟਾਓ</string>
+    <string name="j">ਖੋਜ ਪੁੱਛਗਿੱਛ</string>
+    <string name="k">ਖੋਜੋ</string>
+    <string name="l">ਸਵਾਲ ਪ੍ਰਸਤੁਤ ਕਰੋ</string>
+    <string name="m">ਵੌਇਸ ਖੋਜ</string>
+    <string name="n">ਇਸ ਨਾਲ ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="o">%s ਨਾਲ ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="p">ਨਸ਼ਟ ਕਰੋ</string>
+    <string name="common_google_play_services_enable_button">ਯੋਗ ਬਣਾਓ</string>
+    <string name="common_google_play_services_enable_text">%1$s ਕੰਮ ਨਹੀਂ ਕਰੇਗਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਯੋਗ ਨਹੀਂ ਬਣਾਉਂਦੇ ਹੋ।</string>
+    <string name="common_google_play_services_enable_title">Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਯੋਗ ਬਣਾਓ</string>
+    <string name="common_google_play_services_install_button">ਸਥਾਪਤ ਕਰੋ</string>
+    <string name="common_google_play_services_install_text">%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲੇਗੀ, ਜੋ ਤੁਹਾਡੀ ਡੀਵਾਈਸ ਤੋਂ ਗੁੰਮ ਹਨ।</string>
+    <string name="common_google_play_services_install_title">Google Play ਸੇਵਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰੋ</string>
+    <string name="common_google_play_services_notification_ticker">Google Play ਸੇਵਾਵਾਂ ਅਸ਼ੁੱਧੀ</string>
+    <string name="common_google_play_services_unknown_issue">%1$s ਨੂੰ Google Play ਸੇਵਾਵਾਂ ਨਾਲ ਸਮੱਸਿਆ ਆ ਰਹੀ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+    <string name="common_google_play_services_unsupported_text">"%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲ ਸਕੇਗੀ, ਜੋ ਤੁਹਾਡੀ ਡੀਵਾਈਸ 'ਤੇ ਸਮਰਥਿਤ ਨਹੀਂ ਹਨ।"</string>
+    <string name="common_google_play_services_update_button">ਅੱਪਡੇਟ ਕਰੋ</string>
+    <string name="common_google_play_services_update_text">%1$s ਨਹੀਂ ਚੱਲੇਗਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਅਪਡੇਟ ਨਹੀਂ ਕਰਦੇ।</string>
+    <string name="common_google_play_services_update_title">Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ</string>
+    <string name="common_google_play_services_updating_text">%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲੇਗਾ, ਜੋ ਵਰਤਮਾਨ ਵਿੱਚ ਅਪਡੇਟ ਹੋ ਰਹੀਆਂ ਹਨ।</string>
+    <string name="common_google_play_services_wear_update_text">Google Play ਸੇਵਾਵਾਂ ਦੇ ਨਵਾਂ ਸੰਸਕਰਨ ਦੀ ਲੋੜ ਹੈ। ਇਹ ਛੇਤੀ ਹੀ ਆਪਣੇ ਆਪ ਅਪਡੇਟ ਕਰੇਗਾ।</string>
+    <string name="common_open_on_phone">"ਫ਼ੋਨ 'ਤੇ ਖੋਲ੍ਹੋ"</string>
+    <string name="common_signin_button_text">ਸਾਈਨ ਇਨ ਕਰੇ</string>
+    <string name="common_signin_button_text_long">Google ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ</string>
+    <string name="q">ਖੋਜੋ</string>
+    <string name="r">999+</string>
+</resources>

@@ -1,0 +1,16 @@
+package com.tencent.mm.h.a;
+
+import android.content.Context;
+
+public final class g$a
+{
+  public String[] bEY;
+  public Context context;
+  public String[] selectionArgs;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.h.a.g.a
+ * JD-Core Version:    0.7.0.1
+ */

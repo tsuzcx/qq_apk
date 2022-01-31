@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/mw" android:textColor="@color/a3c" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ae4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ku" android:layout_marginBottom="@dimen/ku" android:text="@string/aec" android:singleLine="true" />
+    <LinearLayout android:gravity="center" android:id="@id/ae5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/ae6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/u5" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/ps" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:id="@id/ae7" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="@dimen/li" android:layout_marginBottom="5.0dip">
+        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/agz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

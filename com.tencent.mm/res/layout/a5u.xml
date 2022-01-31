@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:id="@id/b5d" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/lz" />
+    <TextView android:textColor="@color/fc" android:gravity="right" android:id="@id/bh3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+</LinearLayout>

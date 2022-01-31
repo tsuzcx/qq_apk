@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/kv" android:paddingRight="@dimen/kv" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/dux" android:padding="@dimen/mq" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:src="@drawable/a_3" />
+        <ImageView android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/duy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cm" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/fd" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/duz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:layout_marginBottom="20.0dip" android:maxLines="1" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dv0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/dv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <ImageView android:id="@id/dv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dl" />
+            <ProgressBar android:id="@id/dv3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dl" android:indeterminateDrawable="@drawable/u5" style="@style/zh" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/k9" android:id="@id/dv4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e4r" android:layout_toRightOf="@id/dv1" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

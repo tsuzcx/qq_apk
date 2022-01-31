@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/bk2" android:background="@color/m9" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/hs">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/dv" android:textColor="#ff000000" android:id="@id/bk7" android:background="@drawable/ij" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{detail detail detail detail detail detail detail detail }" android:maxLength="10000" android:lineSpacingMultiplier="1.2" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/w4" />
+    </LinearLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

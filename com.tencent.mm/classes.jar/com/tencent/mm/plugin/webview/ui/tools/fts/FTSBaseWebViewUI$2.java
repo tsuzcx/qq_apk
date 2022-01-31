@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.webview.ui.tools.fts;
+
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
+
+final class FTSBaseWebViewUI$2
+  implements Runnable
+{
+  FTSBaseWebViewUI$2(FTSBaseWebViewUI paramFTSBaseWebViewUI) {}
+  
+  public final void run()
+  {
+    if (FTSBaseWebViewUI.t(this.rtV) != null) {
+      FTSBaseWebViewUI.u(this.rtV).a(this.rtV.getTotalQuery(), this.rtV.getInEditTextQuery(), this.rtV.cfw(), 0);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSBaseWebViewUI.2
+ * JD-Core Version:    0.7.0.1
+ */

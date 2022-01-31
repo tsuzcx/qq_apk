@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.speedPoints = {
+            pageStartTime: (window.performance && window.performance.timing && window.performance.timing.navigationStart) || +new Date()
+        };
+    </script>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1536219975313"/>
+</head>
+
+<body id="body" ontouchstart="">
+    <div class="fixed-bg"></div>
+
+    <div id="app" class="app" :class="platform">
+        <router-view></router-view>
+    </div>
+
+    <script type="text/javascript">
+        window.preloadObj = {
+            feedsData: '###preloadObjFeedsData###'
+        };
+    </script>
+
+    <script type="text/javascript">speedPoints.jsLoadStart = +new Date();</script>
+    <script src="dist/build.js?t=1536219975313"></script>
+    <script type="text/javascript">speedPoints.jsLoadEnd = +new Date();</script>
+</body>
+
+</html>

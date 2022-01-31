@@ -1,0 +1,26 @@
+package com.tencent.mm.h.a;
+
+import com.tencent.mm.sdk.b.b;
+
+public final class rb
+  extends b
+{
+  public rb.a cap = new rb.a();
+  
+  public rb()
+  {
+    this((byte)0);
+  }
+  
+  private rb(byte paramByte)
+  {
+    this.udV = false;
+    this.bFJ = null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.h.a.rb
+ * JD-Core Version:    0.7.0.1
+ */

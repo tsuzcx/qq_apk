@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a24" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3e" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5u" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3d" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5v" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3a" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3_" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3b" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
+        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a39" android:layout_weight="0.5" />
+        <EditText android:id="@id/b5z" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    </LinearLayout>
+</LinearLayout>

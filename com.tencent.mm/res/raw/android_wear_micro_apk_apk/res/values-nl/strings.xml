@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Inschakelen</string>
+    <string name="b">%1$s werkt niet, tenzij je Google Play-services inschakelt.</string>
+    <string name="c">Google Play-services inschakelen</string>
+    <string name="d">Installeren</string>
+    <string name="e">%1$s kan niet worden uitgevoerd zonder Google Play-services, die je nog niet op je apparaat hebt.</string>
+    <string name="f">Google Play-services ophalen</string>
+    <string name="g">Fout met Google Play-services</string>
+    <string name="h">%1$s ondervindt problemen met Google Play-services. Probeer het opnieuw.</string>
+    <string name="i">%1$s kan niet worden uitgevoerd zonder Google Play-services, die niet worden ondersteund op je apparaat.</string>
+    <string name="j">Updaten</string>
+    <string name="k">%1$s kan niet worden uitgevoerd, tenzij je Google Play-services updatet.</string>
+    <string name="l">Google Play-services updaten</string>
+    <string name="m">%1$s kan niet worden uitgevoerd zonder Google Play-services, die momenteel worden geüpdatet.</string>
+    <string name="n">Er is een nieuwe versie van Google Play-services vereist. De update wordt binnenkort automatisch uitgevoerd.</string>
+    <string name="o">Openen op telefoon</string>
+    <string name="p">Inloggen</string>
+    <string name="q">Inloggen met Google</string>
+    <string name="r">999+</string>
+    <string name="t">Sluiten</string>
+</resources>

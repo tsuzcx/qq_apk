@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.base.MaskLayout android:id="@id/aj4" style="@style/fv"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mo" android:focusable="false" style="@style/fw" />
+    <ViewStub android:id="@id/aj5" android:layout="@layout/kl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_alignParentBottom="true" />
+</com.tencent.mm.ui.base.MaskLayout>

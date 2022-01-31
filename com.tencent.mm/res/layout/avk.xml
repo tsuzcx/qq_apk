@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/hv"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <include layout="@layout/xi" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hj">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/bho" android:contentDescription="@string/f5" style="@style/ht" />
+                    <ImageView android:layout_gravity="center" android:id="@id/bhp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aa0" android:contentDescription="@string/f5" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hf">
+                    <TextView android:id="@id/b3" android:text="{title}" style="@style/i0" />
+                    <TextView android:id="@id/am" android:visibility="gone" android:layout_marginTop="@dimen/hp" android:text="{desc}" style="@style/hx" />
+                    <TextView android:id="@id/az" android:visibility="gone" android:layout_marginTop="@dimen/hp" android:text="{source}" style="@style/hx" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

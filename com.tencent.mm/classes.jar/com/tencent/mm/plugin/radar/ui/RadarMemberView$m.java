@@ -1,0 +1,30 @@
+package com.tencent.mm.plugin.radar.ui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.ui.widget.a.c;
+
+final class RadarMemberView$m
+  implements DialogInterface.OnClickListener
+{
+  RadarMemberView$m(RadarMemberView paramRadarMemberView) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (RadarMemberView.g(this.nmh) != null)
+    {
+      paramDialogInterface = RadarMemberView.g(this.nmh);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
+      }
+      RadarMemberView.h(this.nmh);
+    }
+    RadarMemberView.i(this.nmh);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarMemberView.m
+ * JD-Core Version:    0.7.0.1
+ */

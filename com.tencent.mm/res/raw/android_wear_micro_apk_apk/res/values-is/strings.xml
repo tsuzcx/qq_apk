@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Kveikja</string>
+    <string name="b">%1$s virkar ekki nema þú gerir þjónustu Google Play virka.</string>
+    <string name="c">Virkja þjónustu Google Play</string>
+    <string name="d">Setja upp</string>
+    <string name="e">%1$s getur ekki keyrt án þjónustu Google Play, sem vantar í tækið þitt.</string>
+    <string name="f">Sækja þjónustu Google Play</string>
+    <string name="g">Villa í þjónustu Google Play</string>
+    <string name="h">%1$s á í vandræðum með þjónustu Google Play. Reyndu aftur.</string>
+    <string name="i">%1$s getur ekki keyrt án þjónustu Google Play, sem er ekki studd af tækinu þínu.</string>
+    <string name="j">Uppfæra</string>
+    <string name="k">%1$s getur ekki keyrt nema þú uppfærir þjónustu Google Play.</string>
+    <string name="l">Uppfæra þjónustu Google Play</string>
+    <string name="m">%1$s getur ekki keyrt án þjónustu Google Play, sem verið er að uppfæra.</string>
+    <string name="n">Nýja útgáfu af þjónustu Google Play vantar. Hún uppfærir sig sjálf innan skamms.</string>
+    <string name="o">Opna í símanum</string>
+    <string name="p">Skrá inn</string>
+    <string name="q">Skrá inn með Google</string>
+    <string name="r">999+</string>
+</resources>

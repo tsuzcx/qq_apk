@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/a71" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:padding="@dimen/mq" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/a72" android:background="@drawable/g2" android:paddingTop="@dimen/kv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:layout_marginBottom="138.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/a73" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="180.0dip">
+                <ListView android:id="@android:id/list" android:background="@null" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:transcriptMode="disabled" style="@style/fb" />
+                <RelativeLayout android:id="@id/a74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textSize="@dimen/lj" android:textColor="@color/hi" android:id="@id/a75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_m" android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/a76" android:background="@drawable/f2" android:layout_width="fill_parent" android:layout_height="65.0dip" android:layout_alignBottom="@id/a73">
+                <Button android:textSize="@dimen/lj" android:textColor="@color/a47" android:ellipsize="end" android:id="@id/a77" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:minWidth="168.0dip" android:text="@string/aa1" android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/a78" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/kl" android:layout_alignParentBottom="true">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aum" />
+            <TextView android:textSize="@dimen/mw" android:textColor="@color/a23" android:id="@id/a79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:text="@string/ae9" />
+            <Button android:textSize="@dimen/mw" android:textColor="@color/a47" android:gravity="center" android:id="@id/a7_" android:background="@drawable/fc" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="@dimen/li" android:minWidth="50.0dip" android:text="@string/ads" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

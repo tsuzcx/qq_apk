@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.NoDrawingCacheLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/lw" android:paddingLeft="@dimen/du" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lt" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/w3" android:paddingLeft="@dimen/du" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/m_" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
+            <TextView android:id="@id/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/gn" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/cf" android:id="@id/ma" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="@string/cm" android:layout_toLeftOf="@id/m2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:ellipsize="end" android:id="@id/mb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:maxEms="4" android:singleLine="true" android:layout_toLeftOf="@id/ma" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.AddressView android:id="@id/mc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/mb" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.ui.NoDrawingCacheLinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/lj" android:textColor="#ff353535" android:id="@id/cj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="7.0dip" />
+    <TextView android:textSize="@dimen/ec" android:textColor="#ff888888" android:id="@id/af8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:text="信息由小程序服务方提供，可能由于信息提供方与时间存在数值差异" />
+</LinearLayout>

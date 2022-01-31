@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    </head>
+
+    <body id="body" ontouchstart="">
+        <div id="search_test" class="weui_cells" style="display:none;margin:0 0 10px;">
+            <div class="weui_cell weui_cell_select weui_select_before">
+                <div class="weui_cell_hd">
+                    <select id="search_scene" class="weui_select"></select>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="search_input" class="weui_input" type="text" placeholder="请输入搜索词">
+                </div>
+                <div class="weui_cell_ft">
+                    <a id="search_btn" href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">按钮</a>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <div id="app" class="{{view}} {{platform}}">
+            <component :is="view" keep-alive></component>
+            <dialog :title="dialogTitle" :content="dialogContent" :confirm-btn-text="dialogConfirmBtnText" :cancle-btn-text="dialogCancleBtnText" v-show="isShowDialog" :comfirm-callback="dialogConfirmCallback" :cancle-callback="dialogCancleCallback"/>
+        </div>
+        <script>
+            var js = document.createElement( "script" )
+            js.src = "dist/build.js?v=" + Math.random()
+            document.body.appendChild(js)
+        </script>
+    </body>
+
+    </html>

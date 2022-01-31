@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="b7" parent="@style/a0j" />
+    <style name="b9" parent="@style/a0k" />
+    <style name="c9" parent="@style/a0m" />
+    <style name="d0" parent="@style/a0l" />
+    <style name="a0j" parent="@style/a0e">
+        <item name="el">?android:colorError</item>
+    </style>
+    <style name="a0k" parent="@style/a0f">
+        <item name="el">?android:colorError</item>
+    </style>
+    <style name="a0l" parent="@style/ej">
+        <item name="android:touchscreenBlocksFocus">true</item>
+        <item name="android:keyboardNavigationCluster">true</item>
+    </style>
+    <style name="a0m" parent="@style/a0_">
+        <item name="android:touchscreenBlocksFocus">true</item>
+        <item name="android:keyboardNavigationCluster">true</item>
+    </style>
+</resources>

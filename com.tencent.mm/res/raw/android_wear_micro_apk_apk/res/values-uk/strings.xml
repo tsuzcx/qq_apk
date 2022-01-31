@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Увімкнути</string>
+    <string name="b">Додаток %1$s не працюватиме, якщо не ввімкнути сервіси Google Play.</string>
+    <string name="c">Увімкнути сервіси Google Play</string>
+    <string name="d">Установити</string>
+    <string name="e">Додаток %1$s не працюватиме без сервісів Google Play, яких немає на вашому пристрої.</string>
+    <string name="f">Установити сервіси Google Play</string>
+    <string name="g">Помилка сервісів Google Play</string>
+    <string name="h">У додатку %1$s виникла проблема із сервісами Google Play. Повторіть спробу.</string>
+    <string name="i">Додаток %1$s не працюватиме без сервісів Google Play, які не підтримуються на вашому пристрої.</string>
+    <string name="j">Оновити</string>
+    <string name="k">Додаток %1$s не працюватиме, якщо не оновити сервіси Google Play.</string>
+    <string name="l">Оновіть сервіси Google Play</string>
+    <string name="m">Додаток %1$s не працюватиме без сервісів Google Play, які зараз оновлюються.</string>
+    <string name="n">Потрібна нова версія сервісів Google Play. Вони невдовзі оновляться.</string>
+    <string name="o">Відкрити на телефоні</string>
+    <string name="p">Увійти</string>
+    <string name="q">Увійти в облік. запис Google</string>
+    <string name="r">999+</string>
+    <string name="t">Вийти</string>
+</resources>

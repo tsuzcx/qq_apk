@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/ah6" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e2p" android:key="contact_info_voiceinput_install" android:layout="@layout/a5v" />
+    <Preference android:title="@string/e2v" android:key="contact_info_voiceinput_uninstall" android:layout="@layout/a84" />
+</PreferenceScreen>

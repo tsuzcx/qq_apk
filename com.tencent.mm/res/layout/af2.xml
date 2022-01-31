@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d1y" android:background="@drawable/rd" android:layout_width="fill_parent" android:layout_height="@dimen/ky"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d1z" android:background="@drawable/am5" android:visibility="gone" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="@dimen/mq" android:layout_marginRight="@dimen/mq" android:layout_marginBottom="@dimen/mq" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="@dimen/ky" android:layout_marginLeft="@dimen/li" android:layout_marginTop="@dimen/mq" android:layout_marginBottom="@dimen/mq" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/d20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/d2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item price]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/mw" android:textColor="@color/qj" android:id="@id/d2c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item desc]" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/d2d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:src="@raw/radio_on" android:scaleType="fitXY" />
+</LinearLayout>

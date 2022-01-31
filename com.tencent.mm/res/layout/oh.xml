@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/kl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2">
+        <EditText android:gravity="center|left" android:id="@id/avf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/fvb" android:singleLine="true" android:layout_weight="1.0" />
+        <Button android:textColor="@color/a2x" android:id="@id/avg" android:background="@drawable/er" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:minWidth="@dimen/mm" android:minHeight="@dimen/l0" android:text="@string/fva" style="@style/n1" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/mq">
+        <Button android:id="@id/avh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fv_" android:layout_weight="1.0" style="@style/n1" />
+        <Button android:id="@id/avi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvi" android:layout_weight="1.0" style="@style/n1" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5.0">
+        <Button android:id="@id/avj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvc" android:layout_weight="1.0" style="@style/xx" />
+        <Button android:id="@id/avk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvg" android:layout_weight="1.0" style="@style/xx" />
+        <Button android:id="@id/avl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvf" android:layout_weight="1.0" style="@style/xx" />
+        <Button android:id="@id/avm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvh" android:layout_weight="1.0" style="@style/xx" />
+        <Button android:id="@id/avn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fve" android:layout_weight="1.0" style="@style/xx" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/avo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedAddTopicView android:orientation="vertical" android:padding="@dimen/jd" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/bwp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/je" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="@dimen/jk" android:src="@drawable/abd" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/j4" android:textColor="@color/na" android:id="@id/bwq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:background="@color/na" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/ji" />
+    </com.tencent.mm.plugin.game.ui.GameFeedAddTopicView>
+</FrameLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/b9w" android:background="@drawable/a3d" android:paddingBottom="@dimen/ku" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="left" android:id="@id/b9x" android:background="@raw/list_deletetext_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_width="@dimen/z4" android:layout_height="@dimen/z4">
+        <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center_horizontal" android:id="@id/b9y" android:layout_width="@dimen/z4" android:layout_height="@dimen/z4" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/b9z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

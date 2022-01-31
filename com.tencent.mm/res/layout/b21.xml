@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/rg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ew0" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="156.0dip" android:src="@raw/wxa_lucky_money_complete_icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/ds" android:textColor="@color/fd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/fqp" android:layout_below="@id/ew0" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/ew1" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="127.0dip" android:text="@string/fqq" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/mt" />
+</RelativeLayout>

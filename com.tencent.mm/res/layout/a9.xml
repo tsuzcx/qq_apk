@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?c0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/iz" android:background="@color/zm" android:paddingLeft="@dimen/g1" android:paddingRight="@dimen/g1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/cs" android:gravity="center" android:id="@id/j0" android:background="@drawable/al" android:paddingLeft="@dimen/fs" android:paddingRight="@dimen/fs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/j1" android:background="@drawable/al" android:paddingLeft="@dimen/fs" android:paddingRight="@dimen/fs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="56.0dip" />
+        <ImageView android:id="@id/j2" android:visibility="gone" android:layout_marginTop="7.0dip" android:layout_marginRight="6.0dip" android:layout_alignTop="@id/j1" android:layout_alignRight="@id/j1" style="@style/u2" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j3" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/al" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp">
+        <ImageView android:id="@id/j5" android:background="@null" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/f8" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/nc" android:background="@color/cn" android:layout_width="@dimen/fl" android:layout_height="@dimen/ko" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q9" android:singleLine="true" style="@style/jy" />
+        <TextView android:textSize="@dimen/k9" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/j7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q9" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/al" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a9_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_mute_notify_title_icon" android:contentDescription="@string/q2" />
+    </LinearLayout>
+</LinearLayout>

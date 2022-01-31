@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a23" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip">
+            <ImageView android:gravity="center_horizontal" android:id="@id/dnm" android:padding="@dimen/dl" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:src="@drawable/a_3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/py" />
+            <TextView android:textColor="@color/fc" android:id="@id/dnr" android:layout_width="wrap_content" android:layout_below="@id/dnm" android:layout_centerHorizontal="true" style="@style/pz" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ki" android:textColor="@color/fc" android:gravity="center" android:id="@id/drb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ko" android:text="邀请4位好友进群" />
+        <TextView android:textSize="@dimen/ki" android:textColor="@color/fc" android:gravity="center" android:id="@id/drc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/l3" />
+        <View android:background="#ffd8d8d8" android:paddingLeft="@dimen/di" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/ko" android:layout_marginBottom="@dimen/ko" />
+        <GridView android:gravity="center" android:id="@id/drd" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:verticalSpacing="@dimen/dp" android:numColumns="4" />
+        <TextView android:id="@id/dre" android:layout_marginTop="@dimen/n0" android:layout_marginBottom="@dimen/n0" android:text="@string/bd" style="@style/mu" />
+    </LinearLayout>
+</ScrollView>

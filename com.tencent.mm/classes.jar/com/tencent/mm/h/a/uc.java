@@ -1,0 +1,31 @@
+package com.tencent.mm.h.a;
+
+import com.tencent.mm.sdk.b.b;
+
+public final class uc
+  extends b
+{
+  public a ceA = new a();
+  
+  public uc()
+  {
+    this((byte)0);
+  }
+  
+  private uc(byte paramByte)
+  {
+    this.udV = false;
+    this.bFJ = null;
+  }
+  
+  public static final class a
+  {
+    public int bHz;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.h.a.uc
+ * JD-Core Version:    0.7.0.1
+ */

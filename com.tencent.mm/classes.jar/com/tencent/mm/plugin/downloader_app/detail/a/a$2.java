@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.downloader_app.detail.a;
+
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.mm.plugin.downloader_app.b.h;
+
+final class a$2
+  implements Runnable
+{
+  a$2(a parama, Context paramContext) {}
+  
+  public final void run()
+  {
+    Toast.makeText(this.val$context, this.val$context.getString(b.h.game_download_sdcard_unavailable), 0).show();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.a.a.2
+ * JD-Core Version:    0.7.0.1
+ */

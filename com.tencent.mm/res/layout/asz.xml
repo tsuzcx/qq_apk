@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/e6f" android:background="@drawable/b1e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/li"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="15.0dip" android:textColor="@color/xo" android:gravity="center_vertical" android:id="@id/e6g" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/kv" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/kv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:gravity="center" android:id="@id/e6h" android:background="#ffd6d6d6" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e6i" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/kv" android:paddingRight="3.0dip" android:paddingBottom="@dimen/kv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

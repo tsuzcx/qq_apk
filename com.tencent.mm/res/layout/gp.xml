@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gd" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/g6" />
+    <LinearLayout android:id="@id/a4s" android:background="@drawable/hb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/gc" />
+    </LinearLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gn" />
+</LinearLayout>

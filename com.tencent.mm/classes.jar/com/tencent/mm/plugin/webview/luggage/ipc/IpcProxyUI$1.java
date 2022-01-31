@@ -1,0 +1,24 @@
+package com.tencent.mm.plugin.webview.luggage.ipc;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+final class IpcProxyUI$1
+  implements b
+{
+  IpcProxyUI$1(IpcProxyUI paramIpcProxyUI) {}
+  
+  public final void g(Bundle paramBundle)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("input_data", paramBundle);
+    this.rde.setResult(-1, localIntent);
+    this.rde.finish();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.webview.luggage.ipc.IpcProxyUI.1
+ * JD-Core Version:    0.7.0.1
+ */

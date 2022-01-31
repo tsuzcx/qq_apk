@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="anim" name="g">false</item>
+    <item type="anim" name="h">false</item>
+    <item type="anim" name="i">false</item>
+    <item type="anim" name="j">false</item>
+    <item type="anim" name="t">false</item>
+    <item type="anim" name="v">false</item>
+    <item type="anim" name="w">false</item>
+    <item type="anim" name="z">false</item>
+    <item type="anim" name="a5">false</item>
+    <item type="anim" name="a6">false</item>
+    <item type="anim" name="a8">false</item>
+    <item type="anim" name="az">false</item>
+    <item type="anim" name="b0">false</item>
+    <item type="anim" name="bb">false</item>
+    <item type="anim" name="bd">false</item>
+    <item type="anim" name="bk">false</item>
+    <item type="anim" name="bl">false</item>
+    <item type="anim" name="bu">false</item>
+    <item type="anim" name="co">false</item>
+    <item type="anim" name="cx">false</item>
+    <item type="anim" name="cz">false</item>
+    <item type="anim" name="d0">false</item>
+    <item type="anim" name="d1">false</item>
+    <item type="anim" name="d8">false</item>
+    <item type="anim" name="d9">false</item>
+    <item type="anim" name="dd">false</item>
+    <item type="anim" name="de">false</item>
+    <item type="anim" name="ds">false</item>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:title="@string/dxx" android:key="settings_account_info" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e24" android:key="settings_notification_preference" android:layout="@layout/ab8" />
+    <Preference android:title="@string/dy0" android:key="settings_active_time" android:layout="@layout/ab8" />
+    <Preference android:title="@string/dyt" android:key="settings_chatting" android:layout="@layout/ab8" />
+    <IconPreference android:title="@string/dxu" android:key="settings_about_privacy" android:layout="@layout/ab8" />
+    <Preference android:title="@string/dxr" android:key="settings_about_device" android:layout="@layout/ab8" />
+    <IconPreference android:title="@string/dxw" android:key="settings_about_system" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/dxt" android:key="settings_about_micromsg" />
+    <Preference android:title="@string/dzl" android:key="settings_feedback" android:layout="@layout/ab8" />
+    <Preference android:title="@string/e00" android:key="settings_hardcoder" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/e6h" android:key="settings_welab" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e4o" android:key="settings_switch_account" />
+    <Preference android:title="@string/e0k" android:key="settings_logout" android:layout="@layout/ab8" />
+    <PreferenceCategory />
+    <PreferenceSmallCategory />
+    <Preference android:title="Redesign" android:key="settings_redesign" android:layout="@layout/ab8" />
+    <PreferenceCategory />
+</PreferenceScreen>

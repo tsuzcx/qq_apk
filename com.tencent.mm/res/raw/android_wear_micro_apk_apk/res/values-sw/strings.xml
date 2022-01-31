@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Washa</string>
+    <string name="b">%1$s haitafanya kazi isipokuwa uwashe huduma za Google Play.</string>
+    <string name="c">Washa huduma za Google Play</string>
+    <string name="d">Sakinisha</string>
+    <string name="e">%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi hazipatikani kwenye kifaa chako.</string>
+    <string name="f">Pata huduma za Google Play</string>
+    <string name="g">Hitilafu kwenye huduma za Google Play</string>
+    <string name="h">%1$s inakumbwa na hitilafu ya huduma za Google Play. Tafadhali jaribu tena.</string>
+    <string name="i">%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi hazitumiki kwenye kifaa chako.</string>
+    <string name="j">Sasisha</string>
+    <string name="k">%1$s haitafanya kazi hadi usasishe huduma za Google Play.</string>
+    <string name="l">Sasisha huduma za Google Play</string>
+    <string name="m">%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi zinasasishwa sasa.</string>
+    <string name="n">Toleo jipya la huduma za Google Play linahitajika. Litajisasisha baada ya muda mfupi.</string>
+    <string name="o">Fungua kwenye simu</string>
+    <string name="p">Ingia katika akaunti</string>
+    <string name="q">Ingia katika akaunti ukitumia Google</string>
+    <string name="r">999+</string>
+</resources>

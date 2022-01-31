@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bj" android:layout_width="fill_parent" android:layout_height="128.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bs" android:layout_width="128.0dip" android:layout_height="128.0dip" android:scaleType="centerCrop" />
+    <include android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" layout="@layout/a8" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="128.0dip" android:layout_toLeftOf="@id/bi" android:layout_marginStart="128.0dip" android:layout_toStartOf="@id/bi" layout="@layout/ac" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bk" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/bs" android:layout_alignParentBottom="true" android:layoutDirection="ltr" android:layout_toEndOf="@id/bs" />
+    <ImageView android:id="@id/bl" android:background="?android:dividerHorizontal" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_toRightOf="@id/bs" android:layout_above="@id/bk" android:layout_toEndOf="@id/bs" />
+</RelativeLayout>

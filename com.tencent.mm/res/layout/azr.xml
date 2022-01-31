@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a0e" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_gravity="bottom" android:id="@id/eqt" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" android:layout_alignParentBottom="true" style="@style/un" />
+    <com.tencent.mm.wallet_core.ui.MMScrollView android:id="@id/b4w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/eqt" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:gravity="bottom|center" android:id="@id/equ" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:singleLine="true" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+                <RelativeLayout android:gravity="center" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="50.0dip" android:textColor="@android:color/black" android:id="@id/eqv" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="50.0dip" android:textStyle="bold" android:textColor="@android:color/black" android:id="@id/ep4" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="@dimen/mv" android:singleLine="true" android:layout_toRightOf="@id/eqv" />
+                    <TextView android:textSize="23.0dip" android:textColor="@color/pf" android:gravity="center" android:id="@id/eqw" android:padding="0.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/ep4" android:layout_alignBaseline="@id/ep4" />
+                </RelativeLayout>
+            </LinearLayout>
+            <TextView android:background="#ffd2d2d2" android:layout_width="fill_parent" android:layout_height="@dimen/fn" />
+            <LinearLayout android:orientation="vertical" android:id="@id/eqx" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/azn" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/eqy" android:background="@color/a23" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/k9" android:textColor="@color/qj" android:gravity="center|left" android:id="@id/eqz" android:layout_width="90.0dip" android:layout_height="wrap_content" android:text="@string/f_g" />
+                <TextView android:textSize="@dimen/k9" android:textColor="@color/a3c" android:gravity="center|right" android:id="@id/er0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="6.0dip" />
+            </LinearLayout>
+            <ImageView android:id="@id/er1" android:background="@color/a23" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" android:src="@drawable/t_" android:scaleType="center" />
+            <TextView android:background="#ffd2d2d2" android:layout_width="fill_parent" android:layout_height="@dimen/fn" />
+            <TextView android:textSize="@dimen/k9" android:textColor="#ffb2b2b2" android:id="@id/er2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="@dimen/mq" android:text="@string/f_r" />
+            <LinearLayout android:orientation="vertical" android:id="@id/er3" android:background="@color/sz" android:paddingLeft="@dimen/l3" android:paddingRight="@dimen/l3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/er4" android:background="@drawable/ih" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
+                    <TextView android:textSize="@dimen/k9" android:textColor="@color/ta" android:gravity="center|left" android:id="@id/er5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fdd" />
+                    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center|right" android:id="@id/er6" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:lineSpacingExtra="6.0dip" />
+                    <CheckedTextView android:gravity="center" android:layout_gravity="right" android:id="@id/er7" android:background="@null" android:layout_width="wrap_content" android:layout_height="54.0dip" android:checked="true" android:checkMark="@drawable/ve" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/er8" android:background="@drawable/ij" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:layout_marginBottom="@dimen/li" android:layout_weight="1.0">
+                        <TextView android:textSize="@dimen/k9" android:textColor="@color/ta" android:gravity="center|left" android:id="@id/er9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fda" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/er_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq">
+                            <TextView android:textSize="@dimen/k9" android:textColor="#fffa962a" android:gravity="center|left" android:id="@id/era" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="6.0dip" />
+                            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center|left" android:id="@id/erb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="6.0dip" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <CheckedTextView android:gravity="center" android:layout_gravity="center|right" android:id="@id/erc" android:background="@null" android:layout_width="wrap_content" android:layout_height="54.0dip" android:checked="true" android:checkMark="@drawable/ve" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/v4" android:gravity="center_horizontal" android:id="@id/erd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" />
+            <Button android:id="@id/ere" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="10.0dip" android:text="@string/fc1" style="@style/o0" />
+            <TextView android:textSize="@dimen/mw" android:textColor="@color/a3c" android:gravity="center" android:id="@id/erf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/kl" android:text="@string/fda" android:lineSpacingExtra="6.0dip" />
+            <TextView android:textSize="@dimen/mw" android:textColor="@color/v4" android:gravity="center" android:id="@id/erg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/kl" android:text="@string/fhy" android:lineSpacingExtra="6.0dip" />
+        </LinearLayout>
+    </com.tencent.mm.wallet_core.ui.MMScrollView>
+</RelativeLayout>

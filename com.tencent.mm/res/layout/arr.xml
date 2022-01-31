@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingLeft="@dimen/ln" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/e3x" android:background="@drawable/ih" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/lh">
+        <ImageView android:id="@id/e3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a5u" android:layout_marginRight="@dimen/a5v" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <ImageView android:id="@id/e3z" android:layout_width="@dimen/a5z" android:layout_height="@dimen/a5w" android:layout_marginLeft="@dimen/a5x" android:layout_marginRight="@dimen/a5y" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/e40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" android:layout_toLeftOf="@id/e3z" android:layout_toRightOf="@id/e3y" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/k9" android:textColor="@color/xj" android:ellipsize="end" android:id="@id/e41" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/e3z" android:layout_toRightOf="@id/e3y" android:layout_below="@id/e40" />
+        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/xo" android:id="@id/e42" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edx" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/y2" android:ellipsize="end" android:id="@id/e43" android:paddingRight="60.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:layout_below="@id/e42" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

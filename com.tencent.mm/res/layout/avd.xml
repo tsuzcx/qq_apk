@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center|left" android:id="@id/ebg" android:background="@color/qp" android:paddingLeft="@dimen/ku" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lt" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b76" android:background="@drawable/rd" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/ku" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ky">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/ebh" android:layout_width="@dimen/mj" android:layout_height="@dimen/mj">
+            <ImageView android:id="@id/kl" android:layout_width="@dimen/mi" android:layout_height="@dimen/mi" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <TextView android:ellipsize="end" android:gravity="center|left" android:id="@id/ebi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:text="{nick}" android:maxLines="1" android:layout_weight="1.0" style="@style/ks" />
+        <ImageView android:id="@id/ebj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dl" android:src="@raw/circle_notreceive" />
+        <ImageView android:id="@id/ebk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/circle_notvisible" />
+        <LinearLayout android:gravity="center" android:id="@id/ebl" android:paddingLeft="@dimen/kv" android:paddingRight="@dimen/ku" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <CheckBox android:gravity="center" android:id="@id/ia" android:background="@drawable/r4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="@dimen/er" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

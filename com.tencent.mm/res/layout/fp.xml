@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/mn">
+        <LinearLayout style="@style/k5">
+            <TextView android:id="@id/a1r" android:text="@string/a4h" style="@style/lr" />
+            <View style="@style/lm" />
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" style="@style/k5">
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/a0s" android:background="@drawable/ra" android:layout_width="wrap_content" android:layout_height="50.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/fc" android:gravity="center_horizontal" android:id="@id/a0t" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/az8" android:singleLine="true" />
+                    <TextView android:textSize="8.0dip" android:textColor="@color/fc" android:gravity="center_horizontal" android:id="@id/a0u" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/az9" android:singleLine="true" />
+                </LinearLayout>
+                <EditText android:id="@id/a0v" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/a5t" android:inputType="phone" style="@style/lq" />
+            </LinearLayout>
+            <Button android:id="@id/a11" android:visibility="gone" android:text="@string/a5m" style="@style/n2" />
+            <LinearLayout android:orientation="vertical" android:id="@id/a1s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+                <CheckBox android:textColor="@color/fc" android:id="@id/a1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/dzt" style="@style/f4" />
+                <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/dff" style="@style/k6" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

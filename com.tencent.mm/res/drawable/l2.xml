@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="67" android:drawable="@drawable/azf" />
+    <item android:duration="67" android:drawable="@drawable/azq" />
+    <item android:duration="67" android:drawable="@drawable/b03" />
+    <item android:duration="67" android:drawable="@drawable/b04" />
+    <item android:duration="67" android:drawable="@drawable/b06" />
+    <item android:duration="67" android:drawable="@drawable/b07" />
+    <item android:duration="67" android:drawable="@drawable/azg" />
+    <item android:duration="67" android:drawable="@drawable/azh" />
+    <item android:duration="67" android:drawable="@drawable/azj" />
+    <item android:duration="67" android:drawable="@drawable/azk" />
+    <item android:duration="67" android:drawable="@drawable/azm" />
+    <item android:duration="67" android:drawable="@drawable/azn" />
+    <item android:duration="67" android:drawable="@drawable/azp" />
+    <item android:duration="67" android:drawable="@drawable/azr" />
+    <item android:duration="67" android:drawable="@drawable/azt" />
+    <item android:duration="67" android:drawable="@drawable/azu" />
+    <item android:duration="67" android:drawable="@drawable/azw" />
+    <item android:duration="67" android:drawable="@drawable/azx" />
+    <item android:duration="67" android:drawable="@drawable/azz" />
+    <item android:duration="67" android:drawable="@drawable/b00" />
+    <item android:duration="67" android:drawable="@drawable/b02" />
+</animation-list>

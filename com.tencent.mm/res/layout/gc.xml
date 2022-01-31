@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a3q" android:background="@color/i1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/sr" android:layout_marginRight="@dimen/sr" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/a3r" android:paddingTop="@dimen/ss" android:paddingBottom="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sr" android:layout_marginRight="@dimen/sr" android:baselineAligned="false">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/st" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/a3s" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/f5" android:maxLines="2" android:lineSpacingExtra="2.0dip" />
+            <TextView android:textSize="@dimen/my" android:textColor="@color/oq" android:id="@id/a3t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q9" />
+            <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" layout="@layout/gg" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/sg" android:layout_width="@dimen/st" android:layout_height="@dimen/st" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip">
+            <ImageView android:id="@id/a3u" android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/a3v" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/chatting_item_biz_music_play_icon" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

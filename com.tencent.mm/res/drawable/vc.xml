@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@raw/remove_background_icon_pre" />
+    <item android:drawable="@raw/remove_background_icon_sel" android:state_activated="true" />
+    <item android:drawable="@raw/remove_background_icon_nor" />
+</selector>

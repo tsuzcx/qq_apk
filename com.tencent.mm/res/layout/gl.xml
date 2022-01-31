@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/a4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/a4h" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/om" android:paddingLeft="24.0dip" android:paddingTop="20.0dip" android:paddingRight="24.0dip" android:paddingBottom="16.0dip" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="164.0dip" android:text="text" android:maxLines="5" android:lineSpacingExtra="5.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/e1" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl">
+            <View android:background="@color/i1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq">
+                <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_gravity="left" android:id="@id/a4i" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a75" android:layout_weight="1.0" />
+                <include android:layout_gravity="center_vertical" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/gg" />
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="11.0dip" android:layout_marginLeft="@dimen/l3" android:src="@drawable/at0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

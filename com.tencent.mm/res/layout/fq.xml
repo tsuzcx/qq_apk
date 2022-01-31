@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/mn">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/fo" android:paddingTop="@dimen/kp" android:paddingRight="@dimen/fo" android:paddingBottom="@dimen/kp" style="@style/k5">
+            <ImageView android:id="@id/a1u" android:paddingBottom="@dimen/kp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" />
+            <TextView android:textSize="@dimen/di" android:textColor="@color/ta" android:gravity="center" android:id="@id/a1v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/mc" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center" android:id="@id/a1w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kp" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/mc" />
+            <Button android:id="@id/a1x" android:layout_marginBottom="@dimen/kl" style="@style/mu" />
+            <Button android:id="@id/a1y" android:layout_marginBottom="@dimen/my" style="@style/n0" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

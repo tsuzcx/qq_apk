@@ -1,0 +1,15 @@
+package com.tencent.mm.h.a;
+
+public final class sx$a
+{
+  public int action;
+  public int ccw;
+  public String ccx;
+  public String result;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.h.a.sx.a
+ * JD-Core Version:    0.7.0.1
+ */

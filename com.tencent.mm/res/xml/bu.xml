@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:title="@string/e61" android:key="settings_username" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:title="@string/e11" android:key="settings_mobile" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="settings_about_vusertitle" />
+    <com.tencent.mm.plugin.setting.ui.setting.SelfVuserPreference android:key="settings_about_vuserinfo" />
+    <Preference android:title="@string/ay4" android:key="settings_about_vuser_about" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e02" android:key="settings_independent_password" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:title="@string/e66" android:key="settings_voiceprint_title" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:title="@string/dzv" android:key="settings_fingerprint_title" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:title="@string/bg2" android:key="settings_facedect_title" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e5d" android:key="settings_trust_friend" android:layout="@layout/ab8" />
+    <Preference android:title="@string/e0r" android:key="settings_manage_login_device" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:title="@string/e1g" android:key="settings_more_safe" />
+    <PreferenceSmallCategory />
+    <Preference android:summary="@string/e3n" android:title="@string/e3m" android:key="settings_security_center" android:layout="@layout/ad9" />
+</PreferenceScreen>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/wl" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:scrollbars="none" style="@style/mn">
+        <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:background="@color/sz" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:paddingLeft="0.0dip" android:paddingTop="@dimen/l3" android:paddingRight="0.0dip" android:paddingBottom="@dimen/li" android:text="@string/dwe" style="@style/lr" />
+                <com.tencent.mm.ui.base.MMClearEditText android:textColorHint="@color/qi" android:id="@id/dny" android:layout_marginBottom="@dimen/mq" android:minHeight="@dimen/kw" android:maxLines="2" android:inputType="textMultiLine" style="@style/lq">
+                    <requestFocus />
+                </com.tencent.mm.ui.base.MMClearEditText>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@color/sz" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp">
+                <TextView android:paddingLeft="0.0dip" android:paddingTop="@dimen/l3" android:paddingRight="0.0dip" android:paddingBottom="@dimen/li" android:text="@string/dwd" style="@style/lr" />
+                <com.tencent.mm.ui.base.MMClearEditText android:textColorHint="@color/qi" android:id="@id/do2" android:layout_marginBottom="@dimen/mq" android:minHeight="@dimen/kw" android:maxLines="2" android:inputType="textMultiLine" style="@style/lq" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/do3" android:background="@color/sz" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:paddingBottom="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/k9" android:textColor="@color/ta" android:gravity="center_vertical" android:id="@id/do4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@color/sz" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp">
+                <TextView android:paddingLeft="0.0dip" android:paddingTop="@dimen/l3" android:paddingRight="0.0dip" android:paddingBottom="@dimen/li" android:text="@string/cu9" style="@style/lr" />
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/mq">
+                    <TextView android:textColorHint="@color/qi" android:id="@id/do5" android:minHeight="@dimen/kw" android:hint="@string/cu8" style="@style/lq" />
+                    <com.tencent.mm.ui.base.MMTagPanel android:textColor="@color/ta" android:id="@id/do6" android:background="@drawable/ih" android:paddingLeft="@dimen/kv" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/kg" flowlayout:horizontalSpacing="@dimen/dp" flowlayout:verticalSpacing="@dimen/dp" />
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/do7" android:background="@color/sz" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp">
+                <TextView android:textColor="@color/pf" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:text="@string/efc" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/do8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/mp">
+                    <TextView android:gravity="center|left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/mp" android:text="@string/ef9" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/kl" />
+                    <include android:gravity="center|right" android:layout_gravity="right" android:id="@id/ia" layout="@layout/abf" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

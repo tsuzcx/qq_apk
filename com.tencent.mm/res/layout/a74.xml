@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/acc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="@color/a3r" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/a3t" android:layout_marginLeft="3.0dip" android:singleLine="false" style="@style/ko" />
+</LinearLayout>

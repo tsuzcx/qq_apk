@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedNoGamePlayTemplate android:orientation="vertical" android:padding="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/bwp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ji" />
+        <FrameLayout android:id="@id/bx2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ji">
+            <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/bx3" android:background="@color/n7" android:layout_width="fill_parent" android:layout_height="@dimen/jg" />
+            <ImageView android:layout_gravity="center" android:id="@id/bwt" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/acn" />
+        </FrameLayout>
+        <RelativeLayout android:id="@id/bx4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/vn" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="@dimen/ji" android:scaleType="fitXY" android:layout_alignParentLeft="true" />
+            <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/bs_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jk" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/iw" android:textColor="@color/nj" android:id="@id/vp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/bs_" android:layout_toRightOf="@id/vn" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </com.tencent.mm.plugin.game.ui.GameFeedNoGamePlayTemplate>
+</FrameLayout>

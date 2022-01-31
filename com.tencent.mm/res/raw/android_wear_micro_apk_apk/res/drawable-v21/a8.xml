@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:name="generic_confirmation" android:height="80.0dip" android:width="80.0dip" android:alpha="0.0" android:viewportWidth="80.0" android:viewportHeight="80.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:name="icon" android:scaleX="1.0" android:scaleY="1.0" android:rotation="65.0" android:translateX="40.0" android:translateY="33.5">
+        <path android:name="border_path" android:fillColor="#ff1ce8b5" android:pathData="m-0.05012,-40c22.0637,0 39.94986,17.88617 39.94986,39.94988c0,22.06371 -17.88617,39.94987 -39.94986,39.94987c-22.06371,0 -39.94988,-17.88617 -39.94988,-39.94987c0,-22.06371 17.88617,-39.94988 39.94988,-39.94988z" />
+        <group android:name="check">
+            <path android:name="check_path" android:fillColor="#ffffffff" android:pathData="m14.68171,-20c0,0 -21.14918,23.66343 -21.14918,23.66343c0,0 -13.53253,-8.72588 -13.53253,-8.72588c0,0 0,4.73268 0,4.73268c0,0 13.60647,14.12411 13.60647,14.12411c0,0 1.55292,0 1.55292,0c0,0 22.92395,-30.91035 22.92395,-30.91035c0,0 -3.40163,-2.88399 -3.40163,-2.88399l-0.00002,0l0.00001,0z" />
+        </group>
+    </group>
+</vector>

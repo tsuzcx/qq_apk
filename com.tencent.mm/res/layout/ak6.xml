@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/uz" android:layout_width="fill_parent" android:layout_height="@dimen/lp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dhh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/recharge_discount" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/dq" android:textColor="@drawable/ux" android:layout_gravity="center_horizontal" android:id="@id/di" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/e0" android:textColor="@drawable/uw" android:layout_gravity="center_horizontal" android:id="@id/mi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/e0" android:textColor="@color/ur" android:layout_gravity="center_horizontal" android:id="@id/dhi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

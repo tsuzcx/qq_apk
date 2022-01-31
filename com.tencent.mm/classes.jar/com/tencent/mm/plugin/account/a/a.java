@@ -1,0 +1,30 @@
+package com.tencent.mm.plugin.account.a;
+
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.y;
+
+public final class a
+  implements n
+{
+  public static volatile m eUR;
+  public static volatile l eUS;
+  
+  public final void a(l paraml)
+  {
+    y.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paraml });
+    eUS = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    eUR = paramm;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.account.a.a
+ * JD-Core Version:    0.7.0.1
+ */

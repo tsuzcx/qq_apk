@@ -1,0 +1,21 @@
+package com.tencent.mm.plugin.fts.ui.widget;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class FTSLocalPageRelevantView$2
+  implements View.OnClickListener
+{
+  FTSLocalPageRelevantView$2(FTSLocalPageRelevantView paramFTSLocalPageRelevantView) {}
+  
+  public final void onClick(View paramView)
+  {
+    this.kEH.onClick(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView.2
+ * JD-Core Version:    0.7.0.1
+ */

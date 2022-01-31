@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="#fff0eff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/kl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" style="@style/l2">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp">
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="@string/frf" android:layout_weight="1.0" />
+                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/d8h" android:layout_width="@dimen/n5" android:layout_height="@dimen/n2" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" style="@style/l2">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp">
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="@string/fr8" android:layout_weight="1.0" />
+                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/d8i" android:layout_width="@dimen/n5" android:layout_height="@dimen/n2" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fr_" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" style="@style/l2">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp">
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="@string/frb" android:layout_weight="1.0" />
+                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/d8j" android:layout_width="@dimen/n5" android:layout_height="@dimen/n2" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fr_" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" style="@style/l2">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp">
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="@string/fra" android:layout_weight="1.0" />
+                <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/d8k" android:layout_width="@dimen/n5" android:layout_height="@dimen/n2" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fr9" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/du" android:layout_marginTop="24.0dip" android:layout_marginRight="@dimen/du" android:weightSum="2.0">
+            <Button android:id="@id/d8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/frg" android:layout_weight="1.0" style="@style/n0" />
+            <Button android:id="@id/je" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:text="@string/fr7" android:layout_weight="1.0" style="@style/n0" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:id="@id/d8m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/du" android:layout_marginTop="24.0dip" android:layout_marginRight="@dimen/du" android:layout_marginBottom="24.0dip" android:lineSpacingExtra="@dimen/mq" />
+    </LinearLayout>
+</ScrollView>

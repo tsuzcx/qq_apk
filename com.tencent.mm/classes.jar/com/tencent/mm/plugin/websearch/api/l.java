@@ -1,0 +1,16 @@
+package com.tencent.mm.plugin.websearch.api;
+
+import android.content.Context;
+
+public abstract interface l
+{
+  public abstract void Rq(String paramString);
+  
+  public abstract Object ew(Context paramContext);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.plugin.websearch.api.l
+ * JD-Core Version:    0.7.0.1
+ */

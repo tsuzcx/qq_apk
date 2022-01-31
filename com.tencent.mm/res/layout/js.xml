@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="@drawable/th" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/my" android:textColor="@color/d_" android:gravity="center" android:id="@id/agt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byu" android:drawableTop="@drawable/ti" android:drawablePadding="@dimen/mq" android:layout_centerInParent="true" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

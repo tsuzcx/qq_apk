@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">فعال کردن</string>
+    <string name="b">‏تا وقتی سرویس‌های Google Play را فعال نکنید، %1$s کار نمی‌کند.</string>
+    <string name="c">‏‫فعال کردن سرویس‌های Google Play</string>
+    <string name="d">نصب</string>
+    <string name="e">‏%1$s بدون خدمات Google Play که در دستگاه شما وجود ندارد اجرا نمی‌شود.</string>
+    <string name="f">‏دریافت سرویس‌های Google Play</string>
+    <string name="g">‏خطا در خدمات Google Play</string>
+    <string name="h">‏%1$s برای استفاده از خدمات Google Play با مشکل روبرو است. لطفاً دوباره امتحان کنید.</string>
+    <string name="i">‏%1$s بدون خدمات Google Play که در دستگاه شما پشتیبانی نمی‌شود، اجرا نخواهد شد.</string>
+    <string name="j">به‌روزرسانی</string>
+    <string name="k">‏تاز مانی که سرویس‌های Google Play را به‌روزرسانی نکنید، %1$s اجرا نمی‌شود.</string>
+    <string name="l">‏‫به‌روزرسانی سرویس‌های Google Play</string>
+    <string name="m">‏%1$s بدون سرویس‌های Google Play که درحال حاضر درحال به‌روزرسانی هستند، کار نمی‌کند.</string>
+    <string name="n">‏نسخه جدید سرویس‌های Google Play نیاز است. به‌زودی به‌طور خودکار به‌روزرسانی می‌شود.</string>
+    <string name="o">باز کردن در تلفن</string>
+    <string name="p">ورود به سیستم</string>
+    <string name="q">‏ورود به سیستم با Google‎</string>
+    <string name="r">۹۹۹+</string>
+</resources>

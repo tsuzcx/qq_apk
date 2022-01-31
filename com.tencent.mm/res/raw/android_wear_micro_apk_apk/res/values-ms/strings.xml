@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Dayakan</string>
+    <string name="b">%1$s tidak akan berfungsi melainkan anda mendayakan perkhidmatan Google Play.</string>
+    <string name="c">Dayakan perkhidmatan Google Play</string>
+    <string name="d">Pasang</string>
+    <string name="e">%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini tiada pada peranti anda.</string>
+    <string name="f">Dapatkan perkhidmatan Google Play</string>
+    <string name="g">Ralat perkhidmatan Google Play</string>
+    <string name="h">%1$s menghadapi masalah berhubung perkhidmatan Google Play. Sila cuba lagi.</string>
+    <string name="i">%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini tidak disokong oleh peranti anda.</string>
+    <string name="j">Kemas kini</string>
+    <string name="k">%1$s tidak akan berfungsi kecuali anda mengemas kini perkhidmatan Google Play.</string>
+    <string name="l">Kemaskinikan perkhidmatan Google Play</string>
+    <string name="m">%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini sedang dikemaskinikan.</string>
+    <string name="n">Versi baharu perkhidmatan Google Play diperlukan. Kemas kini automatik akan dijalankan sebentar lagi.</string>
+    <string name="o">Buka pada telefon</string>
+    <string name="p">Log masuk</string>
+    <string name="q">Log masuk dengan Google</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Pelekat sedang dimuat turun...</string>
+    <string name="z">Hantar denyutan jantung</string>
+    <string name="a0">Saya mengikut denyutan jantung menggunakan jam:%d kali/min</string>
+    <string name="a1">Gagal memuatkan imej</string>
+    <string name="a2">Gagal memuatkan sumber. Selepas memulakan semula WeChat pada mudah alih. Ketik untuk mencuba sekali lagi.</string>
+    <string name="a3">Pastikan mudah alih dan jam dihubungkan. WeChat Mudah Alih telah dilog masuk. Ketik untuk mencuba sekali lagi.</string>
+    <string name="a4">Gagal log masuk. Selepas memulakan semula WeChat pada mudah alih. Ketik untuk mencuba sekali lagi.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Semoga bernasib baik
+pada lain kali"</string>
+    <string name="a8">Terima</string>
+    <string name="a9">Abaikan</string>
+    <string name="a_">Pemberitahuan</string>
+    <string name="aa">Buka di mudah alih</string>
+    <string name="ab">Teks</string>
+    <string name="ac">Hantar semula</string>
+    <string name="ad">Bayar</string>
+    <string name="ae">Mungkin</string>
+    <string name="af">Tidak</string>
+    <string name="ag">Ya</string>
+    <string name="ah">Hantar</string>
+    <string name="ai">Galeri Pelekat</string>
+    <string name="aj">Teks</string>
+    <string name="ak">Suara</string>
+    <string name="al">Balas</string>
+    <string name="am">Bercakap...</string>
+    <string name="an">%d</string>
+    <string name="ao">"Ralat pengecaman
+Tahan untuk Bercakap lagi"</string>
+    <string name="ap">Menukar kepada Teks</string>
+    <string name="aq">%d</string>
+    <string name="ar">Menghantar</string>
+    <string name="as">"Mesej terlalu ringkas
+Tahan untuk Bercakap lagi"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Memuatkan imej</string>
+    <string name="av">Memuatkan...</string>
+    <string name="aw">Memuat sumber</string>
+    <string name="ax">Melog masuk</string>
+    <string name="ay">Halaman pembayaran dibuka di mudah alih</string>
+    <string name="az">Peranti tidak menyokong bermain audio.</string>
+    <string name="b0">Selamat datang ke WeChat</string>
+</resources>

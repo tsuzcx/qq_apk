@@ -1,0 +1,37 @@
+package com.tencent.mm.plugin.dbbackup;
+
+import android.app.ProgressDialog;
+import android.widget.Toast;
+
+final class c$3$1
+  implements Runnable
+{
+  c$3$1(c.3 param3, int paramInt) {}
+  
+  public final void run()
+  {
+    if (this.iMv.iMq != null) {
+      this.iMv.iMq.dismiss();
+    }
+    String str;
+    if (this.ewr == 0) {
+      str = String.format("Database recovery succeeded, elapsed %.2f seconds.", new Object[] { Float.valueOf((float)(System.nanoTime() - this.iMv.eow) / 1.0E+009F) });
+    }
+    for (;;)
+    {
+      Toast.makeText(this.iMv.val$context, str, 0).show();
+      return;
+      if (this.ewr == 1) {
+        str = "Database recovery canceled.";
+      } else {
+        str = "Database recovery failed.";
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.dbbackup.c.3.1
+ * JD-Core Version:    0.7.0.1
+ */

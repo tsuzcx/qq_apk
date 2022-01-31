@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/w9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/l3" android:layout_marginRight="@dimen/ko" android:layout_marginBottom="@dimen/l3">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/w_" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginRight="@dimen/l3" android:src="@raw/login_app_default_avatar" />
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textColor="@color/fc" android:id="@id/wa" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/qg" android:id="@id/wb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/wc" android:visibility="invisible" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@raw/avatar_choose" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:background="@color/e3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

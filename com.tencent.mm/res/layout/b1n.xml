@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/evh" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.SplashWelcomeView android:id="@id/d48" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <TextView android:textColor="#ffffffff" android:layout_gravity="right" android:id="@id/evj" android:paddingLeft="15.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginRight="13.0dip" />
+    <RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/evk" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true">
+            <Button android:id="@id/drp" android:layout_width="123.0dip" android:layout_marginLeft="21.0dip" android:text="@string/c9e" android:layout_alignParentLeft="true" style="@style/mu" />
+            <Button android:id="@id/dro" android:layout_width="123.0dip" android:layout_marginRight="20.0dip" android:text="@string/c9d" android:layout_alignParentRight="true" style="@style/n0" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

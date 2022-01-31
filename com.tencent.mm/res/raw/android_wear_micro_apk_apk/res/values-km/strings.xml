@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">បើក</string>
+    <string name="b">%1$s នឹងមិនដំណើរការទេ លុះត្រាតែអ្នកបើកសេវាកម្ម Google Play។</string>
+    <string name="c">បើកសេវាកម្ម Google Play</string>
+    <string name="d">ដំឡើង</string>
+    <string name="e">%1$s នឹងមិនដំណើរការទេ ប្រសិនបើមិនមានសេវាកម្មនានារបស់ Google Play ដែលបានបាត់ពីឧបករណ៍របស់អ្នក។</string>
+    <string name="f">ទាញយកសេវាកម្ម Google Play</string>
+    <string name="g">កំហុស​​សេវាកម្ម​ Google កម្សាន្ត</string>
+    <string name="h">%1$s កំពុងមានបញ្ហាជាមួយសេវាកម្មរបស់ Google Play ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។</string>
+    <string name="i">%1$s នឹងមិនដំណើរការដោយគ្មានសេវាកម្មរបស់ Google Play ដែលឧបករណ៍របស់អ្នកមិនគាំទ្រនោះទេ។</string>
+    <string name="j">អាប់ដេត</string>
+    <string name="k">%1$s នឹងមិនដំណើរការទេ លុះត្រាតែអ្នកធ្វើបច្ចុប្បន្នភាពសេវាកម្ម Google Play។</string>
+    <string name="l">អាប់ដេតសេវាកម្ម Google Play</string>
+    <string name="m">%1$s នឹងមិនដំណើរការទេ បើមិនមានសេវាកម្ម Google Play ដោយសារតែវាកំពុងអាប់ដេត។</string>
+    <string name="n">តម្រូវឲ្យមានកំណែថ្មីនៃសេវាកម្ម Google Play។ វានឹងអាប់ដេតដោយខ្លួនវានៅពេលបន្តិចទៀតនេះ។</string>
+    <string name="o">បើកតាមទូរស័ព្ទ</string>
+    <string name="p">ចូល</string>
+    <string name="q">ចូលដោយប្រើ Google</string>
+    <string name="r">999+</string>
+</resources>

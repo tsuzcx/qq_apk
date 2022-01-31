@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:background="#00000000" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gd" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/g6" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a3h" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:id="@id/a3i" android:layout="@layout/gi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/a3j" android:layout="@layout/gm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/a3k" android:layout="@layout/gk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/a3l" android:layout="@layout/gn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/a3m" android:layout="@layout/gj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/a3n" android:layout="@layout/gl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a3o" android:background="@drawable/hb" android:paddingLeft="@dimen/sr" android:paddingRight="@dimen/sr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/i1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/du" android:layout_marginBottom="@dimen/du">
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/qm" android:layout_gravity="center_vertical" android:id="@id/a3p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/n6" />
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/kv" android:src="@raw/biz_item_more_icon" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

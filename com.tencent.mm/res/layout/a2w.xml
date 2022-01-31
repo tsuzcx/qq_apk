@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/bz5" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:textSize="@dimen/dq" android:textColor="#ff737373" android:gravity="center" android:id="@id/bz6" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/c1i" android:layout_centerInParent="true" />
+</RelativeLayout>

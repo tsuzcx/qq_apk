@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:id="@id/cwt" android:background="@color/a23" android:paddingTop="@dimen/l3" android:paddingBottom="@dimen/l3" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include style="@style/gm" layout="@layout/alk" />
+    <include style="@style/gm" layout="@layout/alk" />
+    <include style="@style/gm" layout="@layout/alk" />
+    <include style="@style/gm" layout="@layout/alk" />
+    <include style="@style/gm" layout="@layout/alk" />
+</LinearLayout>

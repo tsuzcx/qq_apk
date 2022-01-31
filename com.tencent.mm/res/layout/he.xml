@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/a7p" android:background="@color/wl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a15" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/fk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/a7q" android:layout_height="@dimen/ky" style="@style/f6">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/a7r" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" />
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/q7" android:id="@id/a7s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/q6" android:id="@id/a7t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
+            <CheckBox android:id="@id/a7u" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/ka" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

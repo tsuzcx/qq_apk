@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="s">WeChat</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">This sticker is being downloaded...</string>
+    <string name="z">Send heartbeat</string>
+    <string name="a0">I measured heartbeat with watch: %d times/min.</string>
+    <string name="a1">Unable to load image</string>
+    <string name="a2">Unable to load source. After restarting WeChat on mobil. Tap to try again.</string>
+    <string name="a3">Make sure mobile and watch have connected. Moblie WeChat has been logged in. Tap to try again.</string>
+    <string name="a4">Unable to log in. After restarting WeChat on mobile. Tap to try again.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Better luck
+next time"</string>
+    <string name="a8">Accept</string>
+    <string name="a9">Ignore</string>
+    <string name="a_">Mute Notifications</string>
+    <string name="aa">Open in mobile</string>
+    <string name="ab">Text</string>
+    <string name="ac">Resend</string>
+    <string name="ad">Pay</string>
+    <string name="ae">Maybe</string>
+    <string name="af">No</string>
+    <string name="ag">Yes</string>
+    <string name="ah">Send</string>
+    <string name="ai">Sticker Gallery</string>
+    <string name="aj">Text</string>
+    <string name="ak">Voice</string>
+    <string name="al">Reply</string>
+    <string name="am">Speak…</string>
+    <string name="an">%d</string>
+    <string name="ao">"Recognition error
+Hold to Talk again"</string>
+    <string name="ap">Converting to Text</string>
+    <string name="aq">%d</string>
+    <string name="ar">Sending</string>
+    <string name="as">"Message too short
+Hold to Talk again"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Loading image</string>
+    <string name="av">Loading...</string>
+    <string name="aw">Loading source</string>
+    <string name="ax">Logging in</string>
+    <string name="ay">Opened payment page on mobile</string>
+    <string name="az">"Device doesn't support audio play."</string>
+    <string name="b0">Welcome to WeChat</string>
+</resources>

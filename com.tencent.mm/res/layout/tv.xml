@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:id="@id/b_v" android:paddingLeft="@dimen/l3" android:paddingTop="@dimen/gh" android:paddingRight="@dimen/gh" android:paddingBottom="@dimen/kv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ban" />
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/v_" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/va" android:background="@color/sz" android:scrollbars="vertical" style="@style/ls" />
+</LinearLayout>

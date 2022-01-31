@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/a9j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="@dimen/mq" android:layout_marginRight="@dimen/mq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/afk" android:layout_width="fill_parent" android:layout_height="57.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/afl" android:background="@drawable/au9" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_centerInParent="true">
+            <ImageView android:id="@id/afm" android:visibility="visible" android:layout_width="@dimen/ul" android:layout_height="@dimen/ul" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/l3" android:src="@raw/actionbar_particular_icon" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/gv" android:ellipsize="end" android:gravity="left" android:id="@id/afn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/gv" android:ellipsize="end" android:gravity="center" android:id="@id/afo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/afp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ku" android:src="@drawable/auo" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:id="@id/a96" android:background="@drawable/j9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/l3" android:layout_marginRight="@dimen/l3" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/afl" android:layerType="software" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/afq" android:background="@drawable/au8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MMSmoothHorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/afr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.ui.base.MMSmoothHorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>

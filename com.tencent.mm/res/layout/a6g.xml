@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@color/a23" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cbg" android:layout_width="fill_parent" android:layout_height="176.0dip">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cbh" android:paddingLeft="@dimen/bz" android:paddingRight="@dimen/bz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip">
+            <TextView android:textSize="@dimen/bt" android:textColor="@color/ju" android:gravity="center" android:layout_gravity="center" android:id="@id/cbi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <EditText android:textSize="@dimen/bt" android:gravity="left" android:layout_gravity="center_horizontal" android:id="@id/cbj" android:background="@color/zm" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:cursorVisible="false" android:maxLines="1" android:singleLine="true" android:editable="false" android:layout_weight="0.6" android:inputType="phone" />
+            <LinearLayout android:gravity="center" android:id="@id/cbk" android:clickable="true" android:longClickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="35.0dip">
+                <Button android:layout_gravity="center" android:background="@drawable/tg" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:longClickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/cbl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bz" android:layout_below="@id/cbh">
+            <TextView android:textSize="12.0dip" android:textColor="@color/ju" android:gravity="center" android:layout_gravity="center" android:id="@id/cbm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/c0" android:textColor="@color/jw" android:id="@id/cbn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:singleLine="true" android:layout_below="@id/cbh" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:id="@id/cbo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ceb" android:layout_below="@id/cbn" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cbp" android:background="#fff9f9f9" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/cbg" android:layout_alignParentBottom="true">
+        <FrameLayout android:id="@id/cbq" android:background="@color/jv" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <ImageButton android:id="@id/b3k" android:background="@null" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="14.0dip" android:src="@drawable/jh" android:scaleType="center" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.mm.plugin.ipcall.ui.DialPad android:id="@id/cbr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/b3k" android:layout_below="@id/cbq" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

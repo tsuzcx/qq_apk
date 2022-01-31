@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/aj4" android:layout_alignParentLeft="true" layout="@layout/ki" style="@style/fu" />
+    <TextView android:id="@id/mp" android:visibility="gone" android:layout_toRightOf="@id/aj4" android:layout_alignTop="@id/aj4" style="@style/g1" />
+    <TextView android:id="@id/anb" android:visibility="gone" android:text="@string/am0" android:layout_toRightOf="@id/aj4" android:layout_below="@id/mp" android:layout_alignLeft="@id/mp" style="@style/fz" />
+    <com.tencent.mm.ui.base.AnimImageView android:orientation="horizontal" android:id="@id/anc" android:background="@drawable/go" android:layout_width="100.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/ed" android:layout_toRightOf="@id/aj4" android:layout_below="@id/anb" android:layout_alignLeft="@id/mp" />
+    <FrameLayout android:id="@id/and" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/aj4" android:layout_below="@id/anc" android:layout_alignLeft="@id/mp">
+        <FrameLayout android:id="@id/ane" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/anf" android:background="@drawable/go" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/ed" android:drawableLeft="@raw/chatfrom_voice_playing" />
+            <com.tencent.mm.ui.base.AnimImageView android:id="@id/ang" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/ed" />
+        </FrameLayout>
+    </FrameLayout>
+    <ViewStub android:id="@id/akp" android:layout="@layout/mk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/kv" android:layout_toRightOf="@id/aj4" android:layout_below="@id/and" android:layout_alignLeft="@id/mp" />
+    <TextView android:id="@id/mq" android:layout_toRightOf="@id/and" android:layout_alignTop="@id/and" style="@style/ga" />
+    <ImageView android:id="@id/anh" android:background="@null" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/zp" android:layout_toRightOf="@id/mq" android:layout_alignTop="@id/mq" android:layout_alignBottom="@id/mq" />
+    <TextView android:id="@id/aj7" android:background="@drawable/cb" android:visibility="gone" android:layout_marginRight="5.0dip" android:text="@string/ah8" android:layout_below="@id/and" android:layout_alignRight="@id/and" style="@style/fs" />
+</RelativeLayout>

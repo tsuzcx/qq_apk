@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center_horizontal" android:id="@id/dnm" android:src="@drawable/a_3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/py" />
+    <ImageView android:gravity="center" android:id="@id/dnn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ch" android:layout_alignLeft="@id/dnm" android:layout_alignTop="@id/dnm" />
+    <ImageView android:id="@id/dno" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/dnm" android:layout_alignBottom="@id/dnm" />
+    <ImageView android:id="@id/aq9" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/ajd" android:layout_alignRight="@id/dnm" android:layout_alignBottom="@id/dnm" />
+    <RelativeLayout android:id="@id/dnp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/dnm" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/dnq" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/pz" />
+        <TextView android:id="@id/dnr" android:paddingTop="@dimen/dl" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/pz" />
+    </RelativeLayout>
+    <TextView android:textColor="#fffd8f44" android:id="@id/dns" android:visibility="gone" android:layout_below="@id/dnp" android:layout_centerHorizontal="true" style="@style/pz" />
+</RelativeLayout>

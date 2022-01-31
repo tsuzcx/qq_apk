@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/ci4" android:background="@drawable/adq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:gravity="center" android:id="@id/ci5" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/fol" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/mu" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a23" android:gravity="center" android:id="@id/ci6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/ee7" android:layout_above="@id/ci5" android:layout_centerHorizontal="true" />
+</RelativeLayout>

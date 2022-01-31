@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/dt" android:textColor="@color/a23" android:id="@id/bfh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/bh1" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="80.0dip" android:layout_marginTop="48.0dip" android:layout_below="@id/bfh">
+        <ImageView android:id="@id/bfi" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/ayz" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:id="@id/bfj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:text="@string/bgy" android:layout_toRightOf="@id/bfi" android:layout_alignTop="@id/bfi" />
+        <ImageView android:id="@id/bfk" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginTop="@dimen/kl" android:src="@drawable/ay_" android:layout_below="@id/bfj" android:layout_alignLeft="@id/bfj" />
+        <ImageView android:id="@id/bfl" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="36.0dip" android:src="@drawable/az0" android:layout_below="@id/bfk" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:id="@id/bfm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:text="@string/bh0" android:layout_toRightOf="@id/bfl" android:layout_alignTop="@id/bfl" />
+        <ImageView android:layout_width="1.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:src="@color/m5" android:layout_above="@id/bfm" android:layout_below="@id/bfi" />
+    </RelativeLayout>
+    <Button android:textSize="@dimen/l1" android:textColor="@color/a39" android:id="@id/bfn" android:layout_marginBottom="71.0dip" android:text="@string/bh2" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/od" />
+</RelativeLayout>

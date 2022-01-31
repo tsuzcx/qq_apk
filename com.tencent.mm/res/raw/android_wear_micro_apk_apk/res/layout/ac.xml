@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="2.0dip" android:paddingRight="8.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b" android:layout_marginStart="@dimen/b">
+        <TextView android:textAppearance="@style/h" android:ellipsize="marquee" android:id="@id/f" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <DateTimeView android:textAppearance="@style/f" android:layout_gravity="center" android:id="@id/bp" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" android:paddingStart="8.0dip" />
+        <Chronometer android:textAppearance="@style/f" android:layout_gravity="center" android:id="@id/bq" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" android:paddingStart="8.0dip" />
+    </LinearLayout>
+    <TextView android:textAppearance="@style/a7" android:ellipsize="marquee" android:id="@id/e" android:visibility="gone" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b" android:layout_marginTop="-2.0dip" android:layout_marginBottom="-2.0dip" android:singleLine="true" android:layout_marginStart="@dimen/b" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b" android:layout_marginStart="@dimen/b">
+        <TextView android:textAppearance="@style/d" android:ellipsize="marquee" android:layout_gravity="center" android:id="@id/d" android:fadingEdge="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textAppearance="@style/c" android:gravity="center" android:layout_gravity="center" android:id="@id/br" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" android:paddingStart="8.0dip" />
+    </LinearLayout>
+</LinearLayout>

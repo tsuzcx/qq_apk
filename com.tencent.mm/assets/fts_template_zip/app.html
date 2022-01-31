@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        var points = [];
+        points[0] = new Date().getTime();
+        var oldPoint = [];
+        oldPoint[0] = new Date().getTime();
+    </script>
+    <meta charset="UTF-8">
+    <title>搜一搜</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1530194555304"/>
+</head>
+
+<body id="body" ontouchstart="">
+    <div id="search_test" class="weui-cells" style="display:none;margin:0;z-index: 99">
+        <div class="weui-cell weui-cell_select weui_select_before">
+            <div class="weui-cell__hd">
+                <select id="search_scene" class="weui-select"></select>
+            </div>
+            <div class="weui-cell__bd weui-cell__primary">
+                <input id="search_input" class="weui-input" type="text" placeholder="请输入搜索词">
+            </div>
+            <div class="weui-cell__ft">
+                <a id="search_btn" href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">按钮</a>
+                <a id="to_history" href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">跳history</a>
+            </div>
+        </div>
+    </div>
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="app" :class="[view,platform,isIOS8]">
+
+        <!--进度条，只有在结果页的时候才展示-->
+        <progress-bar v-show="view == 'result'"></progress-bar>
+        <!--end of 进度条-->
+
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+        <suggestion-list></suggestion-list>
+    </div>
+    <script src="dist/build.js?t=1530194555304"></script>
+</body>
+
+</html>

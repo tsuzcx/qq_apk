@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Aktivera</string>
+    <string name="b">%1$s fungerar inte om du inte aktiverar Google Play-tjänster.</string>
+    <string name="c">Aktivera Google Play-tjänster</string>
+    <string name="d">Installera</string>
+    <string name="e">%1$s kan inte köras utan Google Play-tjänsterna, som saknas på enheten.</string>
+    <string name="f">Hämta Google Play-tjänster</string>
+    <string name="g">Fel på Google Play-tjänster</string>
+    <string name="h">Det har uppstått ett fel mellan %1$s och Google Play-tjänsterna. Försök igen.</string>
+    <string name="i">%1$s fungerar inte utan Google Play-tjänsterna, som inte stöds på enheten.</string>
+    <string name="j">Uppdatera</string>
+    <string name="k">%1$s kan inte köras om du inte uppdaterar Google Play-tjänsterna.</string>
+    <string name="l">Uppdatera Google Play-tjänster</string>
+    <string name="m">%1$s kan inte köras utan Google Play-tjänster, och dessa uppdateras för närvarande.</string>
+    <string name="n">En ny version av Google Play-tjänster krävs. Den uppdateras automatiskt inom kort.</string>
+    <string name="o">Öppna på mobilen</string>
+    <string name="p">Logga in</string>
+    <string name="q">Logga in med Google</string>
+    <string name="r">>999</string>
+    <string name="t">Stäng</string>
+</resources>

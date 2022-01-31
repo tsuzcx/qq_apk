@@ -1,0 +1,21 @@
+package com.tencent.mm.plugin.honey_pay.ui;
+
+import com.tencent.mm.ah.m;
+import com.tencent.mm.wallet_core.c.n.a;
+
+final class HoneyPayCheckPwdUI$6
+  implements n.a
+{
+  HoneyPayCheckPwdUI$6(HoneyPayCheckPwdUI paramHoneyPayCheckPwdUI) {}
+  
+  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    HoneyPayCheckPwdUI.d(this.llm);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayCheckPwdUI.6
+ * JD-Core Version:    0.7.0.1
+ */

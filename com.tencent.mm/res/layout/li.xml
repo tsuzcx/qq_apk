@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/ki" />
+    <LinearLayout android:orientation="vertical" android:id="@id/an5" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/mp" android:visibility="visible" style="@style/g1" />
+        <FrameLayout android:id="@id/aku" android:background="@drawable/ga" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <ImageView android:id="@id/am5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/e8" />
+            <ImageView android:id="@id/alo" android:background="@drawable/ga" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/an6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
+        </FrameLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <TextView android:ellipsize="end" android:id="@id/all" android:background="@drawable/cb" android:padding="@dimen/dl" android:layout_marginLeft="0.0dip" android:text="{source}" android:singleLine="true" style="@style/fs" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

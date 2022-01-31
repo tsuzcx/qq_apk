@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:summary="@string/bdt" android:key="black_contact_list_pref" android:layout="@layout/ab8" />
+</PreferenceScreen>

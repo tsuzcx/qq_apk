@@ -1,0 +1,21 @@
+package com.tencent.mm.chatroom;
+
+import com.tencent.mm.h.a.kb;
+import com.tencent.mm.pluginsdk.c.c;
+
+final class b$5
+  extends c<kb>
+{
+  b$5(b paramb) {}
+  
+  public final int xf()
+  {
+    return 119;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.chatroom.b.5
+ * JD-Core Version:    0.7.0.1
+ */

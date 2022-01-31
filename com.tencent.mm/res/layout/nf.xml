@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:ellipsize="end" android:gravity="left" android:id="@id/ary" android:background="@drawable/z9" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/li" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+    <ListView android:id="@id/arz" android:background="@color/a23" android:visibility="gone" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/rn" android:cacheColorHint="#00000000" android:overScrollMode="never" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/as0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/as1" layout="@layout/nv" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/t7" android:id="@id/as2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/anu" />
+    </LinearLayout>
+</LinearLayout>

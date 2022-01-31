@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:configChanges="keyboardHidden|orientation" android:id="@id/cyc" android:background="#ffeeeef3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:windowSoftInputMode="stateHidden" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:invoice="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.0dip">
+        <LinearLayout android:orientation="vertical" android:background="#ffeeeef3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:gravity="center_vertical" android:id="@id/cyd" android:paddingLeft="24.0dip" android:paddingTop="8.0dip" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="@dimen/dl" android:minWidth="50.0dip" android:text="@string/c_r" android:singleLine="true" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingTop="60.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cye" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/ca9" app:invoice_singleLine="false" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyf" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/ca9" app:invoice_singleLine="false" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyg" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/ca4" app:invoice_singleLine="false" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyh" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/c_o" app:invoice_singleLine="false" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyi" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/c_z" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyj" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/c_h" app:invoice_singleLine="false" style="@style/n6" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/cyk" android:minHeight="36.0dip" app:invoice_tipmsg="@string/c_j" app:invoice_singleLine="false" style="@style/n6" />
+            <View android:id="@id/cyl" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="12.0dip" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/cym" android:layout_width="180.0dip" android:layout_height="180.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#4d000000" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/cyn" android:visibility="visible" android:text="@string/ca1" android:layout_centerVertical="true" style="@style/n6" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

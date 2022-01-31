@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/a44" android:paddingTop="16.0dip" android:paddingRight="@dimen/a44" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:gravity="left" android:id="@id/js" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <View android:background="#191d1d26" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_margin="2.0dip" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:gravity="left" android:id="@id/jt" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/ju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <View android:background="#191d1d26" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff353535" android:gravity="left" android:id="@id/jv" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/jw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <View android:background="#191d1d26" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff353535" android:gravity="left" android:id="@id/jx" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/jy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <View android:background="#191d1d26" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff353535" android:gravity="left" android:id="@id/jz" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/k0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <View android:background="#191d1d26" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff353535" android:gravity="left" android:id="@id/k1" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

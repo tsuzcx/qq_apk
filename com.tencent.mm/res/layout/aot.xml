@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/ih" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="@dimen/lh" android:minHeight="@dimen/lh"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="#ff05295a" android:gravity="center_vertical" android:id="@id/dw1" android:padding="3.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="{title}" android:singleLine="true" android:drawableRight="@drawable/ri" android:drawablePadding="3.0dip" style="@style/ks" />
+    <ImageView android:id="@id/b_n" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textColor="#ff05295a" android:id="@id/dw2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLines="2" android:singleLine="false" android:layout_toRightOf="@id/b_n" android:layout_centerVertical="true" style="@style/ks" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/d2u" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:layout_gravity="center_vertical" android:id="@id/d2v" android:maxWidth="100.0dip" android:text="{signature}" style="@style/gn" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dw3" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/d2u" android:layout_toRightOf="@id/b_n" android:layout_centerVertical="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textColor="#ff05295a" android:id="@id/b_o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/ks" />
+            <TextView android:textColor="@color/oq" android:id="@id/d2m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cy5" style="@style/kr" />
+            <ImageView android:id="@id/d2n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/d2o" android:paddingLeft="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textColor="#ff555555" android:id="@id/d2p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" style="@style/kr" />
+            <ImageView android:id="@id/d2q" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:src="@raw/find_more_friend_photograph_icon" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

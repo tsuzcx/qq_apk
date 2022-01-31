@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a" parent="@android:style/TextAppearance.Material.Notification" />
+    <style name="b" parent="@android:style/TextAppearance.Material.Notification.Info" />
+    <style name="c" parent="@style/b">
+        <item name="android:textColor">@color/ae</item>
+    </style>
+    <style name="d" parent="@style/a">
+        <item name="android:textColor">@color/ae</item>
+    </style>
+    <style name="e" parent="@android:style/TextAppearance.Material.Notification.Time" />
+    <style name="f" parent="@style/e">
+        <item name="android:textColor">@color/ae</item>
+    </style>
+    <style name="g" parent="@android:style/TextAppearance.Material.Notification.Title" />
+    <style name="h" parent="@style/g">
+        <item name="android:textColor">@color/aa</item>
+    </style>
+    <style name="i">
+        <item name="android:background">@drawable/a_</item>
+    </style>
+    <style name="j">
+        <item name="android:textAppearance">?android:textAppearanceButton</item>
+        <item name="android:textSize">@dimen/ab</item>
+        <item name="android:textColor">@color/af</item>
+    </style>
+    <style name="as" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/a_</item>
+    </style>
+    <style name="at" parent="@style/as">
+        <item name="android:textSize">16.0sp</item>
+    </style>
+    <style name="au" parent="@style/as">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:lineSpacingMultiplier">0.96</item>
+    </style>
+    <style name="av" parent="@style/as">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:lineSpacingMultiplier">0.93867</item>
+    </style>
+    <style name="aw" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:colorBackground">@color/w</item>
+        <item name="android:textAppearance">@style/as</item>
+        <item name="android:buttonStyle">@style/ay</item>
+        <item name="android:windowBackground">@color/w</item>
+        <item name="android:colorBackgroundCacheHint">@color/w</item>
+    </style>
+    <style name="ax" parent="@android:style/Widget">
+        <item name="android:textColor">@color/a_</item>
+        <item name="android:background">#99000000</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:color">@color/al</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:elevation">@dimen/l</item>
+        <item name="android:stateListAnimator">@animator/a</item>
+        <item name="a">12.0sp</item>
+        <item name="b">20.0sp</item>
+        <item name="r">@color/k</item>
+    </style>
+    <style name="ay" parent="@android:style/Widget.DeviceDefault.Button">
+        <item name="android:textAppearance">@style/at</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">60.0dip</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:minLines">1</item>
+        <item name="android:drawablePadding">12.0dip</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
+    <style name="az" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
+    <style name="b0" parent="@style/az">
+        <item name="android:textAppearance">@style/au</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="b1" parent="@style/az">
+        <item name="android:textAppearance">@style/av</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

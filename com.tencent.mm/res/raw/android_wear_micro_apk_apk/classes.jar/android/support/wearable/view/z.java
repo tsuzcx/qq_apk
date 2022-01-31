@@ -1,0 +1,471 @@
+package android.support.wearable.view;
+
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.ab;
+import android.support.v7.widget.af;
+import android.support.v7.widget.ai;
+import android.support.v7.widget.ak;
+import android.view.View;
+import java.util.Iterator;
+import java.util.List;
+
+final class z
+  extends ab
+{
+  private int Fm;
+  private boolean Fn;
+  private int Fo;
+  private boolean Fp = true;
+  private boolean Fq = false;
+  private ai Fr;
+  private ai ul;
+  
+  private z(WearableListView paramWearableListView) {}
+  
+  private void aJ(View paramView)
+  {
+    m(paramView, (int)(1.0F + getHeight() / 3.0F));
+  }
+  
+  private void aX(int paramInt)
+  {
+    this.Fo = paramInt;
+    Iterator localIterator = WearableListView.e(this.Fl).iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
+    }
+  }
+  
+  private int fF()
+  {
+    int n = getChildCount();
+    int j = 2147483647;
+    int i1 = WearableListView.aI(this.Fl);
+    int i = 0;
+    int k = -1;
+    if (i < n)
+    {
+      View localView = this.Fl.df().getChildAt(i);
+      int m = this.Fl.getTop();
+      m = Math.abs(i1 - (WearableListView.aI(localView) + m));
+      if (m >= j) {
+        break label101;
+      }
+      k = i;
+      j = m;
+    }
+    label101:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (k == -1) {
+        throw new IllegalStateException("Can't find central view.");
+      }
+      return k;
+    }
+  }
+  
+  private void m(View paramView, int paramInt)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    int i = a(getWidth(), getPaddingLeft() + getPaddingRight() + localLayoutParams.leftMargin + localLayoutParams.rightMargin, localLayoutParams.width, cP());
+    int j = getHeight();
+    int k = getPaddingTop();
+    int m = getPaddingBottom();
+    int n = localLayoutParams.topMargin;
+    paramView.measure(i, a(j, localLayoutParams.bottomMargin + (k + m + n), paramInt, cQ()));
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, int paramInt)
+  {
+    ai localai2 = this.ul;
+    ai localai1 = localai2;
+    if (localai2 == null)
+    {
+      if (this.Fr == null) {
+        this.Fr = new ae(paramRecyclerView.getContext(), this);
+      }
+      localai1 = this.Fr;
+    }
+    localai1.aw(paramInt);
+    a(localai1);
+  }
+  
+  public final void ag(int paramInt)
+  {
+    this.Fp = false;
+    if (paramInt > 0) {
+      this.Fm = (paramInt - 1);
+    }
+    for (this.Fn = true;; this.Fn = false)
+    {
+      requestLayout();
+      return;
+      this.Fm = paramInt;
+    }
+  }
+  
+  public final int b(int paramInt, af paramaf, ak paramak)
+  {
+    if (getChildCount() == 0) {
+      return 0;
+    }
+    int k = getPaddingLeft();
+    int m = getWidth() - getPaddingRight();
+    int i;
+    int n;
+    int j;
+    View localView;
+    if (paramInt < 0)
+    {
+      i = 0;
+      for (;;)
+      {
+        if (i > paramInt)
+        {
+          paramak = getChildAt(0);
+          if (this.Fm > 0)
+          {
+            n = Math.min(i - paramInt, Math.max(-paramak.getTop(), 0));
+            j = i - n;
+            an(n);
+            i = j;
+            if (this.Fm > 0)
+            {
+              i = j;
+              if (j > paramInt)
+              {
+                this.Fm -= 1;
+                localView = paramaf.at(this.Fm);
+                addView(localView, 0);
+                aJ(localView);
+                i = paramak.getTop();
+                localView.layout(k, i - WearableListView.h(this.Fl), m, i);
+                i = j;
+              }
+            }
+          }
+          else
+          {
+            this.Fn = false;
+            if (WearableListView.k(this.Fl) == null) {
+              break label392;
+            }
+            j = getHeight();
+            paramInt = Math.min(-paramInt + i, j - paramak.getTop());
+            i -= paramInt;
+            an(paramInt);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      label219:
+      int i3 = getChildCount();
+      int i4 = getWidth();
+      int i5 = getHeight();
+      paramInt = 0;
+      m = 0;
+      j = 0;
+      k = 0;
+      for (;;)
+      {
+        if (paramInt < i3)
+        {
+          paramak = getChildAt(paramInt);
+          int i2;
+          int i1;
+          if (!paramak.hasFocus())
+          {
+            i2 = j;
+            i1 = k;
+            n = m;
+            if (paramak.getRight() >= 0)
+            {
+              i2 = j;
+              i1 = k;
+              n = m;
+              if (paramak.getLeft() <= i4)
+              {
+                i2 = j;
+                i1 = k;
+                n = m;
+                if (paramak.getBottom() >= 0)
+                {
+                  i2 = j;
+                  i1 = k;
+                  n = m;
+                  if (paramak.getTop() > i5) {}
+                }
+              }
+            }
+          }
+          else
+          {
+            m = k;
+            if (k == 0)
+            {
+              j = paramInt;
+              m = 1;
+            }
+            n = paramInt;
+            i1 = m;
+            i2 = j;
+          }
+          paramInt += 1;
+          j = i2;
+          k = i1;
+          m = n;
+          continue;
+          label392:
+          j = WearableListView.l(this.Fl);
+          break;
+          if (paramInt <= 0) {
+            break label697;
+          }
+          n = getHeight();
+          j = 0;
+          for (;;)
+          {
+            i = j;
+            if (j >= paramInt) {
+              break;
+            }
+            localView = getChildAt(getChildCount() - 1);
+            if (paramak.getItemCount() <= this.Fm + getChildCount()) {
+              break label566;
+            }
+            i = -Math.min(paramInt - j, Math.max(localView.getBottom() - n, 0));
+            j -= i;
+            an(i);
+            i = j;
+            if (j >= paramInt) {
+              break;
+            }
+            localView = paramaf.at(this.Fm + getChildCount());
+            i = getChildAt(getChildCount() - 1).getBottom();
+            addView(localView);
+            aJ(localView);
+            localView.layout(k, i, m, WearableListView.h(this.Fl) + i);
+          }
+          label566:
+          paramInt = Math.max(-paramInt + j, getHeight() / 2 - localView.getBottom());
+          i = j - paramInt;
+          an(paramInt);
+          break label219;
+        }
+      }
+      paramInt = i3 - 1;
+      while (paramInt > m)
+      {
+        a(paramInt, paramaf);
+        paramInt -= 1;
+      }
+      paramInt = j - 1;
+      while (paramInt >= 0)
+      {
+        a(paramInt, paramaf);
+        paramInt -= 1;
+      }
+      if (getChildCount() == 0) {
+        this.Fm = 0;
+      }
+      for (;;)
+      {
+        aX(this.Fo + i);
+        return i;
+        if (j > 0)
+        {
+          this.Fn = true;
+          this.Fm += j;
+        }
+      }
+      label697:
+      i = 0;
+    }
+  }
+  
+  public final void c(af paramaf, ak paramak)
+  {
+    int i2 = getHeight() - getPaddingBottom();
+    int i = this.Fl.fH();
+    int m = WearableListView.g(this.Fl) + i;
+    int i1;
+    int j;
+    int k;
+    int i3;
+    int n;
+    if ((this.Fp) && (getChildCount() > 0))
+    {
+      i1 = fF();
+      j = ao(getChildAt(i1));
+      i = j;
+      k = i1;
+      if (j == -1)
+      {
+        i3 = getChildCount();
+        n = 0;
+      }
+      for (;;)
+      {
+        View localView;
+        if (i1 + n >= i3)
+        {
+          i = j;
+          k = i1;
+          if (i1 - n < 0) {}
+        }
+        else
+        {
+          localView = getChildAt(i1 + n);
+          if (localView == null) {
+            break label201;
+          }
+          i = ao(localView);
+          j = i;
+          if (i == -1) {
+            break label201;
+          }
+        }
+        for (k = i1 + n;; k = i1 - n)
+        {
+          if (i != -1) {
+            break label250;
+          }
+          j = getChildAt(0).getTop();
+          k = paramak.getItemCount();
+          for (;;)
+          {
+            i = j;
+            if (this.Fm < k) {
+              break;
+            }
+            i = j;
+            if (this.Fm <= 0) {
+              break;
+            }
+            this.Fm -= 1;
+          }
+          label201:
+          localView = getChildAt(i1 - n);
+          if (localView == null) {
+            break;
+          }
+          i = ao(localView);
+          j = i;
+          if (i == -1) {
+            break;
+          }
+        }
+        n += 1;
+      }
+      label250:
+      n = i;
+      j = m;
+      if (!this.Fq)
+      {
+        j = getChildAt(k).getTop();
+        n = i;
+      }
+      while ((j > getPaddingTop()) && (n > 0))
+      {
+        n -= 1;
+        j -= WearableListView.h(this.Fl);
+      }
+      i = j;
+      if (n == 0)
+      {
+        i = j;
+        if (j > this.Fl.fH()) {
+          i = this.Fl.fH();
+        }
+      }
+      this.Fm = n;
+      b(paramaf);
+      if ((!WearableListView.i(this.Fl)) || (paramak.getItemCount() != 1)) {
+        break label505;
+      }
+      i = getWidth();
+      j = getPaddingRight();
+      paramaf = paramaf.at(this.Fm);
+      addView(paramaf, 0);
+      m(paramaf, getHeight());
+      paramaf.layout(getPaddingLeft(), getPaddingTop(), i - j, i2);
+      this.Fq = true;
+      label431:
+      if (getChildCount() > 0) {
+        this.Fl.post(WearableListView.j(this.Fl));
+      }
+      if (getChildCount() != 0) {
+        break label624;
+      }
+      aX(0);
+    }
+    for (;;)
+    {
+      this.Fp = true;
+      this.Fn = false;
+      return;
+      i = m;
+      if (!this.Fn) {
+        break;
+      }
+      i = this.Fl.fH() - WearableListView.h(this.Fl);
+      break;
+      label505:
+      m = getPaddingLeft();
+      n = getWidth();
+      i1 = getPaddingRight();
+      i3 = paramak.getItemCount();
+      k = 0;
+      j = i;
+      i = k;
+      while ((this.Fm + i < i3) && (j < i2))
+      {
+        paramak = paramaf.at(this.Fm + i);
+        addView(paramak, i);
+        aJ(paramak);
+        k = WearableListView.h(this.Fl) + j;
+        paramak.layout(m, j, n - i1, k);
+        i += 1;
+        j = k;
+      }
+      this.Fq = false;
+      break label431;
+      label624:
+      paramaf = getChildAt(fF());
+      i = paramaf.getTop();
+      j = this.Fl.fH();
+      aX(ao(paramaf) * WearableListView.h(this.Fl) + (i - j));
+    }
+  }
+  
+  public final RecyclerView.LayoutParams cK()
+  {
+    return new RecyclerView.LayoutParams(-1, -2);
+  }
+  
+  public final boolean cQ()
+  {
+    return (getItemCount() != 1) || (!this.Fq);
+  }
+  
+  public final void dO()
+  {
+    removeAllViews();
+  }
+  
+  public final int fJ()
+  {
+    return this.Fm;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar
+ * Qualified Name:     android.support.wearable.view.z
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/kl" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/mw" android:layout_gravity="center_horizontal" android:id="@id/dfr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" />
+    <com.tencent.mm.plugin.readerapp.ui.ReaderItemListView android:orientation="vertical" android:id="@id/dfw" android:background="@drawable/he" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:divider="@color/qp" android:dividerHeight="1.0dip" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+</LinearLayout>

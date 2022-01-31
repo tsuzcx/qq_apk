@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/b8t" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b8x" android:background="@color/wl" android:paddingTop="@dimen/ku" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b8y" android:background="@color/wl" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mp" style="@style/p1">
+            <TextView android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/b8z" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/b7n" android:layout_weight="1.0" style="@style/m3" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/b90" android:background="@color/sz" android:paddingBottom="@dimen/li" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a3d" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+        <LinearLayout android:background="@color/sz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/b91" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b92" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="@dimen/mp" style="@style/p1">
+            <TextView android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/b93" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/b7m" android:layout_weight="1.0" style="@style/m3" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

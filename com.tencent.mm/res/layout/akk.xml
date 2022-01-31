@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingLeft="@dimen/kl" android:paddingTop="@dimen/kp" android:paddingRight="@dimen/kl" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/di1" android:background="@drawable/k3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MMAutoCompleteTextView android:id="@id/di2" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/dcv" android:dropDownSelector="#00000000" android:popupBackground="@null" android:inputType="textEmailAddress" style="@style/lq" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/fc" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/rn" android:paddingLeft="@dimen/li" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/dcu" android:singleLine="false" style="@style/lq" />
+    </FrameLayout>
+    <FrameLayout android:background="@drawable/k3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko">
+        <com.tencent.mm.ui.base.MMClearEditText android:id="@id/di3" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/dd7" style="@style/lp" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/fc" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/rn" android:paddingLeft="10.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/dd6" android:singleLine="false" android:imeOptions="actionNext" style="@style/lq" />
+    </FrameLayout>
+    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/ko" style="@style/lo">
+        <CheckBox android:textSize="13.0dip" android:textColor="@color/fc" android:id="@id/cxv" android:paddingLeft="25.0dip" android:checked="true" android:text="@string/cgs" style="@style/pv" />
+        <Button android:textSize="13.0dip" android:id="@id/cxw" android:paddingLeft="5.0dip" android:paddingRight="0.0dip" android:paddingBottom="5.0dip" android:text="@string/cgu" style="@style/pw" />
+    </LinearLayout>
+</LinearLayout>

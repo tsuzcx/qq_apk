@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/st" android:background="@drawable/c_" android:layout_width="fill_parent" android:layout_height="@dimen/sc" android:layout_alignParentTop="true" android:paddingStart="@dimen/s5" android:paddingEnd="@dimen/s5">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/su" android:layout_width="@dimen/sf" android:layout_height="@dimen/sf" android:src="@raw/app_brand_video_fullscreen_back" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/cj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:layout_marginStart="@dimen/sa" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center" android:id="@id/sv" android:visibility="gone" android:layout_width="@dimen/rz" android:layout_height="@dimen/rz" android:src="@raw/app_brand_video_play_btn_play" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jr" android:background="@drawable/c8" android:layout_width="fill_parent" android:layout_height="@dimen/s4" android:layout_alignParentBottom="true" android:paddingEnd="@dimen/s5">
+        <ImageView android:gravity="center_vertical" android:id="@id/sw" android:layout_width="@dimen/sf" android:layout_height="@dimen/sf" android:src="@raw/app_brand_video_play_btn_play" android:scaleType="fitCenter" android:layout_marginStart="@dimen/s2" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/sx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/s2">
+            <TextView android:textSize="@dimen/s8" android:textColor="@color/a23" android:id="@id/sy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+            <FrameLayout android:gravity="center_vertical" android:id="@id/sz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/t0" android:background="#33ffffff" style="@style/dg" />
+                <ImageView android:id="@id/t1" android:background="#80ffffff" style="@style/dg" />
+                <ImageView android:id="@id/t2" android:background="@color/a23" style="@style/dg" />
+                <ImageView android:id="@id/t3" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/dp" android:paddingRight="@dimen/dp" android:paddingBottom="@dimen/dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/media_player_control_btn" android:layout_marginStart="@dimen/mq" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/s8" android:textColor="@color/a23" android:id="@id/t4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        </LinearLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/t5" android:layout_width="@dimen/s_" android:layout_height="@dimen/sf" android:src="@raw/app_brand_video_danmu_off" android:scaleType="fitCenter" android:layout_marginStart="@dimen/s2" />
+        <ImageView android:gravity="center_vertical" android:id="@id/t6" android:layout_width="@dimen/sf" android:layout_height="@dimen/sf" android:src="@raw/app_brand_video_mute_btn_off" android:scaleType="fitCenter" android:layout_marginStart="@dimen/s2" />
+        <ImageView android:gravity="center_vertical" android:id="@id/t7" android:layout_width="@dimen/sf" android:layout_height="@dimen/sf" android:src="@raw/app_brand_video_fullscreen_btn" android:scaleType="fitCenter" android:layout_marginStart="@dimen/s2" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.bottle.ui.PickBottleUI android:background="@drawable/e4" style="@style/y_"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.bottle.ui.PickedBottleImageView android:layout_gravity="bottom|center" android:id="@id/a5p" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:background="@android:color/white" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="20.0dip" />
+        <ImageView android:background="@drawable/a74" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center|left|top" android:id="@id/a5q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a5r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a8f" />
+        <TextView android:textColor="@color/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/a8p" android:layout_toRightOf="@id/a5r" android:layout_below="@id/a5r" />
+    </RelativeLayout>
+</com.tencent.mm.plugin.bottle.ui.PickBottleUI>

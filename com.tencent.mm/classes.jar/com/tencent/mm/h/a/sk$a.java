@@ -1,0 +1,12 @@
+package com.tencent.mm.h.a;
+
+public final class sk$a
+{
+  public String countryCode;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.h.a.sk.a
+ * JD-Core Version:    0.7.0.1
+ */

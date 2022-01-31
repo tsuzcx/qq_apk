@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/sz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/l9" android:paddingRight="@dimen/li" style="@style/d3">
+        <TextView android:id="@id/egk" android:visibility="gone" android:text="@string/ed" style="@style/d4" />
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/egv" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
+        <include android:id="@id/egw" android:visibility="gone" layout="@layout/ax2" />
+        <TextView android:textSize="@dimen/dq" android:textColor="@color/ta" android:gravity="center|left" android:id="@id/egx" android:background="@drawable/ih" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/lh" android:text="@string/e9" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.account.security.ui;
+
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+
+final class BindSafeDeviceUI$1
+  implements MenuItem.OnMenuItemClickListener
+{
+  BindSafeDeviceUI$1(BindSafeDeviceUI paramBindSafeDeviceUI) {}
+  
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  {
+    this.fjZ.finish();
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI.1
+ * JD-Core Version:    0.7.0.1
+ */

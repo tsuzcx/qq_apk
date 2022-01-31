@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/k5">
+        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/bak" style="@style/gx" />
+        <TextView android:id="@id/bal" style="@style/gw" />
+        <TextView android:id="@id/bam" style="@style/gy" />
+    </LinearLayout>
+</LinearLayout>

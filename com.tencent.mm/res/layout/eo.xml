@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="13.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/ok" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/mv" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/om" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ks" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/x7" android:paddingRight="@dimen/mq" android:layout_width="64.0dip" android:layout_height="fill_parent">
+            <View android:background="#18000000" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+            <CheckBox android:id="@id/x8" android:background="@drawable/r4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="@dimen/er" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

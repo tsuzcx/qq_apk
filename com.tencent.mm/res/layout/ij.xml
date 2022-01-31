@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ad6" android:background="@drawable/fh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/ad7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:layout_marginRight="13.299988dip">
+            <LinearLayout android:layout_gravity="start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="2.0">
+                <TextView android:textSize="12.699982dip" android:textColor="@color/gv" android:gravity="start" android:id="@id/ad8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aci" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.699982dip" android:textColor="@color/ho" android:gravity="end" android:id="@id/ad9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/acf" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="@drawable/j9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:layout_marginRight="13.299988dip" android:layerType="software" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/gv" android:id="@id/ad_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="10.0dip" android:text="@string/acg" />
+        <TextView android:textSize="12.699982dip" android:textColor="@color/ho" android:id="@id/ada" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="7.299988dip" android:layout_marginBottom="16.299988dip" android:text="@string/ach" />
+    </LinearLayout>
+</LinearLayout>

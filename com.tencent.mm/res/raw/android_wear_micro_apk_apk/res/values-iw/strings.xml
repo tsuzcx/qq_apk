@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">הפעל</string>
+    <string name="b">‏האפליקציה %1$s לא תפעל אם לא תפעיל את שירותי Google Play.</string>
+    <string name="c">‏הפעל את שירותי Google Play</string>
+    <string name="d">התקן</string>
+    <string name="e">‏האפליקציה %1$s לא תפעל ללא שירותי Google Play, שאינם מותקנים במכשיר.</string>
+    <string name="f">‏קבל את שירותי Google Play</string>
+    <string name="g">‏שגיאה בשירותי Google Play</string>
+    <string name="h">‏%1$s נתקלה בבעיה בשירותי Google Play. נסה שוב.</string>
+    <string name="i">‏%1$s לא תפעל ללא שירותי Google Play, שאינם נתמכים במכשיר שלך.</string>
+    <string name="j">עדכן</string>
+    <string name="k">‏%1$s לא יפעל אם לא תעדכן את שירותי Google Play.</string>
+    <string name="l">‏עדכון שירותי Google Play</string>
+    <string name="m">‏האפליקציה %1$s לא תפעל ללא שירותי Google Play, שמתעדכנים כרגע.</string>
+    <string name="n">‏דרושה גרסה חדשה של שירותי Google Play. הגרסה תתעדכן בעצמה תוך זמן קצר.</string>
+    <string name="o">פתח בטלפון</string>
+    <string name="p">היכנס</string>
+    <string name="q">‏היכנס באמצעות Google</string>
+    <string name="r">‎999+‎</string>
+    <string name="s">WeChat</string>
+    <string name="u">עלי</string>
+    <string name="v">ההיסטוריה של מר לו</string>
+    <string name="w">נשיקה</string>
+    <string name="x">רובוט שש</string>
+    <string name="y">המדבקה בהורדה...</string>
+    <string name="z">שלח פעימה</string>
+    <string name="a0">מדדתי את הדופק בעזרת השעון: %d פעמים לדקה.</string>
+    <string name="a1">לא ניתן לטעון תמונה</string>
+    <string name="a2">לא ניתן לטעון מקור. לאחר הפעלת WeChat במכשיר הנייד, הקש כדי לנסות שוב.</string>
+    <string name="a3">ודא שהמכשיר הנייד ושהשעון מחוברים. Moblie WeChat התחבר. הקש כדי לנסות שוב.</string>
+    <string name="a4">לא ניתן להיכנס. לאחר הפעלת WeChat במכשיר הנייד, הקש כדי לנסות שוב.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"בהצלחה
+בפעם הבאה!"</string>
+    <string name="a8">אשר</string>
+    <string name="a9">התעלם</string>
+    <string name="a_">השתק התראות</string>
+    <string name="aa">פתח בנייד</string>
+    <string name="ab">טקסט</string>
+    <string name="ac">שלח שוב</string>
+    <string name="ad">שלם</string>
+    <string name="ae">אולי</string>
+    <string name="af">לא</string>
+    <string name="ag">כן</string>
+    <string name="ah">שלח</string>
+    <string name="ai">גלריית המדבקות</string>
+    <string name="aj">טקסט</string>
+    <string name="ak">קולי</string>
+    <string name="al">השב</string>
+    <string name="am">דבר...</string>
+    <string name="an">%d</string>
+    <string name="ao">"שגיאת זיהוי
+החזק כדי לומר שוב"</string>
+    <string name="ap">ממיר לטקסט</string>
+    <string name="aq">%d</string>
+    <string name="ar">שולח</string>
+    <string name="as">"ההודעה קצרה מדי 
+החזק כדי לומר שוב"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">טוען תמונה</string>
+    <string name="av">טוען...</string>
+    <string name="aw">טוען מקור</string>
+    <string name="ax">מתחבר</string>
+    <string name="ay">דף התשלום נפתח בנייד</string>
+    <string name="az">המכשיר אינו תומך בנגינת שמע</string>
+    <string name="b0">ברוך הבא ל-WeChat</string>
+</resources>

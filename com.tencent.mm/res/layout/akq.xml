@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/mn">
+        <LinearLayout style="@style/k5">
+            <EditText android:id="@id/diq" android:hint="@string/deb" style="@style/lq" />
+            <View style="@style/n3" />
+            <TextView android:text="@string/dec" android:layout_weight="1.0" style="@style/lr" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

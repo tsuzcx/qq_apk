@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/cj" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/kx" />
+    <EditText android:id="@id/ji" android:imeOptions="actionDone" style="@style/kw" />
+</merge>

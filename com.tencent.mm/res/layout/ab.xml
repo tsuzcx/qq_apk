@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/ie" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?c0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/jb" android:background="@drawable/al" android:paddingLeft="@dimen/g1" android:paddingRight="@dimen/g1" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:id="@id/jc" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ai" android:contentDescription="@string/fsb" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_toRightOf="@id/jb">
+        <EditText android:textSize="@dimen/dv" android:id="@id/jd" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="搜索" />
+    </LinearLayout>
+    <ImageButton android:id="@id/je" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/aqi" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

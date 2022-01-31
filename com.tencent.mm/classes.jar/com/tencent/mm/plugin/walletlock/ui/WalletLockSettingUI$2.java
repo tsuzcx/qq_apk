@@ -1,0 +1,21 @@
+package com.tencent.mm.plugin.walletlock.ui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class WalletLockSettingUI$2
+  implements DialogInterface.OnClickListener
+{
+  WalletLockSettingUI$2(WalletLockSettingUI paramWalletLockSettingUI) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    WalletLockSettingUI.b(this.qRr);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.walletlock.ui.WalletLockSettingUI.2
+ * JD-Core Version:    0.7.0.1
+ */

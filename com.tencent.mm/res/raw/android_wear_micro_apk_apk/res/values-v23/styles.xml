@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ab" parent="@style/ac">
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:hyphenationFrequency">normal</item>
+    </style>
+    <style name="ad" parent="@style/ae">
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:hyphenationFrequency">normal</item>
+    </style>
+</resources>

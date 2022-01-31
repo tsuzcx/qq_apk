@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_below="@id/aa" style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:layout_gravity="right" android:id="@id/mp" android:visibility="gone" style="@style/g1" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/anh" style="@style/g5" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/aob" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/aoc" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/mq" android:background="@drawable/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/vb" android:minHeight="@dimen/ed" style="@style/g7" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/kk" />
+</LinearLayout>

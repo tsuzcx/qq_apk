@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/e5k" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.KeyboardLinearLayout android:id="@id/jr" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.sns.ui.WrapScollview android:id="@id/bk2" android:background="@color/wl" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <RelativeLayout android:id="@id/e7l" android:background="@color/a23" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mm.plugin.sns.ui.previewimageview.DynamicGridView android:id="@id/e7m" android:background="@color/zm" android:paddingLeft="21.0dip" android:paddingTop="@dimen/kl" android:paddingRight="21.0dip" android:paddingBottom="@dimen/l3" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/lh" />
+                <com.tencent.mm.plugin.sns.ui.RangeWidget android:id="@id/e7n" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" />
+                <FrameLayout android:id="@id/e7o" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/e7p" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <com.tencent.mm.plugin.sns.ui.SnsEditText android:gravity="top" android:id="@id/cib" android:background="@null" android:paddingTop="@dimen/kl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/eib" android:maxLines="4" android:minLines="4" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/da" style="@style/kg" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/e7q" android:background="@raw/sns_img_tipsbubble" android:paddingLeft="10.0dip" android:paddingRight="5.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a68">
+                        <TextView android:textSize="12.0sp" android:textColor="#99000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edc" />
+                        <ImageView android:id="@id/e7r" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="10.0dip" android:src="@raw/sns_img_close" />
+                    </LinearLayout>
+                </FrameLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/e5l" android:background="@color/a23" android:paddingLeft="@dimen/ko" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/ko" android:paddingBottom="@dimen/l3" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/lh" android:layout_below="@id/e7o" />
+                <ImageView android:id="@id/e7s" android:background="@color/x_" android:layout_width="fill_parent" android:layout_height="@dimen/fn" android:layout_marginLeft="@dimen/ko" android:layout_marginRight="@dimen/ko" android:layout_below="@id/e5l" />
+                <com.tencent.mm.plugin.sns.ui.LocationWidget android:id="@id/e5j" android:background="@color/a23" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e7s" />
+                <com.tencent.mm.plugin.sns.ui.RangeWidget android:id="@id/e7t" android:background="@color/a23" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e5j" />
+                <com.tencent.mm.plugin.sns.ui.AtContactWidget android:id="@id/e7u" android:background="@color/a23" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e7t" />
+                <com.tencent.mm.plugin.sns.ui.SnsUploadConfigView android:id="@id/e7v" android:paddingLeft="@dimen/ko" android:paddingRight="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e7u" />
+                <LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e7v" />
+            </RelativeLayout>
+        </com.tencent.mm.plugin.sns.ui.WrapScollview>
+    </com.tencent.mm.ui.KeyboardLinearLayout>
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.sns.ui.SnsUploadSayFooter android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/bq7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout android:layout_gravity="bottom" android:id="@id/e7w" android:background="#ffe64340" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" android:alpha="0.9">
+        <ImageView android:id="@id/e7x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/sns_img_delete" android:layout_above="@id/e2u" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/e2u" android:paddingTop="8.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="拖动到此处删除" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

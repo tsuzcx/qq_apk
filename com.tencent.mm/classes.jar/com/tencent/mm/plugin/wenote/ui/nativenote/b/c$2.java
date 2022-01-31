@@ -1,0 +1,32 @@
+package com.tencent.mm.plugin.wenote.ui.nativenote.b;
+
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mm.bj.a;
+import com.tencent.mm.plugin.wenote.model.a.l;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
+
+final class c$2
+  extends ah
+{
+  c$2(c paramc) {}
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    if (c.a(this.rMP).rGJ)
+    {
+      c.b(this.rMP).removeMessages(4096);
+      return;
+    }
+    paramMessage = " " + a.x(ae.getContext(), c.a(this.rMP).rGW).toString();
+    c.c(this.rMP).setText(paramMessage);
+    sendEmptyMessageDelayed(4096, 500L);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.b.c.2
+ * JD-Core Version:    0.7.0.1
+ */

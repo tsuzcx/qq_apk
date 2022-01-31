@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/b_s" android:background="@color/sz" style="@style/ls" />
+    <TextView android:textColor="@color/ta" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/a2w" android:paddingLeft="@dimen/ku" android:paddingTop="220.0dip" android:paddingRight="@dimen/ku" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" style="@style/kk" />
+</LinearLayout>

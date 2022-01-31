@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android1:persistent="true" android:summary="@string/dy2" android:title="@string/dy0" android:key="settings_active_silence_time" />
+    <CheckBoxPreference android1:persistent="true" android:summary="@string/dy2" android:title="@string/dy1" android:key="settings_active_time_full" />
+    <Preference android:title="@string/dxy" android:key="settings_active_begin_time" android:layout="@layout/ab8" />
+    <Preference android:title="@string/dxz" android:key="settings_active_end_time" android:layout="@layout/ab8" />
+</PreferenceScreen>

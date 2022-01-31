@@ -1,0 +1,97 @@
+package com.tencent.mm.protocal.c;
+
+import d.a.a.b;
+import java.util.LinkedList;
+
+public final class ps
+  extends com.tencent.mm.bv.a
+{
+  public LinkedList<bxr> sNA = new LinkedList();
+  public String sNy;
+  public String sNz;
+  
+  protected final int a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt == 0)
+    {
+      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
+      if (this.sNy == null) {
+        throw new b("Not all required fields were included: baseid");
+      }
+      if (this.sNy != null) {
+        paramVarArgs.d(1, this.sNy);
+      }
+      if (this.sNz != null) {
+        paramVarArgs.d(2, this.sNz);
+      }
+      paramVarArgs.d(3, 8, this.sNA);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.sNy == null) {
+        break label399;
+      }
+    }
+    label399:
+    for (paramInt = d.a.a.b.b.a.e(1, this.sNy) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.sNz != null) {
+        i = paramInt + d.a.a.b.b.a.e(2, this.sNz);
+      }
+      return i + d.a.a.a.c(3, 8, this.sNA);
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.sNA.clear();
+        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
+          if (!super.a(paramVarArgs, this, paramInt)) {
+            paramVarArgs.cUt();
+          }
+        }
+        if (this.sNy != null) {
+          break;
+        }
+        throw new b("Not all required fields were included: baseid");
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
+        ps localps = (ps)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          return -1;
+        case 1: 
+          localps.sNy = ((d.a.a.a.a)localObject1).xpH.readString();
+          return 0;
+        case 2: 
+          localps.sNz = ((d.a.a.a.a)localObject1).xpH.readString();
+          return 0;
+        }
+        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new bxr();
+          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((bxr)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
+          localps.sNA.add(localObject1);
+          paramInt += 1;
+        }
+        break;
+      }
+      return -1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.protocal.c.ps
+ * JD-Core Version:    0.7.0.1
+ */

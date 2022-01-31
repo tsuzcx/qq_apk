@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/cvt" android:layout_width="@dimen/z4" android:layout_height="@dimen/z4" />
+</LinearLayout>

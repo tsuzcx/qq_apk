@@ -1,0 +1,42 @@
+package com.eclipsesource.v8.debug.mirror;
+
+import com.eclipsesource.v8.V8Object;
+
+public class PropertyMirror
+  extends Mirror
+{
+  PropertyMirror(V8Object paramV8Object)
+  {
+    super(paramV8Object);
+  }
+  
+  public String getName()
+  {
+    return this.v8Object.executeStringFunction("name", null);
+  }
+  
+  public Mirror getValue()
+  {
+    V8Object localV8Object = this.v8Object.executeObjectFunction("value", null);
+    try
+    {
+      ValueMirror localValueMirror = createMirror(localV8Object);
+      return localValueMirror;
+    }
+    finally
+    {
+      localV8Object.release();
+    }
+  }
+  
+  public boolean isProperty()
+  {
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.eclipsesource.v8.debug.mirror.PropertyMirror
+ * JD-Core Version:    0.7.0.1
+ */

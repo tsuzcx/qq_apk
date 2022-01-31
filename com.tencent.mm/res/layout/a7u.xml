@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/k9" android:textColor="@color/ta" android:gravity="center|left" android:id="@id/cgg" android:background="@drawable/a59" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:minHeight="@dimen/mp" android:hint="@string/bm9" android:drawableLeft="@drawable/a_z" android:drawablePadding="@dimen/mq" />
+    <TextView android:textSize="@dimen/k9" android:textColor="@color/a1y" android:gravity="center|left" android:id="@id/cgh" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:minHeight="@dimen/mp" android:hint="@string/bji" android:drawableLeft="@raw/tags_icon" android:drawablePadding="@dimen/mq" />
+    <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/cgi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/kl">
+        <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/b2t" />
+        <TextView android:textSize="@dimen/dq" android:textColor="@color/ta" android:id="@id/cgj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

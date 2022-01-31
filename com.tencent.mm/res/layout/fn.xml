@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/mn">
+        <LinearLayout android:gravity="center_horizontal" style="@style/k5">
+            <ImageView android:id="@id/a1f" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/acq" />
+            <TextView android:gravity="center" android:id="@id/a1g" android:background="@drawable/b8y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" style="@style/k6" />
+            <Button android:textSize="20.0dip" android:id="@id/a1h" android:visibility="gone" android:text="@string/a3p" style="@style/mu" />
+            <Button android:id="@id/a1i" android:visibility="gone" android:text="@string/enu" style="@style/n0" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

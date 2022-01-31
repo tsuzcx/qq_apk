@@ -1,0 +1,85 @@
+package com.tencent.mm.plugin.appbrand.dynamic.widget;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.d;
+import com.tencent.mm.protocal.c.bna;
+import java.util.LinkedList;
+
+final class b$b
+  extends BaseAdapter
+{
+  private LinkedList<bna> fYa;
+  
+  public b$b(LinkedList<bna> paramLinkedList)
+  {
+    Object localObject;
+    this.fYa = localObject;
+  }
+  
+  private bna kN(int paramInt)
+  {
+    return (bna)this.fYa.get(paramInt);
+  }
+  
+  public final int getCount()
+  {
+    if (this.fYa == null) {
+      return 0;
+    }
+    return this.fYa.size();
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((this.fYa == null) || (this.fYa.size() <= 0)) {
+      return null;
+    }
+    bna localbna = kN(paramInt);
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = new b.b.a(this, (byte)0);
+      localObject = View.inflate(paramViewGroup.getContext(), b.c.authorize_scope_item, null);
+      paramView.fYe = ((ImageView)((View)localObject).findViewById(com.tencent.mm.plugin.appbrand.wxawidget.b.b.app_auth_state));
+      paramView.fYf = ((TextView)((View)localObject).findViewById(com.tencent.mm.plugin.appbrand.wxawidget.b.b.app_auth_desc));
+      ((View)localObject).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      if (localbna.tGf != 1) {
+        break label163;
+      }
+      paramViewGroup.fYe.setImageResource(b.d.login_auth_state_not_selected);
+    }
+    for (;;)
+    {
+      paramViewGroup.fYf.setText(localbna.kRN);
+      localObject = paramViewGroup.fYe;
+      paramViewGroup.fYe.setOnClickListener(new b.b.1(this, localbna, (ImageView)localObject));
+      return paramView;
+      paramViewGroup = (b.b.a)paramView.getTag();
+      break;
+      label163:
+      if (localbna.tGf == 3) {
+        paramViewGroup.fYe.setImageResource(b.d.login_auth_state_must_select);
+      } else {
+        paramViewGroup.fYe.setImageResource(b.d.login_auth_state_default_select);
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.widget.b.b
+ * JD-Core Version:    0.7.0.1
+ */

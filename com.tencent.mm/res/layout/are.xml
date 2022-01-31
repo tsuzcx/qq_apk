@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/at6" android:paddingLeft="12.0dip" android:paddingRight="6.0dip" style="@style/kt">
+        <ImageView android:id="@id/e2k" android:background="@null" android:paddingTop="3.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/hk" android:minWidth="0.0dip" style="@style/ms" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="bottom" android:id="@id/e2l" android:background="@drawable/ik" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/fc" android:layout_gravity="bottom" android:id="@id/e2m" android:background="@drawable/b25" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/ee" android:minHeight="@dimen/eg" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/da" style="@style/kg" />
+            <ImageButton android:layout_gravity="bottom" android:id="@id/br2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hj" android:contentDescription="@string/afu" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <TextView android:gravity="top" android:id="@id/aii" android:visibility="gone" style="@style/gb" />
+            <Button android:textColor="#1a000000" android:id="@id/e2n" android:background="@drawable/w1" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="wrap_content" android:layout_height="@dimen/ej" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/el" android:text="@string/ru" />
+            <Button android:textColor="@color/a47" android:id="@id/e2o" android:background="@drawable/eo" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ej" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/el" android:text="@string/ru" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

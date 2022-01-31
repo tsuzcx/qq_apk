@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/ay9" android:key="contact_info_wechat_account" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/ay3" android:key="contact_info_verifyuser" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/axy" android:key="contact_info_trademark" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/aus" android:key="contact_info_privilege" />
+    <com.tencent.mm.plugin.profile.ui.IconWidgetPreference android:title="@string/e0_" android:key="contact_info_kf_worker" android:layout="@layout/ab8" />
+    <Preference android:title="@string/awe" android:key="contact_info_service_phone" android:layout="@layout/ab8" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:title="@string/aw2" android:key="contact_info_reputation" android:layout="@layout/p5" />
+    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:title="@string/at8" android:key="contact_info_guarantee_info" android:layout="@layout/p5" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/aw9" android:key="contact_info_scope_of_business" android:layout="@layout/ab8" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/ay_" android:key="contact_info_verifyuser_weibo" android:layout="@layout/ab8" />
+    <Preference android:title="@string/cxm" android:key="near_field_service" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/arj" android:key="contact_info_see_locate" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory android:key="contact_info_category2" />
+</PreferenceScreen>

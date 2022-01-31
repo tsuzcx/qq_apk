@@ -1,0 +1,47 @@
+package com.tencent.mm.plugin.appbrand.dynamic.d;
+
+import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.sdk.platformtools.aq;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
+
+public final class c
+  extends com.tencent.mm.plugin.appbrand.dynamic.d.a.a
+{
+  public c(int paramInt)
+  {
+    super("getNetworkType", paramInt);
+  }
+  
+  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  {
+    parama = parama.getContext();
+    paramJSONObject = new HashMap();
+    if (!aq.isConnected(parama)) {
+      paramJSONObject.put("networkType", "none");
+    }
+    for (;;)
+    {
+      parama1.ab(a(true, "", paramJSONObject));
+      return;
+      if (aq.is2G(parama)) {
+        paramJSONObject.put("networkType", "2g");
+      } else if (aq.is3G(parama)) {
+        paramJSONObject.put("networkType", "3g");
+      } else if (aq.is4G(parama)) {
+        paramJSONObject.put("networkType", "4g");
+      } else if (aq.isWifi(parama)) {
+        paramJSONObject.put("networkType", "wifi");
+      } else {
+        paramJSONObject.put("networkType", "unknown");
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.c
+ * JD-Core Version:    0.7.0.1
+ */

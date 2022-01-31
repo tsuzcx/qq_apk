@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/nc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/brv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.game.ui.GameIndexListView android:id="@id/bsl" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/brv" />
+</RelativeLayout>

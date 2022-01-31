@@ -1,0 +1,35 @@
+package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
+
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
+import java.util.HashMap;
+import java.util.Map;
+
+final class n$1
+  implements b
+{
+  n$1(n paramn, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt) {}
+  
+  public final void a(j paramj)
+  {
+    switch (paramj.errCode)
+    {
+    default: 
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("errCode", Integer.valueOf(paramj.errCode));
+      this.ggH.C(this.dIS, this.glJ.h(paramj.aox, localHashMap));
+      c.jdMethod_if(43);
+      return;
+    }
+    paramj = new HashMap();
+    paramj.put("errCode", Integer.valueOf(0));
+    this.ggH.C(this.dIS, this.glJ.h("ok", paramj));
+    c.jdMethod_if(42);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.n.1
+ * JD-Core Version:    0.7.0.1
+ */

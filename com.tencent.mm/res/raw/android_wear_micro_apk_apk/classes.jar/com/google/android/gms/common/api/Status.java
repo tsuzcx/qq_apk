@@ -1,0 +1,112 @@
+package com.google.android.gms.common.api;
+
+import android.app.PendingIntent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.google.android.gms.common.internal.ReflectedParcelable;
+import com.google.android.gms.common.internal.b;
+import com.google.android.gms.common.internal.c;
+import com.google.android.gms.common.internal.safeparcel.zza;
+import java.util.Arrays;
+
+public final class Status
+  extends zza
+  implements w, ReflectedParcelable
+{
+  public static final Parcelable.Creator<Status> CREATOR = new af();
+  public static final Status HL = new Status(0);
+  public static final Status HM = new Status(14);
+  public static final Status HN = new Status(8);
+  public static final Status HO = new Status(15);
+  public static final Status HP = new Status(16);
+  public static final Status HQ = new Status(17);
+  public static final Status HR = new Status(18);
+  final int Hc;
+  private final int Hd;
+  private final PendingIntent He;
+  private final String Hf;
+  
+  public Status(int paramInt)
+  {
+    this(paramInt, null);
+  }
+  
+  Status(int paramInt1, int paramInt2, String paramString, PendingIntent paramPendingIntent)
+  {
+    this.Hc = paramInt1;
+    this.Hd = paramInt2;
+    this.Hf = paramString;
+    this.He = paramPendingIntent;
+  }
+  
+  public Status(int paramInt, String paramString)
+  {
+    this(1, paramInt, paramString, null);
+  }
+  
+  public Status(int paramInt, String paramString, PendingIntent paramPendingIntent)
+  {
+    this(1, paramInt, paramString, paramPendingIntent);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof Status)) {}
+    do
+    {
+      return false;
+      paramObject = (Status)paramObject;
+    } while ((this.Hc != paramObject.Hc) || (this.Hd != paramObject.Hd) || (!b.b(this.Hf, paramObject.Hf)) || (!b.b(this.He, paramObject.He)));
+    return true;
+  }
+  
+  public final Status gC()
+  {
+    return this;
+  }
+  
+  final PendingIntent gF()
+  {
+    return this.He;
+  }
+  
+  public final String gG()
+  {
+    return this.Hf;
+  }
+  
+  public final int getStatusCode()
+  {
+    return this.Hd;
+  }
+  
+  public final boolean gm()
+  {
+    return this.Hd <= 0;
+  }
+  
+  public final int hashCode()
+  {
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.Hc), Integer.valueOf(this.Hd), this.Hf, this.He });
+  }
+  
+  public final String toString()
+  {
+    c localc = b.t(this);
+    if (this.Hf != null) {}
+    for (String str = this.Hf;; str = o.bc(this.Hd)) {
+      return localc.a("statusCode", str).a("resolution", this.He).toString();
+    }
+  }
+  
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    af.a(this, paramParcel, paramInt);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar
+ * Qualified Name:     com.google.android.gms.common.api.Status
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/k9" android:id="@id/as4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="年" />
+        <Button android:textSize="@dimen/k9" android:id="@id/as5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
+        <Button android:textSize="@dimen/k9" android:id="@id/as6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="日" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMSpinnerDatePicker android:id="@id/cw3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" android:datePickerMode="spinner" />
+</LinearLayout>

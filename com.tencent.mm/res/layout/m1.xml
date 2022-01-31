@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/anh" style="@style/g5" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/aob" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/aoc" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <RelativeLayout android:orientation="horizontal" android:id="@id/ahe" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewTo android:layout_gravity="right" android:id="@id/am5" android:background="@null" android:layout_marginLeft="@dimen/xw" android:layout_marginRight="@dimen/xw" style="@style/gu" />
+                <ProgressBar android:id="@id/am6" android:visibility="gone" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:indeterminateDrawable="@drawable/u5" android:layout_centerInParent="true" />
+                <TextView android:textSize="@dimen/n7" android:textColor="@color/a23" android:gravity="right" android:id="@id/am7" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/mv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/iz" android:layout_alignLeft="@id/am5" android:layout_alignRight="@id/am5" android:layout_alignBottom="@id/am5" />
+                <ImageView android:id="@id/am8" android:background="@null" android:visibility="gone" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/kk" />
+</LinearLayout>

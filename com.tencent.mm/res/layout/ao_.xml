@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="start" android:background="@color/sz" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" style="@style/lu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/kh" android:textColor="@color/fd" android:ellipsize="end" android:gravity="center" android:id="@id/dtj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <TextView android:textSize="@dimen/n7" android:ellipsize="end" android:gravity="center" android:id="@id/dtk" android:background="@drawable/al5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mx" android:maxLines="1" android:layout_toRightOf="@id/dtj" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/mw" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dtl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    </LinearLayout>
+    <Button android:id="@id/dtm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ni" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/n2" />
+</RelativeLayout>

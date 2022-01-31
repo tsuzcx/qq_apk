@@ -1,0 +1,21 @@
+package com.tencent.mm.pluginsdk.ui.tools;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class FileSelectorFolderView$3
+  implements View.OnClickListener
+{
+  FileSelectorFolderView$3(FileSelectorFolderView paramFileSelectorFolderView) {}
+  
+  public final void onClick(View paramView)
+  {
+    FileSelectorFolderView.c(this.slV);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView.3
+ * JD-Core Version:    0.7.0.1
+ */

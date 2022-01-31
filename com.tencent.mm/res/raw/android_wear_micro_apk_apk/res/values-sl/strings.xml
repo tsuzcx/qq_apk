@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Omogoči</string>
+    <string name="b">Aplikacija %1$s ne bo delovala, če ne omogočite storitev Google Play.</string>
+    <string name="c">Omogočanje storitev Google Play</string>
+    <string name="d">Namesti</string>
+    <string name="e">Aplikacija %1$s ne deluje brez storitev Google Play, vendar teh ni v napravi.</string>
+    <string name="f">Namestitev storitev Google Play</string>
+    <string name="g">Napaka storitev Google Play</string>
+    <string name="h">Aplikacija %1$s ima težave s storitvami Google Play. Poskusite znova.</string>
+    <string name="i">Aplikacija %1$s ne deluje brez storitev Google Play, ki jih vaša naprava ne podpira.</string>
+    <string name="j">Posodobi</string>
+    <string name="k">Aplikacija %1$s ne bo delovala, če ne posodobite storitev Google Play.</string>
+    <string name="l">Posodobitev storitev Google Play</string>
+    <string name="m">Aplikacija %1$s ne deluje brez storitev Google Play, ki se trenutno posodabljajo.</string>
+    <string name="n">Potrebujete novo različico storitev Google Play. V kratkem se bodo posodobile.</string>
+    <string name="o">Odpiranje v telefonu</string>
+    <string name="p">Prijava</string>
+    <string name="q">Prijava z Google Računom</string>
+    <string name="r">999+</string>
+</resources>

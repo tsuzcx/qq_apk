@@ -1,0 +1,81 @@
+package com.tencent.mm.plugin.downloader_app.ui;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.support.v7.widget.AppCompatImageView;
+import android.util.AttributeSet;
+import com.tencent.mm.plugin.downloader_app.b.b;
+
+public class AppIconView
+  extends AppCompatImageView
+{
+  private static final PorterDuffXfermode iTc = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+  private Bitmap bitmap;
+  private RectF iTa;
+  private Bitmap iTb;
+  private Rect rect;
+  
+  public AppIconView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    localPaint.setColor(-1);
+    if (this.rect == null) {
+      this.rect = new Rect(0, 0, getWidth(), getHeight());
+    }
+    if (this.iTa == null) {
+      this.iTa = new RectF(this.rect);
+    }
+    if ((this.bitmap != null) && (this.iTb != null))
+    {
+      int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null);
+      paramCanvas.drawBitmap(this.iTb, this.rect, this.rect, localPaint);
+      localPaint.setXfermode(iTc);
+      paramCanvas.drawBitmap(this.bitmap, null, this.rect, localPaint);
+      paramCanvas.restoreToCount(i);
+      localPaint.setXfermode(null);
+    }
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setStrokeWidth(1.0F);
+    localPaint.setColor(getResources().getColor(b.b.app_icon_stroke_color));
+    paramCanvas.drawRoundRect(this.iTa, 32.0F, 32.0F, localPaint);
+  }
+  
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.iTa = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
+    this.rect = new Rect(0, 0, paramInt1, paramInt2);
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint(1);
+    localPaint.setColor(getResources().getColor(b.b.app_icon_bg_color));
+    localCanvas.drawRoundRect(this.iTa, 32.0F, 32.0F, localPaint);
+    this.iTb = localBitmap;
+  }
+  
+  public void setImageBitmap(Bitmap paramBitmap)
+  {
+    this.bitmap = paramBitmap;
+    super.setImageBitmap(paramBitmap);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.AppIconView
+ * JD-Core Version:    0.7.0.1
+ */

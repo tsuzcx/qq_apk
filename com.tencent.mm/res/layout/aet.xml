@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/fs" android:layout_marginTop="@dimen/l3" android:layout_marginRight="@dimen/fs" android:layout_marginBottom="@dimen/fs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/mr" android:gravity="center" android:id="@id/d1r" android:layout_width="@dimen/fy" android:layout_height="wrap_content" />
+    <SeekBar android:id="@id/d1s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/mx" android:progressDrawable="@drawable/sg" android:minHeight="@dimen/mx" android:thumb="@drawable/si" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/mr" android:gravity="center" android:id="@id/c2v" android:layout_width="@dimen/fy" android:layout_height="wrap_content" />
+</LinearLayout>

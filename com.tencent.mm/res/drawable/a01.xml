@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="80" android:drawable="@drawable/ane" />
+    <item android:duration="80" android:drawable="@drawable/anf" />
+    <item android:duration="80" android:drawable="@drawable/ang" />
+    <item android:duration="80" android:drawable="@drawable/anh" />
+    <item android:duration="80" android:drawable="@drawable/ani" />
+    <item android:duration="80" android:drawable="@drawable/anj" />
+    <item android:duration="80" android:drawable="@drawable/ank" />
+    <item android:duration="80" android:drawable="@drawable/anl" />
+    <item android:duration="80" android:drawable="@drawable/anm" />
+    <item android:duration="80" android:drawable="@drawable/ann" />
+</animation-list>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/a4j" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/a4l" android:layout_width="fill_parent" android:layout_height="@dimen/v3">
+        <ImageView android:id="@id/sh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/a4b" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.ui.widget.MMNeatTextView android:textSize="@dimen/a8e" android:textColor="@color/a23" android:ellipsize="end" android:id="@id/om" android:paddingLeft="@dimen/sr" android:paddingRight="@dimen/sr" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l3" android:text="title" android:maxLines="2" android:layout_alignParentBottom="true" android:lineSpacingExtra="@dimen/sw" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_above="@id/om" android:layout_alignTop="@id/sh" android:layout_centerHorizontal="true">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_horizontal" android:id="@id/a4n" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/at3" android:scaleType="centerCrop" />
+                <TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:layout_gravity="center_horizontal" android:id="@id/js" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:orientation="vertical" android:id="@id/a47" android:background="@drawable/hn" android:layout_width="fill_parent" android:layout_height="@dimen/v3" />
+</RelativeLayout>

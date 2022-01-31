@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.game.ui.GameFeedSocialInfoView android:orientation="vertical" android:id="@id/c13" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/c14" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/n7" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/jk" />
+        <com.tencent.mm.plugin.game.widget.GameSmallAvatarList android:orientation="horizontal" android:id="@id/c15" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jk" />
+        <TextView android:textSize="@dimen/jm" android:textColor="@color/nw" android:id="@id/c16" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/mi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/n7" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/jk" />
+        <TextView android:textSize="@dimen/jm" android:textColor="@color/nw" android:id="@id/c17" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mm.plugin.game.ui.GameFeedSocialInfoView>

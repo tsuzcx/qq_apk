@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/lw" android:background="@color/wl" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/lt" />
+    <LinearLayout android:paddingLeft="@dimen/li" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2">
+        <RelativeLayout android:id="@id/ly" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/lz" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew" android:layout_centerVertical="true">
+                <ImageView android:id="@id/kl" android:layout_width="@dimen/ev" android:layout_height="@dimen/ev" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <RelativeLayout android:id="@id/m0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ko" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <TextView android:id="@id/m1" android:visibility="gone" android:text="@string/d0" style="@style/kr" />
+                <CheckBox android:id="@id/m3" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/mv" android:layout_toLeftOf="@id/m0" android:layout_toRightOf="@id/lz" android:layout_centerHorizontal="true">
+                <com.tencent.mm.ui.tools.MMTruncTextView android:id="@id/m6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerHorizontal="true" style="@style/ks" />
+                <TextView android:id="@id/m7" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="{account}" android:singleLine="true" android:layout_below="@id/m6" android:layout_alignParentLeft="true" style="@style/kr" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

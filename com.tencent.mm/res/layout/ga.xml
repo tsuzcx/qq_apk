@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gd" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/g6" />
+    <LinearLayout android:id="@id/a3d" android:background="@drawable/hb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/gc" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a3e" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/a3f" android:background="@color/ia" android:layout_width="fill_parent" android:layout_height="@dimen/v3" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/a3g" android:background="@drawable/dn" android:layout_width="fill_parent" android:layout_height="@dimen/v3" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

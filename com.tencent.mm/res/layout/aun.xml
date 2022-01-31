@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a3u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <FrameLayout android:id="@id/e_r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/e_s" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/om" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="54.0dip" android:layout_marginRight="60.0dip" android:text="@string/dc3" android:maxLines="2" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <View android:id="@id/e_t" android:background="#33000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/br9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1i" />
+            <ImageView android:id="@id/e_v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1j" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a23" android:id="@id/e_w" android:paddingTop="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ere" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a23" android:id="@id/e_x" android:paddingTop="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{video_size}" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_centerInParent="true">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <TextView android:textSize="15.0dip" android:textColor="@color/a23" android:gravity="center" android:id="@id/brb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" />
+                <Button android:textSize="15.0dip" android:textColor="@color/a23" android:id="@id/ea0" android:background="@drawable/mv" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqo" />
+            </LinearLayout>
+            <ProgressBar android:layout_gravity="center" android:id="@id/ea1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/yp" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:gravity="center" android:id="@id/ea2" android:background="@drawable/my" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/li" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/li" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/sq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/sr" android:background="#10eeeeee" style="@style/tx" />
+        <ImageView android:id="@id/ss" android:background="#ffeeeeee" android:layout_width="0.0dip" style="@style/tx" />
+    </FrameLayout>
+</RelativeLayout>

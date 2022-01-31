@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bbi" android:layout_width="fill_parent" android:layout_height="@dimen/gk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bbj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:baselineAligned="false" android:weightSum="1.0" style="@style/h2">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bbk" android:layout_marginLeft="@dimen/go" style="@style/h8" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/gp" style="@style/h9">
+            <RelativeLayout android:paddingLeft="@dimen/go" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bbl" android:layout_centerVertical="true">
+                <View android:id="@id/bbm" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/bbn" android:singleLine="true" android:layout_toLeftOf="@id/bbo" android:layout_alignLeft="@id/bbm" android:layout_centerInParent="true" style="@style/h_" />
+                <TextView android:id="@id/bbo" android:layout_marginLeft="50.0dip" android:minWidth="100.0dip" android:layout_alignRight="@id/bbm" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/hd" />
+            </RelativeLayout>
+            <ImageView android:id="@id/bbl" android:layout_marginLeft="0.0dip" android:src="@raw/device_profile_ui_jiantou" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/h1" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/bbp" android:background="@color/kx" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+</RelativeLayout>

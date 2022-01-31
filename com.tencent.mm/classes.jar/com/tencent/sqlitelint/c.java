@@ -1,0 +1,16 @@
+package com.tencent.sqlitelint;
+
+import android.database.Cursor;
+
+public abstract interface c
+{
+  public abstract void execSQL(String paramString);
+  
+  public abstract Cursor rawQuery(String paramString, String... paramVarArgs);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.sqlitelint.c
+ * JD-Core Version:    0.7.0.1
+ */

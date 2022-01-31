@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">ప్రారంభించు</string>
+    <string name="b">మీరు Google Play సేవలను ప్రారంభిస్తే మినహా %1$s పని చేయదు.</string>
+    <string name="c">Google Play సేవలను ప్రారంభించండి</string>
+    <string name="d">ఇన్‌స్టాల్ చేయి</string>
+    <string name="e">%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఆ సేవలు మీ పరికరంలో లేవు.</string>
+    <string name="f">Google Play సేవలను పొందండి</string>
+    <string name="g">Google Play సేవల లోపం</string>
+    <string name="h">%1$s Google Play సేవలతో సమస్య కలిగి ఉంది. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+    <string name="i">%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఈ సేవలకు మీ పరికరంలో మద్దతు లేదు.</string>
+    <string name="j">నవీకరించు</string>
+    <string name="k">మీరు Google Play సేవలను నవీకరిస్తే మినహా %1$s అమలు కాదు.</string>
+    <string name="l">Google Play సేవలను నవీకరించండి</string>
+    <string name="m">%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఆ సేవలు ప్రస్తుతం నవీకరించబడుతున్నాయి.</string>
+    <string name="n">కొత్త Google Play సేవల సంస్కరణ అవసరం. అది కొద్ది సేపట్లో దానంతట అదే నవీకరించబడుతుంది.</string>
+    <string name="o">ఫోన్‌లో తెరువు</string>
+    <string name="p">సైన్ ఇన్ చేయి</string>
+    <string name="q">Googleతో సైన్ ఇన్ చేయి</string>
+    <string name="r">999+</string>
+</resources>

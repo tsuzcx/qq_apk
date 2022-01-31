@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/v6" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" style="@style/lu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MaskLayout android:id="@id/v7" android:layout_width="@dimen/lc" android:layout_height="@dimen/lc">
+        <ImageView android:id="@id/kl" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+    </com.tencent.mm.ui.base.MaskLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/v8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:text="{nick}" android:singleLine="true" style="@style/ks" />
+        <TextView android:textSize="@dimen/k9" android:textColor="@color/vf" android:ellipsize="end" android:gravity="center|left" android:id="@id/v9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:singleLine="true" style="@style/ks" />
+    </LinearLayout>
+</LinearLayout>

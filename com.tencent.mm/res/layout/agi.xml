@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/lj" android:textColor="@color/gp" android:id="@id/as3" android:background="@drawable/b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/eu" android:minHeight="48.0dip" android:text="@string/a9y" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/lj" android:textColor="@color/op" android:id="@id/b0t" android:background="@drawable/b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/eu" android:minHeight="48.0dip" android:text="@string/a9z" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:layout_gravity="center" android:id="@id/d6o" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:id="@id/d6p" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+    </LinearLayout>
+</LinearLayout>

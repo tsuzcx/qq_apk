@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/b9g" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/a58" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b8l" android:layout_width="@dimen/y0" android:layout_height="@dimen/y0" android:src="@drawable/a_2" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/b9h" android:padding="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ks" />
+            <TextView android:id="@id/b8q" android:padding="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/kr" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/b9i" android:padding="@dimen/kv" android:paddingBottom="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/b_k" style="@style/kr" />
+</LinearLayout>

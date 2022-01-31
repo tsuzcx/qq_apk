@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:id="@id/lw" android:paddingLeft="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/lt" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ly" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/lz" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew">
+                <ImageView android:id="@id/kl" android:layout_width="@dimen/ev" android:layout_height="@dimen/ev" android:src="@raw/default_avatar" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/m6" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dl" android:text="{nick}" android:singleLine="true" android:layout_weight="1.0" style="@style/ks" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

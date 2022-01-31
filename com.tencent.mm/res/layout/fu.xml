@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/mn">
+        <LinearLayout style="@style/k5">
+            <TextView android:text="@string/a5n" style="@style/lr" />
+            <View style="@style/lm" />
+            <TextView android:text="@string/a5o" style="@style/lr" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a26" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="-5.0dip" android:minHeight="@dimen/mp">
+                <TextView android:id="@id/a27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/a5l" android:singleLine="true" android:layout_weight="1.0" style="@style/kl" />
+            </LinearLayout>
+            <Button android:layout_gravity="center_horizontal" android:id="@id/a28" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/a5r" style="@style/mu" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

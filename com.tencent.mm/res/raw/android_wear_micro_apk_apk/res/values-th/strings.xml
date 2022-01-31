@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">เปิดใช้</string>
+    <string name="b">%1$s จะไม่ทำงานจนกว่าคุณจะเปิดใช้บริการ Google Play</string>
+    <string name="c">เปิดใช้บริการ Google Play</string>
+    <string name="d">ติดตั้ง</string>
+    <string name="e">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซี่งไม่มีในอุปกรณ์ของคุณ</string>
+    <string name="f">ติดตั้งบริการ Google Play</string>
+    <string name="g">ข้อผิดพลาดของบริการ Google Play</string>
+    <string name="h">%1$s มีปัญหาเกี่ยวกับบริการของ Google Play โปรดลองอีกครั้ง</string>
+    <string name="i">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งอุปกรณ์ของคุณไม่สนับสนุน</string>
+    <string name="j">อัปเดต</string>
+    <string name="k">%1$s จะไม่ทำงานจนกว่าคุณจะอัปเดตบริการ Google Play</string>
+    <string name="l">อัปเดตบริการ Google Play</string>
+    <string name="m">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งกำลังอัปเดตอยู่ในขณะนี้</string>
+    <string name="n">จำเป็นต้องใช้บริการ Google Play เวอร์ชันใหม่ ซึ่งจะอัปเดตอัตโนมัติในอีกไม่ช้า</string>
+    <string name="o">เปิดบนโทรศัพท์</string>
+    <string name="p">ลงชื่อเข้าใช้</string>
+    <string name="q">ลงชื่อเข้าใช้ด้วย Google</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">ออก</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">กำลังดาวน์โหลดสติ๊กเกอร์นี้...</string>
+    <string name="z">ส่งการเต้นของหัวใจ</string>
+    <string name="a0">ฉันวัดการเต้นของหัวใจด้วยนาฬิกาแล้ว:%d ครั้ง/นาที</string>
+    <string name="a1">ไม่สามารถโหลดรูปภาพ</string>
+    <string name="a2">ไม่สามารถโหลดแหล่งข้อมูลได้ หลังจากรีสตาร์ท WeChat บทโทรศัพท์มือถือแล้ว แตะเพื่อลองอีกครั้ง</string>
+    <string name="a3">ดูให้แน่ใจว่าเชื่อมต่อโทรศัพท์มือถือและนาฬิกาแล้ว เข้าสู่ระบบ Moblie WeChat แล้ว แตะเพื่อลองอีกครั้ง</string>
+    <string name="a4">ไม่สามารถล็อกอินได้ หลังจากรีสตาร์ท WeChat บนโทรศัพท์มือถือแล้ว แตะเพื่อลองอีกครั้ง</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"ขอให้โชคดี
+ในคราวหน้า!"</string>
+    <string name="a8">ยอมรับ</string>
+    <string name="a9">เพิกเฉย</string>
+    <string name="a_">การแจ้งเตือน</string>
+    <string name="aa">เปิดใช้โทรศัพท์มือถือ</string>
+    <string name="ab">ข้อความ</string>
+    <string name="ac">ส่งใหม่</string>
+    <string name="ad">ชำระ</string>
+    <string name="ae">อาจจะ</string>
+    <string name="af">ไม่</string>
+    <string name="ag">ตกลง</string>
+    <string name="ah">ส่ง</string>
+    <string name="ai">แกลเลอรี่สติกเกอร์</string>
+    <string name="aj">ข้อความ</string>
+    <string name="ak">เสียง</string>
+    <string name="al">ตอบ</string>
+    <string name="am">พูด...</string>
+    <string name="an">%d</string>
+    <string name="ao">"การจดจำผิดพลาด
+กดค้างแล้วพูดอีกครั้ง"</string>
+    <string name="ap">แปลงเป็นตัวอักษร</string>
+    <string name="aq">%d</string>
+    <string name="ar">กำลังส่ง</string>
+    <string name="as">"ข้อความสั้นเกินไป
+กดค้างแล้วพูดอีกครั้ง"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">กำลังโหลดรูป</string>
+    <string name="av">กำลังโหลด…</string>
+    <string name="aw">กำลังโหลดแหล่งข้อมูล</string>
+    <string name="ax">กำลังล็อกอิน</string>
+    <string name="ay">หน้าการชำระเงินที่เปิดอยู่บนโทรศัพท์มือถือ</string>
+    <string name="az">อุปกรณ์ไม่รองรับการเล่นเสียง</string>
+    <string name="b0">ยินดีต้อนรับสู่ WeChat</string>
+</resources>

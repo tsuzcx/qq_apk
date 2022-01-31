@@ -1,0 +1,85 @@
+package android.support.wearable.activity;
+
+import android.animation.StateListAnimator;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.wearable.f;
+import android.support.wearable.g;
+import android.support.wearable.i;
+import android.support.wearable.view.ActionLabel;
+import android.support.wearable.view.ActionPage;
+import android.view.ViewPropertyAnimator;
+import android.widget.TextView;
+
+@TargetApi(21)
+public class ConfirmationActivity
+  extends Activity
+{
+  private final Handler mHandler = new Handler();
+  private ActionPage yy;
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getIntent();
+    int i = paramBundle.getIntExtra("animation_type", 1);
+    paramBundle = paramBundle.getStringExtra("message");
+    this.yy = new ActionPage(this);
+    final long l;
+    if (i == 3)
+    {
+      setContentView(i.wI);
+      ((TextView)findViewById(g.message)).setText(paramBundle);
+      l = 2000L;
+      this.yy.setKeepScreenOn(true);
+      this.mHandler.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          ConfirmationActivity.this.finish();
+          ConfirmationActivity.this.overridePendingTransition(0, 17432577);
+        }
+      }, l);
+      return;
+    }
+    this.yy.eH();
+    this.yy.setStateListAnimator(new StateListAnimator());
+    this.yy.aP(ActionPage.zB);
+    setContentView(this.yy);
+    if (paramBundle != null) {
+      this.yy.setText(paramBundle);
+    }
+    switch (i)
+    {
+    default: 
+      throw new IllegalArgumentException("Unknown type of animation: " + i);
+    }
+    for (paramBundle = getDrawable(f.wv);; paramBundle = getDrawable(f.wu))
+    {
+      this.yy.setImageDrawable(paramBundle);
+      final ActionLabel localActionLabel = this.yy.eG();
+      l = Math.max(0L, 1666L - (localActionLabel.animate().getDuration() + 50L) * 2L);
+      ((Animatable)paramBundle).start();
+      localActionLabel.setAlpha(0.0F);
+      localActionLabel.animate().alpha(1.0F).setStartDelay(50L).withEndAction(new Runnable()
+      {
+        public final void run()
+        {
+          localActionLabel.animate().alpha(0.0F).setStartDelay(l);
+        }
+      });
+      l = 1666L;
+      break;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar
+ * Qualified Name:     android.support.wearable.activity.ConfirmationActivity
+ * JD-Core Version:    0.7.0.1
+ */

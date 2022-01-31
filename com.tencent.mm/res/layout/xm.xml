@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/a23" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/p1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/of" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@id/bks" android:visibility="gone" style="@style/kk" />
+        <ListView android:id="@id/bke" android:background="@color/a23" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        <TextView android:textColor="@color/a3q" android:gravity="center_horizontal" android:id="@id/bkt" android:background="#ffced2d7" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/kk" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/bkg" android:background="@drawable/rd" android:visibility="gone" style="@style/lu">
+            <TextView android:id="@id/bkh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/ctk" android:singleLine="false" android:layout_weight="1.0" style="@style/kl" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

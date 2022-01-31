@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.FitWindowsFrameLayout android:id="@id/ie" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/a1" />
+    <android.support.v7.widget.ViewStubCompat android:id="@id/if" android:layout="@layout/m" android:inflatedId="@id/ig" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</android.support.v7.widget.FitWindowsFrameLayout>

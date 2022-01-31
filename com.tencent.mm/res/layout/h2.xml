@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/zx" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lt" />
+    <FrameLayout android:id="@id/zy" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2">
+        <LinearLayout android:orientation="horizontal" android:id="@id/a6b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/l3" android:paddingBottom="@dimen/l3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center" android:id="@id/a6c" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew" android:src="@drawable/a8h" android:scaleType="fitCenter" />
+                    <ImageView android:layout_gravity="center" android:id="@id/a6d" android:visibility="gone" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew" android:src="@raw/app_avatar_shadow" android:scaleType="fitCenter" />
+                </FrameLayout>
+                <TextView android:textSize="@dimen/lj" android:textColor="@color/a3j" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a6e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:text="@string/q9" android:maxLines="2" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:id="@id/a6f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/app_new" />
+    </FrameLayout>
+</LinearLayout>

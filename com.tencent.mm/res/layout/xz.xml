@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/g2" android:layout_gravity="left" android:id="@id/blo" android:background="@drawable/yz" android:padding="16.0dip" android:text="@string/f8" style="@style/ms" />
+    <View android:id="@id/blp" android:background="@color/zm" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/blb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/du" android:src="@drawable/b0y" android:layout_above="@id/blp" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:gravity="center" android:id="@id/blq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/dp" android:text="@string/f7p" android:layout_below="@id/blp" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/mw" android:textColor="@color/a3c" android:id="@id/blr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/f83" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.internal.NavigationMenuItemView android:paddingLeft="?dd" android:paddingRight="?de" android:focusable="true" android:layout_width="fill_parent" android:layout_height="?db" android:foreground="?cu"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

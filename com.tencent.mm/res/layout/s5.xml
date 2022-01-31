@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b7k" android:background="@raw/emoji_pop_bg_smiley" android:paddingTop="@dimen/a5n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/b7l" android:layout_width="@dimen/a5q" android:layout_height="@dimen/a5q" android:layout_centerHorizontal="true" />
+    <android.support.v7.widget.AppCompatTextView android:gravity="center" android:id="@id/b7m" android:layout_width="@dimen/a5l" android:layout_height="@dimen/a5h" android:maxLines="1" android:layout_below="@id/b7l" android:layout_centerHorizontal="true" app:autoSizeTextType="dv" app:autoSizeStepGranularity="@dimen/a5k" app:autoSizeMinTextSize="@dimen/a5j" app:autoSizeMaxTextSize="@dimen/a5i" />
+</RelativeLayout>

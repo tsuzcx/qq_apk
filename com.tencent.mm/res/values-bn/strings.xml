@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">হোম এ নেভিগেট করুন</string>
+    <string name="b">উপরের দিকে নেভিগেট করুন</string>
+    <string name="abc_action_menu_overflow_description">আরও বিকল্প</string>
+    <string name="c">সম্পন্ন হয়েছে</string>
+    <string name="d">সবগুলো দেখুন</string>
+    <string name="e">একটি অ্যাপ্লিকেশান বেছে নিন</string>
+    <string name="f">বন্ধ</string>
+    <string name="g">চালু</string>
+    <string name="h">অনুসন্ধান...</string>
+    <string name="i">ক্যোয়ারী সাফ করুন</string>
+    <string name="j">ক্যোয়ারী খুঁজুন</string>
+    <string name="k">খুঁজুন</string>
+    <string name="l">ক্যোয়ারী জমা দিন</string>
+    <string name="m">ভয়েস অনুসন্ধান</string>
+    <string name="n">এর সাথে শেয়ার করুন</string>
+    <string name="o">%s এর সাথে শেয়ার করুন</string>
+    <string name="p">সঙ্কুচিত করুন</string>
+    <string name="common_google_play_services_enable_button">সক্ষম করুন</string>
+    <string name="common_google_play_services_enable_text">আপনি Google Play পরিষেবা সক্ষম না করা পর্যন্ত %1$s কাজ করবে না।</string>
+    <string name="common_google_play_services_enable_title">Google Play পরিষেবা সক্ষম করুন</string>
+    <string name="common_google_play_services_install_button">ইনস্টল করুন</string>
+    <string name="common_google_play_services_install_text">Google Play পরিষেবা ছাড়া %1$s চলবে না, যা আপনার ডিভাইসে অনুপস্থিত।</string>
+    <string name="common_google_play_services_install_title">Google Play পরিষেবা পান</string>
+    <string name="common_google_play_services_notification_ticker">Google Play পরিষেবার ত্রুটি</string>
+    <string name="common_google_play_services_unknown_issue">Google Play পরিষেবাগুলির সাথে %1$s এর সমস্যা হচ্ছে৷ অনুগ্রহ করে আবার চেষ্টা করুন৷</string>
+    <string name="common_google_play_services_unsupported_text">Google Play পরিষেবা ছাড়া %1$s চলবে না, যেটি আপনার ডিভাইসে সমর্থিত নয়৷</string>
+    <string name="common_google_play_services_update_button">আপডেট করুন</string>
+    <string name="common_google_play_services_update_text">আপনি Google Play পরিষেবা আপডেট না করা পর্যন্ত %1$s চলবে না।</string>
+    <string name="common_google_play_services_update_title">Google Play পরিষেবা আপডেট করুন</string>
+    <string name="common_google_play_services_updating_text">Google Play পরিষেবা ছাড়া %1$s চলবে না যা বর্তমানে আপডেট হচ্ছে।</string>
+    <string name="common_google_play_services_wear_update_text">Google Play পরিষেবার নতুন সংস্করণ প্রয়োজন৷ খুব শীঘ্রই এটা নিজেই আপডেট হবে৷</string>
+    <string name="common_open_on_phone">ফোনে খুলুন</string>
+    <string name="common_signin_button_text">প্রবেশ করুন</string>
+    <string name="common_signin_button_text_long">Google এর মাধ্যমে প্রবেশ করুন</string>
+    <string name="q">খুঁজুন</string>
+    <string name="r">৯৯৯+</string>
+</resources>

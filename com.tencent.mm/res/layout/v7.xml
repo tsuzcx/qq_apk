@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/sz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bdn" android:layout_width="93.0dip" android:layout_height="93.0dip" android:layout_marginTop="45.0dip" android:src="@drawable/ay2" />
+        <TextView android:textSize="20.0dip" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bdo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:lineSpacingMultiplier="1.25" style="@style/n6" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="15.0dip">
+            <CheckBox android:gravity="center|left" android:id="@id/bdp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="@dimen/dl" android:layout_alignParentTop="true" android:scaleX="0.8" android:scaleY="0.8" style="@style/n5" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/pf" android:id="@id/bdq" android:paddingTop="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bf1" android:includeFontPadding="false" android:layout_toRightOf="@id/bdp" android:layout_alignParentTop="true" android:lineSpacingMultiplier="1.25" />
+        </RelativeLayout>
+        <Button android:enabled="false" android:id="@id/bdr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="@dimen/ko" android:layout_marginRight="15.0dip" android:text="@string/bez" style="@style/mu" />
+        <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip" android:layout_marginBottom="@dimen/kl">
+            <TextView android:textSize="@dimen/my" android:textColor="@color/qm" android:gravity="center_horizontal" android:id="@id/bds" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n6" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Activer</string>
+    <string name="b">"%1$s ne fonctionnera pas tant que vous n'aurez pas activé les services Google Play."</string>
+    <string name="c">Activer les services Google Play</string>
+    <string name="d">Installer</string>
+    <string name="e">%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas installés sur votre appareil.</string>
+    <string name="f">Installer les services Google Play</string>
+    <string name="g">Erreur liée aux services Google Play</string>
+    <string name="h">"L'application %1$s rencontre des problèmes avec les services Google Play. Veuillez réessayer."</string>
+    <string name="i">%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas compatibles avec votre appareil.</string>
+    <string name="j">Mettre à jour</string>
+    <string name="k">"%1$s ne fonctionnera pas tant que vous n'aurez pas mis à jour les services Google Play."</string>
+    <string name="l">Mettre à jour les services Google Play</string>
+    <string name="m">%1$s ne fonctionnera pas sans les services Google Play, qui sont en cours de mise à jour.</string>
+    <string name="n">La nouvelle version des services Google Play est nécessaire. Elle sera bientôt installée automatiquement.</string>
+    <string name="o">Ouvrir sur le téléphone</string>
+    <string name="p">Se connecter</string>
+    <string name="q">Se connecter avec Google</string>
+    <string name="r">>999</string>
+    <string name="s">WeChat</string>
+    <string name="t">Quitter</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Cet autocollant est en cours de téléchargement...</string>
+    <string name="z">Envoyer des battements de cœur</string>
+    <string name="a0">"J'ai mesuré des battements de cœur avec la montre : %d temps/min."</string>
+    <string name="a1">"Impossible de charger l'image"</string>
+    <string name="a2">Impossible de charger la source. Après le redémarrage de WeChat sur le mobile, touchez pour réessayer.</string>
+    <string name="a3">"Assurez-vous qu'il existe une connexion entre le mobile et la montre. Le mobile Wechat est connecté.Touchez pour réessayer."</string>
+    <string name="a4">Connexion impossible. Après le redémarrage de WeChat sur le mobile, touchez pour réessayer.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Meilleure chance
+ Prochainement"</string>
+    <string name="a8">Accepter</string>
+    <string name="a9">Ignorer</string>
+    <string name="a_">Notifications</string>
+    <string name="aa">Ouvrir dans un téléphone portable</string>
+    <string name="ab">Texte</string>
+    <string name="ac">Renvoyer</string>
+    <string name="ad">Payer</string>
+    <string name="ae">Peut-être</string>
+    <string name="af">Non</string>
+    <string name="ag">Oui</string>
+    <string name="ah">Envoyer</string>
+    <string name="ai">"Galerie d'autocollants"</string>
+    <string name="aj">Texte</string>
+    <string name="ak">Voix</string>
+    <string name="al">Répondre</string>
+    <string name="am">Parlez…</string>
+    <string name="an">%d</string>
+    <string name="ao">"Erreur de reconnaissance
+Maintenez pour parler à nouveau"</string>
+    <string name="ap">Conversion en texte</string>
+    <string name="aq">%d</string>
+    <string name="ar">Envoi</string>
+    <string name="as">"Message trop court
+Maintenez pour parler à nouveau"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">"Chargement de l'image"</string>
+    <string name="av">Chargement...</string>
+    <string name="aw">Source de chargement</string>
+    <string name="ax">Connexion</string>
+    <string name="ay">Page de paiement ouverte sur le mobile</string>
+    <string name="az">"L'appareil ne prend pas en charge les fichiers audio."</string>
+    <string name="b0">Bienvenu sur WeChat</string>
+</resources>

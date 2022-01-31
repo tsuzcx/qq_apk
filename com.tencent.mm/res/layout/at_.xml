@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a23" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7h" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b7" android:scaleType="fitCenter" android:contentDescription="@string/egi" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7i" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@raw/album_wesee_icon_normal" android:scaleType="fitCenter" android:contentDescription="@string/egj" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7j" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b1" android:scaleType="fitCenter" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7k" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b8" android:scaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

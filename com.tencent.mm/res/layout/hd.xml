@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/fk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/du" android:layout_marginRight="@dimen/du">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:layout_marginBottom="@dimen/li" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/lj" android:textColor="@color/q7" android:ellipsize="end" android:id="@id/a7k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/k9" android:textColor="@color/q6" android:ellipsize="end" android:id="@id/a7l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a7m" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:background="#ffeeeeee" android:layout_width="1.0px" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/li" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/a7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" android:src="@drawable/auu" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/a7o" android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/du" android:layout_marginRight="@dimen/du" />
+</LinearLayout>

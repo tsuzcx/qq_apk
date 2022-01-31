@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Luba</string>
+    <string name="b">Rakendus %1$s töötab ainult siis, kui lubate Google Play teenused.</string>
+    <string name="c">Google Play teenuste lubamine</string>
+    <string name="d">Installi</string>
+    <string name="e">Rakendus %1$s töötab ainult koos Google Play teenustega, mida teie seadmes pole.</string>
+    <string name="f">Google Play teenuste hankimine</string>
+    <string name="g">Viga Google Play teenustes</string>
+    <string name="h">Rakendusel %1$s on probleeme Google Play teenustega. Proovige uuesti.</string>
+    <string name="i">Rakendus %1$s töötab ainult koos Google Play teenustega, mida teie seadmes ei toetata.</string>
+    <string name="j">Värskenda</string>
+    <string name="k">Rakenduse %1$s töötamiseks peate värskendama Google Play teenuseid.</string>
+    <string name="l">Google Play teenuste värskendamine</string>
+    <string name="m">Rakendus %1$s töötab ainult koos Google Play teenustega, mida praegu värskendatakse.</string>
+    <string name="n">Vajalik on Google Play teenuste uus versioon. See värskendab end peagi.</string>
+    <string name="o">Ava telefonis</string>
+    <string name="p">Logi sisse</string>
+    <string name="q">"Logi sisse Google'i kontoga"</string>
+    <string name="r">999+</string>
+</resources>

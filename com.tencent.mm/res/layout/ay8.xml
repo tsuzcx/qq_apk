@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/a3d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:background="@color/jx" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/beh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/elp" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="22.0dip" android:textColor="@color/a1y" android:id="@id/elq" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/fl" android:src="@color/x_" />
+            </LinearLayout>
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/elr" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/els" android:background="@drawable/ih" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/fl" android:src="@color/x_" />
+                <TextView android:textSize="20.0dip" android:textColor="@color/a1y" android:id="@id/elq" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/p8" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

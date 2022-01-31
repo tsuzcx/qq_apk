@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/ci4" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/e5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.0dip" android:src="@drawable/b69" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="20.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/e5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" android:text="@string/egc" android:layout_below="@id/e5e" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff888888" android:gravity="center" android:id="@id/e5g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/egb" android:layout_below="@id/e5f" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/e5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="167.0dip" android:layout_below="@id/e5e" android:layout_centerHorizontal="true">
+        <Button android:gravity="center" android:id="@id/d1p" android:background="@drawable/xz" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="150.0dip" android:layout_height="43.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="40.0dip" android:text="@string/eg_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:gravity="center" android:id="@id/ctz" android:background="@drawable/xz" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="150.0dip" android:layout_height="43.0dip" android:layout_marginBottom="40.0dip" android:text="@string/ega" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+</RelativeLayout>

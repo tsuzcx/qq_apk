@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/apc" android:background="@color/wc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/lr" android:background="@color/wg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="center_horizontal" android:id="@id/apd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/du" android:text="@string/al5" />
+        <RelativeLayout android:id="@id/ape" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ku">
+            <TextView android:textSize="@dimen/my" android:textColor="@color/ev" android:id="@id/apf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:text="@string/agx" />
+            <RelativeLayout android:orientation="horizontal" android:id="@id/apg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l3" android:layout_below="@id/apf">
+                <View android:id="@id/adc" android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+                <ImageView android:id="@id/aph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/a4o" android:src="@raw/searching_network_device" android:layout_toLeftOf="@id/adc" />
+                <TextView android:textSize="@dimen/my" android:textColor="@color/ev" android:id="@id/api" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a4o" android:layout_toRightOf="@id/adc" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <com.tencent.mm.ui.base.HorizontalListView android:id="@id/a01" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/a4n" android:layout_marginTop="@dimen/l3" android:listSelector="@null" android:cacheColorHint="#00000000" android:layout_below="@id/apf" />
+            <View android:id="@id/a7f" android:background="@color/we" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/l3" android:layout_below="@id/a01" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/apj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/my" android:textColor="@color/fc" android:id="@id/apk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:layout_marginTop="@dimen/l3" android:text="@string/agw" />
+            <com.tencent.mm.ui.base.HorizontalListView android:id="@id/apl" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/a4n" android:layout_marginTop="@dimen/l3" android:listSelector="@null" android:cacheColorHint="#00000000" android:layout_below="@id/apk" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,15 @@
+package com.google.android.gms.common.internal;
+
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.common.api.zza;
+
+public abstract interface zzab$zzb
+{
+  public abstract zza zzH(Status paramStatus);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.google.android.gms.common.internal.zzab.zzb
+ * JD-Core Version:    0.7.0.1
+ */

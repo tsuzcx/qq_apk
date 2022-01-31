@@ -1,0 +1,18 @@
+package com.tencent.mm.plugin.clean.ui.newui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+final class CleanMsgUI$5
+  implements DialogInterface.OnCancelListener
+{
+  CleanMsgUI$5(CleanMsgUI paramCleanMsgUI) {}
+  
+  public final void onCancel(DialogInterface paramDialogInterface) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.clean.ui.newui.CleanMsgUI.5
+ * JD-Core Version:    0.7.0.1
+ */

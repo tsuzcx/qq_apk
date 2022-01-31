@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/s1" />
+    <LinearLayout android:background="@drawable/w3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="horizontal" android:id="@id/b7i" android:background="@drawable/ij" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_height="@dimen/mp" style="@style/lu">
+            <ImageView android:id="@id/b75" android:paddingRight="@dimen/ym" android:layout_width="@dimen/mp" android:layout_height="fill_parent" android:src="@raw/emotionstore_custom_icon" />
+            <TextView android:id="@android:id/title" style="@style/kl" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="bottom|center|left" android:id="@id/b7j" android:layout_marginLeft="@dimen/mg" android:layout_marginRight="@dimen/mg" style="@style/mr" />
+</LinearLayout>

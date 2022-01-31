@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/a2k" android:baselineAligned="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cij" android:layout_width="@dimen/a2n" android:layout_height="@dimen/a2k">
+        <ImageView android:id="@id/cii" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b6x" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/cik" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="3.0dip" android:src="@drawable/b6w" />
+    <RelativeLayout android:id="@id/cil" android:layout_width="@dimen/a2n" android:layout_height="@dimen/a2k" android:layout_marginLeft="@dimen/dl">
+        <ImageView android:id="@id/cim" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b6x" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/cin" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cio" android:layout_width="@dimen/a2n" android:layout_height="@dimen/a2k" android:layout_marginLeft="@dimen/dl">
+        <ImageView android:id="@id/cip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b6x" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/ciq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

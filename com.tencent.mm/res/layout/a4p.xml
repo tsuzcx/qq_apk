@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/pi" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="40.0dip">
+        <ImageView android:id="@id/c6i" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginTop="43.0dip" />
+        <TextView android:textSize="20.0dip" android:textColor="#ff111111" android:id="@id/c6j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff959595" android:id="@id/c6k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="28.0dip" android:text="" />
+        <View android:id="@id/c6l" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="15.0dip" />
+        <RelativeLayout android:id="@id/c6m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="20.0dip">
+            <View android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/c6n" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/fc" android:id="@id/c6o" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" android:layout_weight="1.0" />
+                <Button android:textSize="13.0dip" android:textColor="@color/a23" android:gravity="center" android:id="@id/c6p" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:minWidth="60.0dip" android:minHeight="30.0dip" android:text="" style="@style/mu" />
+            </LinearLayout>
+            <View android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/c6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/ta" android:id="@id/c6r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/t7" android:gravity="right" android:id="@id/c6s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/c6t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/ta" android:id="@id/c6u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/t7" android:gravity="right" android:id="@id/c6v" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

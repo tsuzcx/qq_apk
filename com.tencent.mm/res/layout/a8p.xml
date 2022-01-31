@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/b4_" android:paddingLeft="@dimen/a25" android:paddingRight="@dimen/a25" android:layout_width="fill_parent" android:layout_height="@dimen/a27"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/my" android:textColor="@color/a25" android:id="@id/cls" android:background="#ffffbb29" android:padding="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="@string/clc" />
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/clt" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cn_" android:singleLine="true" />
+    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="16.0dip" android:gravity="center|right" android:id="@id/clu" android:background="@null" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="center_vertical" android:id="@id/clv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/ckc" android:singleLine="true" />
+</LinearLayout>

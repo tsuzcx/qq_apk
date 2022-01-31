@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">አንቃ</string>
+    <string name="b">Google Play አገልግሎቶችን ካላነቁ በስተቀር %1$s አይሰራም።</string>
+    <string name="c">Google Play አገልግሎቶችን ያንቁ</string>
+    <string name="d">ጫን</string>
+    <string name="e">%1$s ያለ Google Play አገልግሎቶች አይሰራም፣ እነሱ ደግሞ በመሣሪያዎ ላይ የሉም።</string>
+    <string name="f">Google Play አገልግሎቶችን ያግኙ</string>
+    <string name="g">የGoogle Play አገልግሎቶች ስህተት</string>
+    <string name="h">%1$s በGoogle Play አገልግሎቶች ላይ ችግሮች እያጋጠሙት ነው። እባክዎ እንደገና ይሞክሩ።</string>
+    <string name="i">%1$s ያለGoogle Play አገልግሎቶች አይሄድም፣ እነዚህም በመሣሪያዎ አይደገፉም።</string>
+    <string name="j">ያዘምኑ</string>
+    <string name="k">Google Play አገልግሎቶችን ካላዘመኑ በስተቀር ድረስ %1$s አይሰራም።</string>
+    <string name="l">Google Play አገልግሎቶችን ያዘምኑ</string>
+    <string name="m">%1$s ያለ Google Play አገልግሎቶች አይሰራም፣ እነሱ ደግሞ በአሁኑ ጊዜ በመዘመን ላይ ናቸው።</string>
+    <string name="n">አዲስ የGoogle Play አገልግሎቶች ስሪት ያስፈልጋል። በቅርቡ እራሱን ያዘምናል።</string>
+    <string name="o">ስልክ ላይ ክፈት</string>
+    <string name="p">ግባ</string>
+    <string name="q">በGoogle ይግቡ</string>
+    <string name="r">999+</string>
+</resources>

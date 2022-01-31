@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="r" parent="@style/dq">
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="s" parent="@android:style/Widget">
+        <item name="android:layout_gravity">start|center</item>
+        <item name="android:paddingEnd">8.0dip</item>
+    </style>
+    <style name="t" parent="@android:style/Widget">
+        <item name="android:layout_marginEnd">8.0dip</item>
+    </style>
+    <style name="u" parent="@android:style/Widget">
+        <item name="android:paddingEnd">16.0dip</item>
+    </style>
+    <style name="v" parent="@android:style/Widget">
+        <item name="android:layout_marginStart">16.0dip</item>
+    </style>
+    <style name="w" parent="@android:style/Widget">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+    <style name="x" parent="@android:style/Widget">
+        <item name="android:paddingStart">@dimen/p8</item>
+        <item name="android:paddingEnd">4.0dip</item>
+    </style>
+    <style name="y" parent="@android:style/Widget">
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+    <style name="z" parent="@android:style/Widget">
+        <item name="android:layout_toStartOf">@id/il</item>
+    </style>
+    <style name="a0" parent="@android:style/Widget">
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+    <style name="a1" parent="@style/bo">
+        <item name="android:layout_toStartOf">@android:id/icon2</item>
+        <item name="android:layout_toEndOf">@android:id/icon1</item>
+    </style>
+    <style name="a2" parent="@android:style/Widget">
+        <item name="android:layout_marginStart">@dimen/p8</item>
+    </style>
+    <style name="a3" parent="@android:style/Widget">
+        <item name="android:paddingStart">12.0dip</item>
+        <item name="android:paddingEnd">12.0dip</item>
+    </style>
+    <style name="a4" parent="@style/bd">
+        <item name="android:paddingStart">@dimen/oj</item>
+        <item name="android:paddingEnd">@dimen/oi</item>
+    </style>
+</resources>

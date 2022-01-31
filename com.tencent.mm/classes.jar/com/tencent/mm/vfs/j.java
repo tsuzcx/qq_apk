@@ -1,0 +1,204 @@
+package com.tencent.mm.vfs;
+
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.os.Parcel;
+import com.tencent.e.a.b;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public final class j
+{
+  private static final Pattern wvu = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
+  
+  public static void a(Parcel paramParcel, Class<? extends FileSystem> paramClass)
+  {
+    int i = paramParcel.readInt();
+    if (i != 1) {
+      throw new a(paramClass, i);
+    }
+  }
+  
+  static Uri aeZ(String paramString)
+  {
+    Uri.Builder localBuilder = new Uri.Builder();
+    int j = paramString.indexOf(':');
+    if (j < 0) {
+      localBuilder.path(paramString);
+    }
+    for (;;)
+    {
+      return localBuilder.build();
+      localBuilder.scheme(paramString.substring(0, j));
+      int k = paramString.length();
+      if ((k > j + 2) && (paramString.charAt(j + 1) == '/') && (paramString.charAt(j + 2) == '/'))
+      {
+        int i = j + 3;
+        while (i < k) {
+          switch (paramString.charAt(i))
+          {
+          default: 
+            i += 1;
+          }
+        }
+        localBuilder.authority(paramString.substring(j + 3, i));
+        if (i < k) {
+          localBuilder.path(paramString.substring(i + 1));
+        }
+      }
+      else
+      {
+        localBuilder.path(paramString.substring(j + 1));
+      }
+    }
+  }
+  
+  static String afa(String paramString)
+  {
+    int i = paramString.lastIndexOf('/');
+    if (i <= 0) {
+      return null;
+    }
+    return paramString.substring(0, i);
+  }
+  
+  static String h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    if (paramString.isEmpty()) {}
+    int j;
+    label184:
+    do
+    {
+      return paramString;
+      StringTokenizer localStringTokenizer;
+      if (paramString.startsWith("/"))
+      {
+        j = 1;
+        localObject = paramString;
+        if (paramString.endsWith("/"))
+        {
+          localObject = paramString;
+          if (paramString.length() > 1) {
+            localObject = paramString.substring(0, paramString.length() - 1);
+          }
+        }
+        localStringTokenizer = new StringTokenizer(((String)localObject).substring(j), "/");
+        paramString = new ArrayList();
+      }
+      for (;;)
+      {
+        if (!localStringTokenizer.hasMoreTokens()) {
+          break label184;
+        }
+        String str = localStringTokenizer.nextToken();
+        if ((paramBoolean1) && ("..".equals(str)))
+        {
+          if (paramString.isEmpty())
+          {
+            return null;
+            j = 0;
+            break;
+          }
+          paramString.remove(paramString.size() - 1);
+          i = 0;
+          continue;
+        }
+        if (((paramBoolean1) && (".".equals(str))) || ("".equals(str))) {
+          i = 0;
+        } else {
+          paramString.add(str);
+        }
+      }
+      if (i == 0) {
+        break;
+      }
+      paramString = (String)localObject;
+    } while (!paramBoolean2);
+    return ((String)localObject).substring(j);
+    Object localObject = new StringBuilder();
+    if ((!paramBoolean2) && (j > 0)) {
+      ((StringBuilder)localObject).append('/');
+    }
+    paramString = paramString.iterator();
+    if (paramString.hasNext())
+    {
+      ((StringBuilder)localObject).append(paramString.next());
+      while (paramString.hasNext())
+      {
+        ((StringBuilder)localObject).append('/');
+        ((StringBuilder)localObject).append(paramString.next());
+      }
+    }
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  public static String n(Uri paramUri)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str = paramUri.getScheme();
+    if ((str != null) && (!str.isEmpty())) {
+      localStringBuilder.append(str).append(':');
+    }
+    str = paramUri.getAuthority();
+    if ((str != null) && (!str.isEmpty())) {
+      localStringBuilder.append("//").append(str);
+    }
+    paramUri = paramUri.getPath();
+    if (paramUri != null) {
+      localStringBuilder.append(paramUri);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  static String y(String paramString, Map<String, String> paramMap)
+  {
+    Matcher localMatcher = wvu.matcher(paramString);
+    StringBuilder localStringBuilder;
+    int i;
+    if (localMatcher.find())
+    {
+      localStringBuilder = new StringBuilder(paramString.length());
+      i = 0;
+    }
+    for (;;)
+    {
+      String str1 = localMatcher.group(1);
+      String str2 = (String)paramMap.get(str1);
+      if (str2 == null)
+      {
+        b.d("VFS.Utils", "Macro resolve: " + paramString + " cannot resolve ${" + str1 + "}.");
+        return null;
+      }
+      localStringBuilder.append(paramString.substring(i, localMatcher.start())).append(str2);
+      i = localMatcher.end();
+      if (!localMatcher.find())
+      {
+        paramMap = paramString.substring(i);
+        b.d("VFS.Utils", "Macro resolve: " + paramString + " => " + paramMap);
+        return paramMap;
+        b.d("VFS.Utils", "Macro resolve: " + paramString + " contains no macros.");
+        return paramString;
+      }
+    }
+  }
+  
+  static final class a
+    extends RuntimeException
+  {
+    a(Class<?> paramClass, int paramInt)
+    {
+      super();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.vfs.j
+ * JD-Core Version:    0.7.0.1
+ */

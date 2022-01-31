@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="108.0dip" style="@style/l2">
+        <FrameLayout android:id="@id/axv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fs" android:layout_marginTop="18.0dip" android:layout_marginBottom="18.0dip" android:layout_alignParentEnd="true">
+            <ImageView android:id="@id/axw" android:layout_width="93.0dip" android:layout_height="74.0dip" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="center" android:id="@id/axx" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="18.0dip" android:minHeight="74.0dip" android:layout_toLeftOf="@id/axv">
+            <TextView android:textSize="17.0dip" android:textColor="@color/fd" android:ellipsize="end" android:id="@id/axy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lines="2" />
+            <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/avs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l3">
+                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
+                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
+                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
+                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
+                <TextView android:textColor="@color/pf" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:background="@color/ql" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/fo" />
+</LinearLayout>

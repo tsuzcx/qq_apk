@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="发起转账申请后，资金将按如下时间存入对方账户" android:key="brsa_title" />
+</PreferenceScreen>

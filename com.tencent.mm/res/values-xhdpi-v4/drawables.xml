@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="a5_">false</item>
+    <item type="drawable" name="a5a">false</item>
+    <item type="drawable" name="a5b">false</item>
+    <item type="drawable" name="a5c">false</item>
+    <item type="drawable" name="a5d">false</item>
+    <item type="drawable" name="adb">false</item>
+    <item type="drawable" name="adc">false</item>
+    <item type="drawable" name="add">false</item>
+    <item type="drawable" name="aok">false</item>
+    <item type="drawable" name="aol">false</item>
+    <item type="drawable" name="aom">false</item>
+    <item type="drawable" name="aon">false</item>
+    <item type="drawable" name="aoo">false</item>
+    <item type="drawable" name="aot">false</item>
+    <item type="drawable" name="aou">false</item>
+    <item type="drawable" name="aov">false</item>
+    <item type="drawable" name="aow">false</item>
+    <item type="drawable" name="aox">false</item>
+    <item type="drawable" name="aoy">false</item>
+    <item type="drawable" name="aoz">false</item>
+    <item type="drawable" name="ap0">false</item>
+    <item type="drawable" name="ap1">false</item>
+    <item type="drawable" name="ap2">false</item>
+    <item type="drawable" name="ap8">false</item>
+    <item type="drawable" name="apa">false</item>
+    <item type="drawable" name="apb">false</item>
+    <item type="drawable" name="apo">false</item>
+    <item type="drawable" name="apr">false</item>
+    <item type="drawable" name="aps">false</item>
+    <item type="drawable" name="apu">false</item>
+</resources>

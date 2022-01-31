@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/dq" android:gravity="center" android:id="@id/dtd" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q9" android:drawableTop="@drawable/a_1" style="@style/k6" />
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/fa" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView android:id="@id/a32" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/a33" android:background="@drawable/dw" android:padding="@dimen/kv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ku">
+        <ImageView android:id="@id/a34" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:id="@id/a35" android:paddingLeft="18.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

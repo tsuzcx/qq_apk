@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="@color/jx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/beh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/c7r" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/dq" android:textColor="@color/a1y" android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:minHeight="25.0dip" android:text="@string/fh6" />
+            <TextView android:ellipsize="end" android:id="@id/egk" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/mv" android:maxLines="2" style="@style/uv" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/adc" android:layout_width="fill_parent" android:layout_height="@dimen/fl" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" android:src="@color/f_" />
+        <ListView android:id="@id/egv" android:background="@null" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@color/x_" android:dividerHeight="@dimen/fn" android:choiceMode="singleChoice" android:layout_weight="1.0" />
+        <ImageView android:background="@color/x_" android:layout_width="fill_parent" android:layout_height="@dimen/fn" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" />
+        <Button android:textSize="@dimen/lj" android:textColor="@color/a1y" android:id="@id/ekw" android:background="@drawable/b_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ld" android:text="@string/qk" />
+    </LinearLayout>
+</RelativeLayout>

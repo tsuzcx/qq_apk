@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/fx"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <ImageView android:id="@id/aoc" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/l3">
+                <ImageView android:id="@id/alq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/u0" />
+                <ImageView android:id="@id/alr" android:background="@drawable/yd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.tencent.mm.ui.widget.MMPinProgressBtn android:layout_gravity="center" android:id="@id/am6" android:layout_width="22.0dip" android:layout_height="22.0dip" app:innerSize="22.0dip" />
+            </LinearLayout>
+            <FrameLayout android:id="@id/aku" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/am5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/alo" android:background="@drawable/ga" android:layout_width="@dimen/e7" android:layout_height="@dimen/v8" />
+                <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/an_" android:background="@drawable/gn" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip">
+                    <TextView android:textSize="@dimen/ec" android:textColor="@color/a23" android:id="@id/am7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:textSize="@dimen/ec" android:textColor="@color/a23" android:gravity="right" android:id="@id/ana" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                </LinearLayout>
+                <ImageView android:layout_gravity="center" android:id="@id/am8" android:background="@null" android:layout_width="@dimen/eb" android:layout_height="@dimen/eb" />
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/an5" android:background="@drawable/ga" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ProgressBar android:layout_gravity="center" android:id="@id/aok" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/yq" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/mo" android:focusable="false" android:visibility="gone" style="@style/fw" />
+</LinearLayout>

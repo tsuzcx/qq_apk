@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.appbrand.debugger.RemoteDebugMoveView android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/c2" android:padding="@dimen/li" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/mq" android:layout_marginBottom="@dimen/mq">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/ra" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/c0" />
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:id="@id/rb" android:paddingLeft="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lm" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:gravity="right" android:id="@id/rc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/rd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/re" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/rf" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/c0" />
+                <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:id="@id/rg" android:paddingLeft="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lt" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:id="@id/rh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/mw" android:textColor="@color/a23" android:id="@id/ri" android:paddingTop="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="10" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rj" android:paddingTop="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:id="@id/rk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lr" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:gravity="right" android:id="@id/rl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ll" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.appbrand.debugger.RemoteDebugMoveView>

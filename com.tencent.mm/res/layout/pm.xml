@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="left" android:background="#55000000" android:padding="@dimen/mq" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li">
+        <Button android:id="@id/azc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C" android:layout_weight="1.0" style="@style/go" />
+        <Button android:id="@id/azd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:text="S" android:layout_weight="1.0" style="@style/go" />
+        <Button android:id="@id/aze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:text="P" android:layout_weight="1.0" style="@style/go" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/azf" android:background="#fff0eff4" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <View android:background="@color/os" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/azg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel android:id="@id/azh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.PerformancePanel android:id="@id/azi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

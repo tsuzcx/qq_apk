@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <IconPreference android:title="@string/e04" android:icon="@drawable/ak5" android:key="settings_invite_facebook_friends" />
+    <IconPreference android:title="@string/e07" android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" />
+    <IconPreference android:title="@string/e36" android:icon="@drawable/ad6" android:key="settings_recommend_by_mail" />
+    <IconPreference android:title="@string/e37" android:icon="@drawable/ak8" android:key="settings_recommend_by_mb" />
+    <IconPreference android:title="@string/e06" android:icon="@drawable/ad7" android:key="settings_invite_mobile_friends" />
+</PreferenceScreen>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton android:background="@drawable/r9" style="@style/gc"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

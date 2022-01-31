@@ -1,0 +1,21 @@
+package com.tencent.mm.plugin.appbrand.widget.picker;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class a$1
+  implements View.OnClickListener
+{
+  a$1(a parama) {}
+  
+  public final void onClick(View paramView)
+  {
+    this.hzH.hide();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.a.1
+ * JD-Core Version:    0.7.0.1
+ */

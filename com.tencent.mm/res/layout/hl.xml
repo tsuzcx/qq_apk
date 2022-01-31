@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="@dimen/kv" android:paddingBottom="@dimen/dl" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/a8d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/a84" android:layout_width="209.0dip" android:layout_height="209.0dip" android:scaleType="fitXY" />
+        <Button android:textSize="@dimen/lj" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center" android:id="@id/a7y" android:background="@drawable/eq" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/acu" android:singleLine="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/dt" android:textColor="@color/fc" android:ellipsize="end" android:gravity="center" android:id="@id/a7z" android:background="@drawable/ij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" android:maxLines="3" android:layout_below="@id/a8d" android:layout_centerHorizontal="true" />
+    <View android:id="@id/a80" android:background="@drawable/j9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/du" android:layout_marginTop="@dimen/kl" android:layout_marginRight="@dimen/du" android:layout_below="@id/a7z" android:layerType="software" />
+</RelativeLayout>

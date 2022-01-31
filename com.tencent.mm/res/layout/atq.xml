@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/e8o" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="result" style="@style/n6" />
+    <Button android:id="@id/e8p" android:text="@string/fup" style="@style/ln" />
+    <Button android:id="@id/e8q" android:text="@string/fuk" style="@style/ln" />
+    <Button android:id="@id/e8r" android:text="@string/fuo" style="@style/ln" />
+    <Button android:id="@id/e8s" android:text="@string/fum" style="@style/ln" />
+    <Button android:id="@id/e8t" android:text="@string/fuj" style="@style/ln" />
+    <Button android:id="@id/e8u" android:text="@string/fun" style="@style/ln" />
+    <Button android:id="@id/e8v" android:text="@string/ful" style="@style/ln" />
+    <Button android:id="@id/e8w" android:text="@string/fui" style="@style/ln" />
+    <Button android:id="@id/e8x" android:text="@string/fuh" style="@style/ln" />
+</LinearLayout>
